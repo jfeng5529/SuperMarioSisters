@@ -75,7 +75,13 @@ public class NPCRoom extends CaveRoom {
 		return super.getDescription()+"\n"+presentNPC.getInactiveDescription();
 		}
 		else {
-			return super.getDescription();
+			String npcDescription="";
+			if(presentNPC!=null) {
+				npcDescription = presentNPC.getActiveDescription();
+			}
+			return super.getDescription()+"\n"+npcDescription;
 		}
 	}
+
+	
 }

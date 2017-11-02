@@ -149,19 +149,24 @@ public class CaveRoom {
 	public static void setUpCaves() {
 		//ALL OF THIS CODE CAN BE CHANGED
 		//1. decide hoe bog your cave should be
-		CaveExplorer.caves=new CaveRoom[5][5];
+		CaveExplorer.caves=new NPCRoom[5][5]; // everyroom now is a NPC room can be changed later
 		//2. Populate with caves with a default descriptions: when starting use coordinates
 		for(int row =0; row<CaveExplorer.caves.length; row++) {
 			//PLEASE PAY ATTENTION TO THE DIFFERENCE
 			for(int col=0; col<CaveExplorer.caves[row].length; col++) {
 				//create a "default" cave
-				CaveExplorer.caves[row][col]=new CaveRoom("this cave has coords("+row+","+col+")");
+				CaveExplorer.caves[row][col]=new NPCRoom("this cave has coords("+row+","+col+")");
 			}
 		}
 		//3.replace default room with custom room
+		//DO LATER
+		CaveExplorer.npcs =new NPC[1];
+		CaveExplorer.npcs[0] = new Princess();
+		CaveExplorer.npcs[0].setPosition(0, 0);
 		//4.set your starting room:
 		CaveExplorer.currentRoom=CaveExplorer.caves[0][1];
 		CaveExplorer.currentRoom.enter();
+		//set up doors
 		CaveRoom[][]c=CaveExplorer.caves;
 		c[0][1].setConnection(SOUTH, c[1][1], new Door());
 	}
@@ -190,7 +195,12 @@ public class CaveRoom {
 	}
 
 	public Door getDoor(int direction) {
-		return doors[direction];
+		if(direction>=0&& direction < doors.length) {
+			return doors[direction];
+		}
+		else {
+			return null;
+		}
 	}
 
 
