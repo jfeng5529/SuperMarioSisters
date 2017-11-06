@@ -191,7 +191,7 @@ public class CaveRoom {
 		c[3][3].setConnection(WEST, c[3][2], new Door());
 		c[3][2].setConnection(WEST, c[3][1], new Door());
 		c[1][1].setConnection(SOUTH, c[2][1], new Door());
-		c[2][1].setConnection(SOUTH, c[3][1], new Door());
+		c[2][1].setConnection(SOUTH, c[3][1], new Door());//
 	}
 	public String getDescription() {
 		return description+"\n"+direction;
