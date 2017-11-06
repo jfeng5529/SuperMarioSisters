@@ -9,6 +9,7 @@ public class Inventory {
 		money=0;
 		updateMap();
 		life = 0;
+		//
 	}
 
 	public void updateMap() {
