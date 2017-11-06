@@ -165,13 +165,10 @@ public class CaveRoom {
 		//DO LATER
 		CaveExplorer.npcs =new NPC[1];
 		CaveExplorer.npcs[0] = new Princess();
-<<<<<<< HEAD
 		CaveExplorer.npcs[0].setPosition(0, 0);
-=======
 		CaveExplorer.npcs[0].setPosition(4, 4);
 		//CaveRoom customRoom = new FindFlashLight("Room");
 		//CaveExplorer.caves[2][3] = customRoom;
->>>>>>> branch 'janeLubnaBranch' of https://github.com/jfeng5529/SuperMarioSisters.git
 		CaveRoom customRoom = new JanePipeRoom("Room");
 		CaveExplorer.caves[2][3] = customRoom;
 		CaveRoom customRoom2 = new LubnaFindLives("Room");
