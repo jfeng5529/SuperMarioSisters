@@ -166,8 +166,8 @@ public class CaveRoom {
 		CaveExplorer.npcs =new NPC[1];
 		CaveExplorer.npcs[0] = new Princess();
 		CaveExplorer.npcs[0].setPosition(0, 0);
-		//CaveRoom customRoom = new JessiMerchantRoom("Room");
-		//CaveExplorer.caves[2][1] = customRoom;
+		CaveRoom customRoom = new JessiMerchantRoom("Room");
+		CaveExplorer.caves[2][1] = customRoom;
 		CaveRoom customRoom2 = new MimiRoom("Room");
 		CaveExplorer.caves[3][4] = customRoom2;
 		//4.set your starting room:
