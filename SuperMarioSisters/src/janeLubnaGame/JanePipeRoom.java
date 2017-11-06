@@ -17,5 +17,13 @@ public class JanePipeRoom extends NPCRoom {
 	public String getDescription() {
 		return "Oh no, you have enter the pipe room. you have fell in the pipe that leads to the starting position of the maze";
 	}
+	
+	public void performAction(int direction) {
+		if(direction ==4) {
+			CaveExplorer.currentRoom=CaveExplorer.caves[0][1];
+			CaveExplorer.currentRoom.enter();
+		}
+		
+	}
 
 }
