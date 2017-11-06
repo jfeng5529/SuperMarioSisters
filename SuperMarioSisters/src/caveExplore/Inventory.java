@@ -60,6 +60,9 @@ public class Inventory {
 	public int getMoney() {
 		return money;
 	}
+	public  int addLife() {
+		return life++;
+	}
 	
 
 }
