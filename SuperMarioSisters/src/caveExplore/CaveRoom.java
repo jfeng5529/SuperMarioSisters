@@ -1,5 +1,7 @@
 package caveExplore;
 
+import jessiMimiGame.JessiMerchantRoom;
+
 public class CaveRoom {
 	
 	private String description; // tells what the room looks like
@@ -163,6 +165,8 @@ public class CaveRoom {
 		CaveExplorer.npcs =new NPC[1];
 		CaveExplorer.npcs[0] = new Princess();
 		CaveExplorer.npcs[0].setPosition(0, 0);
+		CaveRoom customRoom = new JessiMerchantRoom("Room");
+		CaveExplorer.caves[2][5] = customRoom;
 		//4.set your starting room:
 		CaveExplorer.currentRoom=CaveExplorer.caves[0][1];
 		CaveExplorer.currentRoom.enter();
