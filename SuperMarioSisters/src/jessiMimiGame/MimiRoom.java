@@ -8,57 +8,30 @@ import caveExplore.NPCRoom;
 public class MimiRoom extends NPCRoom {
 	
 	//This room makes the NPC say different things to the player
-	private boolean active;
-	private NPC presentNPC;
 
 	public MimiRoom(String description) {
 		super(description);
 	}
 	
-	public boolean isActive() {
-		return active;
-	}
-	
 	public String validKeys() {
-		return "wdsak";
+		return "wdsaek";
 	}
 	
 	public String getContents() {
 		return "j";
 	}
 	public void performAction(int direction) {
-		if(direction == 4) {
-		 if(containsNPC() && presentNPC.isActive) {
-			 presentNPC.interact();
-		 }
-		 else {
-			 CaveExplorer.print("There is nothing to interact with");
-		 }
+		if(direction == 5) {
+			tauntPlayer();
 		}
 		else {
-		System.out.println("That key does nothing");
+			super.performAction(direction);
 		}
 	}
 	
 	
 	public String getDescription() {
-		if(containsNPC()&& !presentNPC.isActive) {
-		return super.getDescription()+"\n"+presentNPC.getInactiveDescription();
-		}
-		else {
-			String npcDescription="";
-			if(presentNPC!=null) {
-				npcDescription = presentNPC.getActiveDescription();
-			}
-			return super.getDescription()+"\n"+npcDescription;
-		}
-	}
-	
-	public void interact() {
-		CaveExplorer.print("You'll have to go through me if you want Princess Peach!");
-		if(isActive() == true) {
-			tauntPlayer();
-		}
+		return super.getDescription()+"\n Press 'k' to taunt Bowser!";
 	}
 
 	public String tauntPlayer() {
