@@ -1,39 +1,46 @@
 package jessiMimiGame;
 
 import caveExplore.CaveExplorer;
-import caveExplore.CaveRoom;
+import caveExplore.NPCRoom;
 
-public class JessiMerchantRoom extends CaveRoom {
+public class JessiMerchantRoom extends NPCRoom {
 
 	public JessiMerchantRoom(String description) {
 		super(description);
 	}
-
+	public String getContents() {
+		return "I";
+	}
+	
 	public String getDescription() {
 		return"Welcome to the Item Shop.";
 	}
 	
+	public String validKeys() {
+		return "wdsae";
+	}
 	
-	public void purchaseItem() {
-		System.out.println("What would you like to buy?");
+	public void printAllowedEntry() {
+		CaveExplorer.print("What would you like to buy?");
+		CaveExplorer.print("You can only enter w, a, s, d to move or you can type e, r, f to purchase items.");
 	}
 	
 	public void performAction(int direction) {
-		if(direction == 0) {
-			CaveExplorer.currentRoom=CaveExplorer.caves[2][4];
-			CaveExplorer.currentRoom.enter();
+		if(direction == 4) {
+		 CaveExplorer.print("Would you like to purchase hp points?");
+		 }else {
+			 CaveExplorer.print("...Are you sure you're typing in the right key?");
+		 }
+		 if(direction == 5) {
+			CaveExplorer.print("Would you like to purchase a storage bag? This will increase the items you can hold by 3!"); 
+		 }else {
+				 CaveExplorer.print("Wrong key!! Type the right key to purchase these handy items.");
+			 }
+		 if(direction == 6) {
+			CaveExplorer.print("Come and buy your flashlights!!! You will need them to scare off boo and save ur hp pts.");
+		 }else {
+				 CaveExplorer.print("There is nothing to purchase.");
+			 }
 		}
-		if(direction == 1) {
-			CaveExplorer.currentRoom=CaveExplorer.caves[1][5];
-			CaveExplorer.currentRoom.enter();
-		}
-		if(direction == 2) {
-			CaveExplorer.currentRoom=CaveExplorer.caves[2][6];
-			CaveExplorer.currentRoom.enter();
-		}
-		if(direction == 3) {
-			CaveExplorer.currentRoom=CaveExplorer.caves[3][5];
-			CaveExplorer.currentRoom.enter();
-		}
-	}
+	
 }
