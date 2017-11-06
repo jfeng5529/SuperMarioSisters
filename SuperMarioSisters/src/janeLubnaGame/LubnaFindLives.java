@@ -27,7 +27,7 @@ public class LubnaFindLives extends NPCRoom {
 	}
 	public void performAction(int direction) {
 		if(direction == 5) {
-		CaveExplorer.inventory.addLife();
+		CaveExplorer.inventory.addLife();//
 		response();
 		
 		}
