@@ -1,5 +1,7 @@
 package caveExplore;
 
+import janeLubnaGame.JanePipeRoom;
+
 public class CaveRoom {
 	
 	private String description; // tells what the room looks like
@@ -163,7 +165,9 @@ public class CaveRoom {
 		CaveExplorer.npcs =new NPC[1];
 		CaveExplorer.npcs[0] = new Princess();
 		CaveExplorer.npcs[0].setPosition(0, 0);
-		CaveRoom customRoom = new FindFlashLight("Room");
+		//CaveRoom customRoom = new FindFlashLight("Room");
+		//CaveExplorer.caves[2][3] = customRoom;
+		CaveRoom customRoom = new JanePipeRoom("Room");
 		CaveExplorer.caves[2][3] = customRoom;
 		
 		//4.set your starting room:
