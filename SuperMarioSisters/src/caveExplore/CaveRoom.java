@@ -164,7 +164,7 @@ public class CaveRoom {
 		//DO LATER
 		CaveExplorer.npcs =new NPC[1];
 		CaveExplorer.npcs[0] = new Princess();
-		CaveExplorer.npcs[0].setPosition(0, 0);
+		CaveExplorer.npcs[0].setPosition(4, 4);
 		//CaveRoom customRoom = new FindFlashLight("Room");
 		//CaveExplorer.caves[2][3] = customRoom;
 		CaveRoom customRoom = new JanePipeRoom("Room");
@@ -176,6 +176,9 @@ public class CaveRoom {
 		//set up doors
 		CaveRoom[][]c=CaveExplorer.caves;
 		c[0][1].setConnection(SOUTH, c[1][1], new Door());
+		c[1][1].setConnection(EAST, c[1][2], new Door());
+		c[1][2].setConnection(EAST, c[1][3], new Door());
+		c[1][3].setConnection(SOUTH, c[2][3], new Door());
 	}
 	public String getDescription() {
 		return description+"\n"+direction;
