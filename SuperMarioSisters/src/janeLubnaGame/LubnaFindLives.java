@@ -10,7 +10,7 @@ public class LubnaFindLives extends NPCRoom {
 		 
 	}
 	public String getContents() {
-		return "C";
+		return "F";
 	}
 	
 	public String getDescription(){
