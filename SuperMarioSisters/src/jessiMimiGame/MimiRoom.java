@@ -31,25 +31,25 @@ public class MimiRoom extends NPCRoom {
 	
 	
 	public String getDescription() {
-		return super.getDescription()+"\n Press 'k' to talk to Bowser!";
+		return super.getDescription()+"\n You've run into Toad! Press 'k' to get advice from him on how to defeat Bowser! (you may keep pressing 'k' for more tips)";
 	}
 
-	public String tauntPlayer() {
+	public void tauntPlayer() {
 		Random rand = new Random(); 
 		int value = rand.nextInt(5);
 		
 		String taunt = null;
 		if(value == 0)
-			taunt = "RAAAAAWWWWRRRR!!!!!!";
+			taunt = "It doesn't matter if you can't win back Princess Peach in the end! You're my hero anyways!";
 		if(value == 1)
-			taunt = "WHAA--?! IT'S YOU! That's it, Mario! I'm gonna stomp you into space bits!";
+			taunt = "I hope you bought items previously in the shop! They'll really help you take back the princess!";
 		if(value == 2)
-			taunt = "Gah! Give it up already!";
+			taunt = "Did you find flashlights? They'll power you up in the fight!";
 		if(value == 3)
-			taunt = "Why don't you run off and find some green pipe to hide in?";
+			taunt = "GAH! If your HP is low, you can't win against Bowser!";
 		if(value == 4)
-			taunt = "Go ahead--just try to grab me by the tail! You'll never be able to swing ME around!";
+			taunt = "You can win the fight if you just believe in yourself!!! ...and of course know how to play the game.";
 		
-		return taunt;
+		CaveExplorer.print(taunt);
 	}
 }
