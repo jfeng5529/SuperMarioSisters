@@ -33,6 +33,7 @@ public class NPCRoom extends CaveRoom {
 	public boolean containsNPC() {
 		return presentNPC != null;
 	}
+
 	
 	//The above methods are NEW features to a CaveRoom,
 	//The methods below REPLACE CaveRoom methods(Overrides)

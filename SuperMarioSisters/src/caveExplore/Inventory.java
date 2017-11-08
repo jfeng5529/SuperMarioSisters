@@ -3,10 +3,13 @@ package caveExplore;
 public class Inventory {
 	private String map;
 	private int money;
+	private int life;
 	
 	public Inventory() {
 		money=0;
 		updateMap();
+		life = 0;
+		//
 	}
 
 	public void updateMap() {
@@ -57,6 +60,9 @@ public class Inventory {
 	}
 	public int getMoney() {
 		return money;
+	}
+	public  int addLife() {
+		return life++;
 	}
 	
 
