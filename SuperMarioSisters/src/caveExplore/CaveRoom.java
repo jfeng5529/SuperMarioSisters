@@ -2,6 +2,8 @@ package caveExplore;
 
 import janeLubnaGame.JanePipeRoom;
 import janeLubnaGame.LubnaFindLives;
+import jessiMimiGame.JessiMerchantRoom;
+import jessiMimiGame.MimiRoom;
 
 public class CaveRoom {
 	
@@ -165,15 +167,15 @@ public class CaveRoom {
 		//DO LATER
 		CaveExplorer.npcs =new NPC[1];
 		CaveExplorer.npcs[0] = new Princess();
-		CaveExplorer.npcs[0].setPosition(0, 0);
 		CaveExplorer.npcs[0].setPosition(4, 4);
-		//CaveRoom customRoom = new FindFlashLight("Room");
-		//CaveExplorer.caves[2][3] = customRoom;
 		CaveRoom customRoom = new JanePipeRoom("Room");
 		CaveExplorer.caves[2][3] = customRoom;
 		CaveRoom customRoom2 = new LubnaFindLives("Room");
 		CaveExplorer.caves[3][3] = customRoom2;
-		
+		CaveRoom customRoom3 = new JessiMerchantRoom("Room");
+		CaveExplorer.caves[3][1] = customRoom3;
+		CaveRoom customRoom4 = new MimiRoom("Room");
+		CaveExplorer.caves[3][4] = customRoom4;
 		//4.set your starting room:
 		CaveExplorer.currentRoom=CaveExplorer.caves[0][1];
 		CaveExplorer.currentRoom.enter();
@@ -188,7 +190,7 @@ public class CaveRoom {
 		c[3][3].setConnection(WEST, c[3][2], new Door());
 		c[3][2].setConnection(WEST, c[3][1], new Door());
 		c[1][1].setConnection(SOUTH, c[2][1], new Door());
-		c[2][1].setConnection(SOUTH, c[3][1], new Door());//
+		c[2][1].setConnection(SOUTH, c[3][1], new Door());
 	}
 	public String getDescription() {
 		return description+"\n"+direction;
@@ -198,6 +200,7 @@ public class CaveRoom {
 	public void setDescription(String description) {
 		this.description = description;
 	}
+	
 
 
 	public String getContents() {
