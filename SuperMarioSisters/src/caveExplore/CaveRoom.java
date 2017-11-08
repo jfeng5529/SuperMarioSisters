@@ -154,7 +154,7 @@ public class CaveRoom {
 	public static void setUpCaves() {
 		//ALL OF THIS CODE CAN BE CHANGED
 		//1. decide hoe bog your cave should be
-		CaveExplorer.caves=new NPCRoom[5][5]; // everyroom now is a NPC room can be changed later
+		CaveExplorer.caves=new NPCRoom[6][7]; // everyroom now is a NPC room can be changed later
 		//2. Populate with caves with a default descriptions: when starting use coordinates
 		for(int row =0; row<CaveExplorer.caves.length; row++) {
 			//PLEASE PAY ATTENTION TO THE DIFFERENCE
@@ -167,7 +167,7 @@ public class CaveRoom {
 		//DO LATER
 		CaveExplorer.npcs =new NPC[1];
 		CaveExplorer.npcs[0] = new Princess();
-		CaveExplorer.npcs[0].setPosition(4, 4);
+		CaveExplorer.npcs[0].setPosition(5, 6);
 		CaveRoom customRoom = new JanePipeRoom("Room");
 		CaveExplorer.caves[2][3] = customRoom;
 		CaveRoom customRoom2 = new LubnaFindLives("Room");
