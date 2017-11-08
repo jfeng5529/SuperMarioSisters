@@ -15,7 +15,7 @@ public class JanePipeRoom extends NPCRoom {
 	}
 	
 	public String getDescription() {
-		return "Oh no, you have enter the pipe room. you have fell in the pipe that leads to the starting position of the maze. Press 'e' to start";
+		return super.getDescription()+"\n Oh no, you have enter the pipe room. you have fell in the pipe that leads to the starting position of the maze. Press 'e' to start";
 	}
 	public String validKeys() {
 		return "e";
