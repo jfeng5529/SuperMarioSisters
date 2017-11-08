@@ -31,7 +31,7 @@ public class MimiRoom extends NPCRoom {
 	
 	
 	public String getDescription() {
-		return super.getDescription()+"\n Press 'k' to taunt Bowser!";
+		return super.getDescription()+"\n Press 'k' to talk to Bowser!";
 	}
 
 	public String tauntPlayer() {
