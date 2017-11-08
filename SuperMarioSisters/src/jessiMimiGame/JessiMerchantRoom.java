@@ -25,7 +25,7 @@ public class JessiMerchantRoom extends NPCRoom {
 	}
 	
 	public void response() {
-		System.out.println("You have successfully purchased your item.");
+		System.out.println("You have successfully purchased your item!");
 	}
 	
 	public void performAction(int direction) {
