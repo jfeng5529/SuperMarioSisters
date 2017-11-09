@@ -8,7 +8,7 @@ import caveExplore.NPCRoom;
 public class MimiRoom extends NPCRoom {
 	
 	//This room makes the NPC say different things to the player
-	// NOTE TO SELF: change toad into bowser? make the npc give tips on how to play the game in general as well.
+	// NOTE TO SELF: change toa d into bowser? make the npc give tips on how to play the game in general as well.
 
 	public MimiRoom(String description) {
 		super(description);
