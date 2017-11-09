@@ -1,5 +1,8 @@
 package caveExplore;
 
+import janeLubnaGame.JanePipeRoom;
+import janeLubnaGame.LubnaFindLives;
+import janeLubnaGame.LubnaToadAdvise;
 import jessiMimiGame.JessiMerchantRoom;
 import jessiMimiGame.MimiRoom;
 
@@ -152,7 +155,7 @@ public class CaveRoom {
 	public static void setUpCaves() {
 		//ALL OF THIS CODE CAN BE CHANGED
 		//1. decide hoe bog your cave should be
-		CaveExplorer.caves=new NPCRoom[5][5]; // everyroom now is a NPC room can be changed later
+		CaveExplorer.caves=new NPCRoom[6][7]; // everyroom now is a NPC room can be changed later
 		//2. Populate with caves with a default descriptions: when starting use coordinates
 		for(int row =0; row<CaveExplorer.caves.length; row++) {
 			//PLEASE PAY ATTENTION TO THE DIFFERENCE
@@ -165,18 +168,32 @@ public class CaveRoom {
 		//DO LATER
 		CaveExplorer.npcs =new NPC[1];
 		CaveExplorer.npcs[0] = new Princess();
-		CaveExplorer.npcs[0].setPosition(0, 0);
-		CaveRoom customRoom = new JessiMerchantRoom("Room");
-		CaveExplorer.caves[2][1] = customRoom;
-		CaveExplorer.caves[3][1] = customRoom;
-		CaveRoom customRoom2 = new MimiRoom("Room");
-		CaveExplorer.caves[3][4] = customRoom2;
+		CaveExplorer.npcs[0].setPosition(5, 6);
+		CaveRoom customRoom = new JanePipeRoom("Room");
+		CaveExplorer.caves[2][3] = customRoom;
+		CaveRoom customRoom2 = new LubnaFindLives("Room");
+		CaveExplorer.caves[3][3] = customRoom2;
+		CaveRoom customRoom3 = new JessiMerchantRoom("Room");
+		CaveExplorer.caves[3][1] = customRoom3;
+		CaveRoom customRoom4 = new MimiRoom("Room");
+		CaveExplorer.caves[3][4] = customRoom4;
+		CaveRoom customRoom5 = new LubnaToadAdvise("Room");
+		CaveExplorer.caves[1][1] = customRoom5;
 		//4.set your starting room:
 		CaveExplorer.currentRoom=CaveExplorer.caves[0][1];
 		CaveExplorer.currentRoom.enter();
 		//set up doors
 		CaveRoom[][]c=CaveExplorer.caves;
 		c[0][1].setConnection(SOUTH, c[1][1], new Door());
+		c[1][1].setConnection(EAST, c[1][2], new Door());
+		c[1][2].setConnection(EAST, c[1][3], new Door());
+		c[1][3].setConnection(SOUTH, c[2][3], new Door());
+		c[2][3].setConnection(SOUTH, c[3][3], new Door());
+		c[3][3].setConnection(EAST, c[3][4], new Door());
+		c[3][3].setConnection(WEST, c[3][2], new Door());
+		c[3][2].setConnection(WEST, c[3][1], new Door());
+		c[1][1].setConnection(SOUTH, c[2][1], new Door());
+		c[2][1].setConnection(SOUTH, c[3][1], new Door());
 	}
 	public String getDescription() {
 		return description+"\n"+direction;

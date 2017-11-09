@@ -33,6 +33,7 @@ public class NPCRoom extends CaveRoom {
 	public boolean containsNPC() {
 		return presentNPC != null;
 	}
+
 	
 	//The above methods are NEW features to a CaveRoom,
 	//The methods below REPLACE CaveRoom methods(Overrides)
@@ -62,7 +63,7 @@ public class NPCRoom extends CaveRoom {
 	
 	public String getContents() {
 		if(containsNPC()&& !presentNPC.isActive) {
-			return "M";
+			return presentNPC.getSymbol();
 		}
 		else {
 			//return what whould be returned otherwise

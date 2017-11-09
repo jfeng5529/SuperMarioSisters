@@ -13,16 +13,19 @@ public class JessiMerchantRoom extends NPCRoom {
 	}
 	
 	public String getDescription() {
-		return"Welcome to the Item Shop.";
+		return"Welcome to the Item Shop. You can only enter w, a, s, d to move or you can type e, r, f to purchase items and c to confirm.";
 	}
 	
 	public String validKeys() {
-		return "wdsaerfs";
+		return "wdsaerfc";
 	}
 	
 	public void printAllowedEntry() {
 		CaveExplorer.print("What would you like to buy?");
-		CaveExplorer.print("You can only enter w, a, s, d to move or you can type e, r, f to purchase items and s to confirm.");
+	}
+	
+	public void response() {
+		System.out.println("You have successfully purchased your item!");
 	}
 	
 	public void performAction(int direction) {
@@ -31,6 +34,7 @@ public class JessiMerchantRoom extends NPCRoom {
 		 if(direction == 7) {
 			 CaveExplorer.inventory.hpCost();
 			 CaveExplorer.inventory.increaseHP();
+			 response();
 		 }else {
 			 CaveExplorer.print("...Are you sure you have enough hp to complete your mission>??");
 		 }
@@ -40,6 +44,7 @@ public class JessiMerchantRoom extends NPCRoom {
 			 if(direction == 7) {
 				 CaveExplorer.inventory.storageCost();
 				 CaveExplorer.inventory.increaseStorage();
+				 response();
 		 }else {
 				 CaveExplorer.print("Wrong key!! Type the right key to purchase these handy items.");
 			 }
@@ -49,6 +54,7 @@ public class JessiMerchantRoom extends NPCRoom {
 			if(direction == 7) {
 				 CaveExplorer.inventory.flashlightCost();
 				 CaveExplorer.inventory.increaseFlash();
+				 response();
 		 }else {
 				 CaveExplorer.print("There is nothing to purchase.");
 			 }
