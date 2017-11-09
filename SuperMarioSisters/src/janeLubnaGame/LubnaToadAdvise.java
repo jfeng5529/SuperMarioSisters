@@ -8,7 +8,10 @@ public class LubnaToadAdvise extends NPCRoom {
 	boolean visited = false;
 	public LubnaToadAdvise(String description) {
 		super(description);
-
+		String[] ToadsSpeech = {"It has come to my attention, that during your conquest you'll find these flashlights...",
+				"They will light your path. Whenever you find it a flashlight be sure to collect it! It will give you the strength you need.",
+				"Bowser has hid these flashlights in rooms, the more flashlight you collect the more chances you have to defeat... ",
+				} 
 	}
 
 	public String getContents() {
@@ -34,7 +37,7 @@ public class LubnaToadAdvise extends NPCRoom {
 						+ "It will give you the strength you need.");
 				System.out.println("Press Enter to continue.");
 				CaveExplorer.in.nextLine();
-				System.out.print("Bowser has hid these flashlights in rooms, the more flashlight you collect "
+				System.out.println("Bowser has hid these flashlights in rooms, the more flashlight you collect "
 						+ "the more chances you have to defeat..");
 				System.out.println("Press Enter to continue.");
 				CaveExplorer.in.nextLine();
