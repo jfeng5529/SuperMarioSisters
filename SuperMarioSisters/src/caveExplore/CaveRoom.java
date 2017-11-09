@@ -2,6 +2,7 @@ package caveExplore;
 
 import janeLubnaGame.JanePipeRoom;
 import janeLubnaGame.LubnaFindLives;
+import janeLubnaGame.LubnaToadAdvise;
 import jessiMimiGame.JessiMerchantRoom;
 import jessiMimiGame.MimiRoom;
 
