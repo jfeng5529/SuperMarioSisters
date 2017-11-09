@@ -13,15 +13,12 @@ public class JessiMerchantRoom extends NPCRoom {
 	}
 	
 	public String getDescription() {
-		return"Welcome to the Item Shop. You can only enter w, a, s, d to move or you can type e, r, f to purchase items and c to confirm.";
+		return"Welcome to the Item Shop. You can only enter w, a, s, d to move or you can type e, r, t to purchase items and c to confirm.";
+		//Needs to only run once
 	}
 	
 	public String validKeys() {
-		return "wdsaerfc";
-	}
-	
-	public void printAllowedEntry() {
-		CaveExplorer.print("What would you like to buy?");
+		return "wdsaertc";
 	}
 	
 	public void response() {
@@ -30,35 +27,37 @@ public class JessiMerchantRoom extends NPCRoom {
 	
 	public void performAction(int direction) {
 		if(direction == 4) {
-		 CaveExplorer.print("Would you like to purchase hp points? Type s to confirm your purchase.");
-		 if(direction == 7) {
-			 CaveExplorer.inventory.hpCost();
-			 CaveExplorer.inventory.increaseHP();
-			 response();
+			CaveExplorer.print("Would you like to purchase a mega mushroom? Type c to confirm your purchase.");
+			if(direction == 7) {
+			// CaveExplorer.inventory.hpCost();
+			 //CaveExplorer.inventory.increaseHP();
+				response();
 		 }else {
-			 CaveExplorer.print("...Are you sure you have enough hp to complete your mission>??");
-		 }
+			 CaveExplorer.print("...Are you sure you're strong enough to complete your mission?");
+		 	}
 		}
-		 if(direction == 5) {
-			CaveExplorer.print("Would you like to purchase a storage bag? This will increase the items you can hold by 3!"); 
-			 if(direction == 7) {
-				 CaveExplorer.inventory.storageCost();
-				 CaveExplorer.inventory.increaseStorage();
+		if(direction == 5) {
+			CaveExplorer.print("Come and buy your mini mushroom!!! You will need it to save up ur hp pts.");
+			if(direction == 7) {
+				// CaveExplorer.inventory.flashlightCost();
+				// CaveExplorer.inventory.increaseFlash();
 				 response();
-		 }else {
-				 CaveExplorer.print("Wrong key!! Type the right key to purchase these handy items.");
-			 }
+		}else {
+				 CaveExplorer.print("There is nothing to purchase.");
+			}
 		 }
 		 if(direction == 6) {
-			CaveExplorer.print("Come and buy your flashlights!!! You will need them to scare off boo and save ur hp pts.");
+			CaveExplorer.print("Would you like to purchase a storage bag? This will increase the items you can hold by 3!"); 
 			if(direction == 7) {
-				 CaveExplorer.inventory.flashlightCost();
-				 CaveExplorer.inventory.increaseFlash();
-				 response();
+				CaveExplorer.inventory.storageCost(); 
+				CaveExplorer.inventory.increaseStorage();
+				response();
 		 }else {
-				 CaveExplorer.print("There is nothing to purchase.");
-			 }
+					 CaveExplorer.print("Wrong key!! Type the right key to purchase these handy items.");
+		 	}
 		}
 	}
+	
+	
 }
 
