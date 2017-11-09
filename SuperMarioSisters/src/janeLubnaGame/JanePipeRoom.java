@@ -29,7 +29,7 @@ public class JanePipeRoom extends NPCRoom {
 			printAllowedEntry();
 		}
 		CaveExplorer.currentRoom=CaveExplorer.caves[0][1];
-		CaveExplorer.currentRoom.enter();
+		CaveExplorer.currentRoom.enter();//
 	}
 	
 	
