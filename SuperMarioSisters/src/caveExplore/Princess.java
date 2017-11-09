@@ -1,9 +1,10 @@
 package caveExplore;
 
 public class Princess extends NPC {
-	
+	 private String content;
 	public Princess() {
 		super();
+		content = "P";
 	}
 	
 	public void act() {
@@ -14,5 +15,8 @@ public class Princess extends NPC {
 			CaveExplorer.print("HI");
 		}
 		
+	}
+	public String getSymbol() {
+		return content;
 	}
 }
