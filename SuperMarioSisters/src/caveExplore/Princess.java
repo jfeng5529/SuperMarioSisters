@@ -12,7 +12,7 @@ public class Princess extends NPC {
 			CaveExplorer.print("Far off in the distance, you hear a Prince in distress.");
 		}
 		else {
-			CaveExplorer.print("HI");
+			CaveExplorer.print("HI");//
 		}
 		
 	}
