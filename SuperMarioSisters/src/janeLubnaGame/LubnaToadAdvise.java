@@ -10,8 +10,8 @@ public class LubnaToadAdvise extends NPCRoom {
 		super(description);
 		String[] ToadsSpeech = {"It has come to my attention, that during your conquest you'll find these flashlights...",
 				"They will light your path. Whenever you find it a flashlight be sure to collect it! It will give you the strength you need.",
-				"Bowser has hid these flashlights in rooms, the more flashlight you collect the more chances you have to defeat... ",
-				} 
+				"Bowser has hid these flashlights in rooms, the more flashlight you collect the more chances you have to defeat... "
+				} ;
 	}
 
 	public String getContents() {
