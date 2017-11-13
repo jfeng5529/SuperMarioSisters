@@ -1,5 +1,5 @@
 package jessiMimiGame;
 
-public class MimiFrontend {
+public class JessiMimiPlot {
 
 }
