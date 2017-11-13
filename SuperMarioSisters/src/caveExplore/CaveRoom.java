@@ -186,6 +186,11 @@ public class CaveRoom {
 		CaveExplorer.currentRoom=CaveExplorer.caves[0][1];
 		CaveExplorer.currentRoom.enter();
 		//set up doors
+		setUpDoors();
+		
+		
+	}
+	private static void setUpDoors() {
 		CaveRoom[][]c=CaveExplorer.caves;
 		c[0][1].setConnection(SOUTH, c[1][1], new Door());
 		c[1][1].setConnection(EAST, c[1][2], new Door());
@@ -233,8 +238,8 @@ public class CaveRoom {
 		door1.setLocked(true);
 		c[5][8].setConnection(EAST, c[5][9], door1);
 		
-		
 	}
+
 	public String getDescription() {
 		return description+"\n"+direction;
 	}

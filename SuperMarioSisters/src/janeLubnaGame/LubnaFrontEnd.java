@@ -1,9 +1,20 @@
 package janeLubnaGame;
 
-public class LubnaFrontEnd {
+public class LubnaFrontEnd implements JaneSupport {
 	
+	private LubnaSupport backend;
+
 	public LubnaFrontEnd() {
-		//this is new.
-		//I've done so much WORK!
+		backend= new JaneBackEnd(this);
+	}
+	
+	public static final void main(String[] args) {
+		LubnaFrontEnd demo = new LubnaFrontEnd();
+		demo.play();
+	}
+
+	private void play() {
+		
+		
 	}
 }

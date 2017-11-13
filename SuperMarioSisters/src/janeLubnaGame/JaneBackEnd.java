@@ -1,9 +1,22 @@
 package janeLubnaGame;
 
-public class JaneBackEnd {
+public class JaneBackEnd implements LubnaSupport {
 
-	public JaneBackEnd() {
-		// TODO Auto-generated constructor stub
+		private JaneEnemies[] enemies;
+		private int candy;
+		private JaneGameMap gameMap;
+		
+	public JaneBackEnd(JaneSupport frontend) {
+		this.enemies = new JaneEnemies[4];
+		for (int i =0; i <4; i++) {
+			enemies[i]=new JaneEnemies();
+		}
+		candy =0;
+		gameMap= new JaneGameMap("Maze");
+	}
+
+	public JaneGameMap getPlot() {
+		return gameMap;
 	}
 
 }
