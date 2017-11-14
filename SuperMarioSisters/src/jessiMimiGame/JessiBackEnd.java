@@ -4,7 +4,6 @@ public class JessiBackEnd implements MimiSupporter{
 	private JessiSupporter frontend;
 	private JessiMimiPlot[][] plots;
 	private int score;
-	private int numberOfMines;
 
 public JessiBackEnd(JessiSupporter frontend) {
 	this.frontend = frontend;
@@ -17,4 +16,9 @@ private void createPlots() {
 	// TODO Auto-generated method stub
 	
 }
+
+private boolean checkWin() {
+	return false;
+}
+
 }
