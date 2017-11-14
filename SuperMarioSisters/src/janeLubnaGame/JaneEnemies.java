@@ -7,6 +7,6 @@ public class JaneEnemies extends NPC {
 		super();
 	}
 	public String getSymbol() {
-		return "b";
+		return "E";
 	}
 }

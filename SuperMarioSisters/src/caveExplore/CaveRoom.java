@@ -190,7 +190,7 @@ public class CaveRoom {
 		
 		
 	}
-	private static void setUpDoors() {
+	public static void setUpDoors() {
 		CaveRoom[][]c=CaveExplorer.caves;
 		c[0][1].setConnection(SOUTH, c[1][1], new Door());
 		c[1][1].setConnection(EAST, c[1][2], new Door());
