@@ -9,6 +9,11 @@ public class JaneStoargeBag extends Inventory {
 		super();
 		bag = new Object[2][50];
 	}
+
+	public void addPoints() {
+		// TODO Auto-generated method stub
+		
+	}
 	
 
 }

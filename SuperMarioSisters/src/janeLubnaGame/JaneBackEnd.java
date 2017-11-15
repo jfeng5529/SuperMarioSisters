@@ -19,4 +19,9 @@ public class JaneBackEnd implements LubnaSupport {
 		return gameMap;
 	}
 
+	public boolean stillPlaying() {
+		
+		return false;
+	}
+
 }
