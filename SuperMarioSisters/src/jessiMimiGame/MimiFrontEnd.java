@@ -22,7 +22,7 @@ public class MimiFrontEnd implements JessiSupporter{
 		moves = 0;
 	}
 	
-	private void startGame() {
+	public void startGame() {
 		JessiMimiPlot[][] plots = backend.getPlots();
 		JessiMimiPlot p = null;
 		while(safeSpot == true) {
