@@ -11,35 +11,34 @@ import jessiMimiGame.MimiRoom;
 public class JaneGameMap extends CaveRoom {
 	
 	private Candy candy;
+	private static NPCRoom[][] gameMap;
+	
 	
 	public JaneGameMap(String description) {
 		super(description);
 		candy= new Candy();
+		gameMap =new NPCRoom[6][10];
 	}
 	
 	public static void setUpCaves() {
-		CaveExplorer.caves=new NPCRoom[6][10];
-		for(int row =0; row<CaveExplorer.caves.length; row++) {
-			for(int col=0; col<CaveExplorer.caves[row].length; col++) {
-				CaveExplorer.caves[row][col]=new NPCRoom("Room");
+		for(int row =0; row<gameMap.length; row++) {
+			for(int col=0; col<gameMap[row].length; col++) {
+				gameMap[row][col]=new NPCRoom("Room");
 			}
 		}
 		
-		CaveExplorer.npcs =new NPC[2];
-		CaveExplorer.npcs[0] = new Princess();
-		CaveExplorer.npcs[0].setPosition(5, 9);
-		CaveExplorer.npcs[1] = new BooNPC();
-		CaveExplorer.npcs[1].setPosition(1, 3);//
-		CaveExplorer.currentRoom=CaveExplorer.caves[0][1];
-		CaveExplorer.currentRoom.enter();
-		//set up doors
+		JaneBackEnd.enemies[0].setPosition(5, 9);
+		JaneBackEnd.enemies[1].setPosition(1, 3);
+		JaneBackEnd.enemies[2].setPosition(2, 4);
+		LubnaFrontEnd.currentRoom=gameMap[0][1];
+		LubnaFrontEnd.currentRoom.enter();
 		setUpDoors();
 		
 		
 	}
 	
 	public static void setUpDoors() {
-		CaveRoom[][] =CaveExplorer.caves;
+		CaveRoom[][] g =gameMap;
 	}
 	
 	public void enter() {

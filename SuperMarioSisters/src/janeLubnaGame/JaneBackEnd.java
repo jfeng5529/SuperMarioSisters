@@ -2,9 +2,9 @@ package janeLubnaGame;
 
 public class JaneBackEnd implements LubnaSupport {
 
-		private JaneEnemies[] enemies;
+		public static JaneEnemies[] enemies;
 		private int candy;
-		private JaneGameMap gameMap;
+		public static JaneGameMap gameMap;
 		
 	public JaneBackEnd(JaneSupport frontend) {
 		this.enemies = new JaneEnemies[4];

@@ -1,13 +1,14 @@
 package janeLubnaGame;
 
 import caveExplore.CaveRoom;
+import caveExplore.NPCRoom;
 
 public class LubnaFrontEnd implements JaneSupport {
 	
 	private LubnaSupport backend;
 	public static JaneStoargeBag bag; 
 	public static JaneGameMap[][] caves; //every room in the cave
-	public static JaneGameMap currentRoom; // changes based on how the user navigate
+	public static NPCRoom currentRoom; // changes based on how the user navigate
 
 	public LubnaFrontEnd() {
 		backend= new JaneBackEnd(this);
@@ -57,17 +58,17 @@ public class LubnaFrontEnd implements JaneSupport {
 	}
 
 	private void displayBoard() {
-		// TODO Auto-generated method stub
+		backend.getPlot();
+		JaneGameMap.setUpCaves();
 		
 	}
 
 	private void rules() {
-		// TODO Auto-generated method stub
+		System.out.println("You must aviod Boo and eat all the candy to win and get the key to enter last challenge");
 		
 	}
 
 	private void introduction() {
-		
-		
+		System.out.println("Welcome to our game");
 	}
 }
