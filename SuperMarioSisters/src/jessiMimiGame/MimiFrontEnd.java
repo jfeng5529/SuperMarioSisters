@@ -5,14 +5,16 @@ public class MimiFrontEnd implements JessiSupporter{
 	private MimiSupporter backend;
 	private int score;
 	private boolean safeSpot;
+	private int moves;
 	
 	public static final void main(String[] args) {
 		MimiFrontEnd demo = new MimiFrontEnd();
 		demo.play();
 	}
 	
-	private void play() {
-		
+	public void play() {
+		menu();
+		startGame();
 	}
 
 	public MimiFrontEnd() {
@@ -23,7 +25,7 @@ public class MimiFrontEnd implements JessiSupporter{
 	private void startGame() {
 		JessiMimiPlot[][] plots = backend.getPlots();
 		JessiMimiPlot p = null;
-		while(safeSpot = true) {
+		while(safeSpot == true) {
 			score += 5;
 			displayScoreStatus();
 			if(backend.checkWin()) {
@@ -40,20 +42,19 @@ public class MimiFrontEnd implements JessiSupporter{
 	}
 	
 	private String getValidUserInput() {
-		// TODO Auto-generated method stub
 		return null;
 	}
 
-
-	private void displayField() {
+	public void displayField() {
 		
 	}
 	
 	public void displayScoreStatus() {
-		
+		String scoreStatus = "";
+		System.out.println("Your have a current score of " + score + " points!");
 	}
 	
-	private void menu() {
+	public void menu() {
 		System.out.println("Enter 'i' for instructions on how to play or 's' to start playing!");
 	}
 	
