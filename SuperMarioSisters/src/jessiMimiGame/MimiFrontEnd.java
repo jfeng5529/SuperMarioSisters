@@ -2,9 +2,9 @@ package jessiMimiGame;
 
 public class MimiFrontEnd implements JessiSupporter{
 
-	private MimiSupporter backend;
-	private int score;
-	private boolean safeSpot;
+	private static MimiSupporter backend;
+	private static int score;
+	private static boolean safeSpot;
 	private int moves;
 	
 	public static final void main(String[] args) {
@@ -22,7 +22,7 @@ public class MimiFrontEnd implements JessiSupporter{
 		moves = 0;
 	}
 	
-	public void startGame() {
+	public static void startGame() {
 		JessiMimiPlot[][] plots = backend.getPlots();
 		JessiMimiPlot p = null;
 		while(safeSpot == true) {
@@ -41,7 +41,7 @@ public class MimiFrontEnd implements JessiSupporter{
 		System.out.println("___________Game Over___________\n");
 	}
 	
-	private String getValidUserInput() {
+	private static String getValidUserInput() {
 		return null;
 	}
 
@@ -49,7 +49,7 @@ public class MimiFrontEnd implements JessiSupporter{
 		
 	}
 	
-	public void displayScoreStatus() {
+	public static void displayScoreStatus() {
 		String scoreStatus = "";
 		System.out.println("Your have a current score of " + score + " points!");
 	}
