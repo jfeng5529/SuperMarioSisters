@@ -85,7 +85,10 @@ public class Inventory {
 		return money = money - 30;
 	}
 	public int increaseFlash() {
-		return flashlight = flashlight + 1;
+		return flashlight++;
+	}
+	public int giveFlashLight() {
+		return flashlight;
 	}
 
 }
