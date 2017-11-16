@@ -11,7 +11,7 @@ public class JaneStoargeBag extends Inventory {
 	public JaneStoargeBag() {
 		super();
 		bag = new Object[2][50];
-		updateMap();
+		//updateMap();
 	}
 
 	public void addPoints() {
@@ -26,7 +26,7 @@ public class JaneStoargeBag extends Inventory {
 			map+="____";//4 underscores
 		}
 		map+="___\n"; // 3 underscores
-		for(JaneGameMap[]row: janeLubnaGame.JaneGameMap.gameMap) {
+		for(CaveRoom[] row: janeLubnaGame.JaneGameMap.gameMap) {
 			//3 row of text
 			for(int i=0; i<3; i++) {
 				String text ="";

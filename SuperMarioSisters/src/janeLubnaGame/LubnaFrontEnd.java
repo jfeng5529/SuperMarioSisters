@@ -48,16 +48,17 @@ public class LubnaFrontEnd implements JaneSupport {
 	}
 
 	private String getValidUserInput() {
-		// TODO Auto-generated method stub
+		// use in.nextLine and checks if the user input is valid using valid keys.
 		return null;
 	}
 
 	private void displayScore() {
-		// TODO Auto-generated method stub
+		// displays scores from the backend.
 		
 	}
 
 	private void displayBoard() {
+		//displays the map.
 		backend.getPlot();
 		JaneGameMap.setUpCaves();
 		
@@ -69,6 +70,6 @@ public class LubnaFrontEnd implements JaneSupport {
 	}
 
 	private void introduction() {
-		System.out.println("Welcome to our game");
+		System.out.println("Welcome to our game.");
 	}
 }

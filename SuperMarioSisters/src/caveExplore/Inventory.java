@@ -9,7 +9,7 @@ public class Inventory {
 	private int flashlight;
 	public Inventory() {
 		money=0;
-		updateMap();
+		//updateMap();
 		life = 0;
 		hp = 50;
 		storageBag = 2;
