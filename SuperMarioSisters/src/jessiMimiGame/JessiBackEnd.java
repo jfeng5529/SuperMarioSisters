@@ -1,6 +1,6 @@
 package jessiMimiGame;
 
-import caveExplorer.JessiMimiPlot;
+//import caveExplorer.JessiMimiPlot;
 
 public class JessiBackEnd implements MimiSupporter{
 	private JessiSupporter frontend;
@@ -26,10 +26,8 @@ public class JessiBackEnd implements MimiSupporter{
 	
 
 
-	@Override
 	public JessiMimiPlot[][] getPlots() {
 		return plots;
-
 	}	
 
 	@Override
@@ -39,12 +37,17 @@ public class JessiBackEnd implements MimiSupporter{
 		}
 		return false;
 	}
+	
+	public void getValidUserInput() {
+		//must be withinbound to plot
+	}
 
 	@Override
 	public boolean checkWin() {
 		// TODO Auto-generated method stub
 		return false;
 	}	
+	
 
 	public void gameOver() {
 		if(checkForMine() == true) {
@@ -58,4 +61,5 @@ public class JessiBackEnd implements MimiSupporter{
 		//	MimiFrontEnd.displayScoreStatus();
 		//}
 	}
+	
 }
