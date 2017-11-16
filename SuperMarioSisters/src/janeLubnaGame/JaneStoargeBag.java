@@ -22,17 +22,17 @@ public class JaneStoargeBag extends Inventory {
 	public void updateMap() {
 		map=" ";
 		//create line across the top
-		for(int i=0; i<JaneBackEnd.gameMap[0].length-1; i++) {
+		for(int i=0; i<janeLubnaGame.JaneGameMap.gameMap[0].length-1; i++) {
 			map+="____";//4 underscores
 		}
 		map+="___\n"; // 3 underscores
-		for(CaveRoom[]row: JaneBackEnd.gameMap) {
+		for(JaneGameMap[]row: janeLubnaGame.JaneGameMap.gameMap) {
 			//3 row of text
 			for(int i=0; i<3; i++) {
 				String text ="";
 				for(CaveRoom cr: row) {
 					//if the door is open, leave open
-					if(cr.getDoor(CaveRoom.WEST)!=null&&
+					if(cr.getDoor(JaneGameMap.WEST)!=null&&
 						 cr.getDoor(CaveRoom.WEST).isOpen()) {
 						text+=" ";
 					}

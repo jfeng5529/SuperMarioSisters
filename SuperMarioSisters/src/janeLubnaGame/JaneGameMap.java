@@ -11,7 +11,7 @@ import jessiMimiGame.MimiRoom;
 public class JaneGameMap extends CaveRoom {
 	
 	private Candy candy;
-	private static NPCRoom[][] gameMap;
+	public static CaveRoom[][] gameMap;
 	
 	
 	public JaneGameMap(String description) {
