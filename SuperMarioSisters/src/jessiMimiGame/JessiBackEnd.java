@@ -38,13 +38,16 @@ public class JessiBackEnd implements MimiSupporter{
 		return false;
 	}
 	
-	public static void getValidUserInput() {
-		//must be withinbound to plot
+	public int[] getValidUserInput() {
+		
+		return null;
 	}
 
 	@Override
 	public boolean checkWin() {
-		// TODO Auto-generated method stub
+		if(score == 50) {
+			return true;
+		}
 		return false;
 	}	
 	
