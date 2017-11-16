@@ -12,14 +12,28 @@ public class MimiFrontEnd implements JessiSupporter{
 		demo.play();
 	}
 	
-	public void play() {
-		menu();
-		startGame();
-	}
-
 	public MimiFrontEnd() {
 		backend = new JessiBackEnd(this);
 		moves = 0;
+	}
+	
+	public void play() {
+		introduction();
+		menu();
+	}
+	
+	private String introduction() {
+		return "AHAHAHAHA!!!! You've made it this far, but can you defeat me??? BOWSER????";
+	}
+
+	public void menu() {
+		rules();
+		startGame();
+		System.out.println("Enter 'i' for instructions on how to play or 's' to start playing!");
+	}
+	
+	private void rules() {
+		
 	}
 	
 	public static void startGame() {
@@ -32,17 +46,13 @@ public class MimiFrontEnd implements JessiSupporter{
 				safeSpot = false;
 			}
 			else {
-				String input = getValidUserInput();
+				JessiBackEnd.getValidUserInput();
 				if(backend.checkForMine()) {
 					safeSpot = false;
 				}
 			}
 		}
 		System.out.println("___________Game Over___________\n");
-	}
-	
-	private static String getValidUserInput() {
-		return null;
 	}
 
 	public void displayField() {
@@ -52,10 +62,6 @@ public class MimiFrontEnd implements JessiSupporter{
 	public static void displayScoreStatus() {
 		String scoreStatus = "";
 		System.out.println("Your have a current score of " + score + " points!");
-	}
-	
-	public void menu() {
-		System.out.println("Enter 'i' for instructions on how to play or 's' to start playing!");
 	}
 	
 }

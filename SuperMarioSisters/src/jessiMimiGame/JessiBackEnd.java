@@ -38,7 +38,7 @@ public class JessiBackEnd implements MimiSupporter{
 		return false;
 	}
 	
-	public void getValidUserInput() {
+	public static void getValidUserInput() {
 		//must be withinbound to plot
 	}
 
