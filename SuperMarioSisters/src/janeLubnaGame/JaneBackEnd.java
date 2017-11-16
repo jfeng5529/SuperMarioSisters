@@ -2,7 +2,7 @@ package janeLubnaGame;
 
 public class JaneBackEnd implements LubnaSupport {
 
-		public JaneEnemies[] enemies;
+		public static JaneEnemies[] enemies;
 		private int candy;
 		public static JaneGameMap gameMap;
 		private JaneSupport frontend; 
@@ -24,6 +24,10 @@ public class JaneBackEnd implements LubnaSupport {
 	public boolean stillPlaying() {
 		
 		return false;
+	}
+	
+	public static void action() {
+		JaneStorageBag.updateMap();
 	}
 
 }

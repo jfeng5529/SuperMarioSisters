@@ -4,14 +4,16 @@ import janeLubnaGame.JaneBackEnd;
 import caveExplore.CaveRoom;
 import caveExplore.Inventory;
 
-public class JaneStoargeBag extends Inventory {
+public class JaneStorageBag extends Inventory {
 	private Object[][] bag;
 	private String map;
+	private int flashlight;
 	
-	public JaneStoargeBag() {
+	public JaneStorageBag() {
 		super();
+		this.flashlight= getFlashLight();
 		bag = new Object[2][50];
-		//updateMap();
+		updateMap();
 	}
 
 	public void addPoints() {
@@ -33,7 +35,7 @@ public class JaneStoargeBag extends Inventory {
 				for(CaveRoom cr: row) {
 					//if the door is open, leave open
 					if(cr.getDoor(JaneGameMap.WEST)!=null&&
-						 cr.getDoor(CaveRoom.WEST).isOpen()) {
+						 cr.getDoor(JaneGameMap.WEST).isOpen()) {
 						text+=" ";
 					}
 					else {
@@ -47,7 +49,7 @@ public class JaneStoargeBag extends Inventory {
 						text+=" "+cr.getContents()+" ";
 					}
 					else if(i==2) {
-						if(cr.getDoor(CaveRoom.SOUTH)!=null&&cr.getDoor(CaveRoom.SOUTH).isOpen()) {
+						if(cr.getDoor(JaneGameMap.SOUTH)!=null&&cr.getDoor(JaneGameMap.SOUTH).isOpen()) {
 							text+="   ";// 3 spaces
 						}
 						else {

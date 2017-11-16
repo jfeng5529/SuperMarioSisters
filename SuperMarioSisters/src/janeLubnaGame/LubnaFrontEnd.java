@@ -6,13 +6,13 @@ import caveExplore.NPCRoom;
 public class LubnaFrontEnd implements JaneSupport {
 	
 	private LubnaSupport backend;
-	public static JaneStoargeBag bag; 
+	public static JaneStorageBag bag; 
 	public static JaneGameMap[][] caves; //every room in the cave
-	public static NPCRoom currentRoom; // changes based on how the user navigate
+	public static CaveRoom currentRoom; // changes based on how the user navigate
 
 	public LubnaFrontEnd() {
 		backend= new JaneBackEnd(this);
-		bag=new JaneStoargeBag();
+		bag=new JaneStorageBag();
 	}
 	
 	public static final void main(String[] args) {
@@ -65,7 +65,7 @@ public class LubnaFrontEnd implements JaneSupport {
 	}
 
 	private void rules() {
-		System.out.println("You must aviod Boo and eat all the candy to win and get the key to enter last challenge");
+		System.out.println("You must avoid Boo and eat all the candy to win and get the key to enter last challenge");
 		
 	}
 
