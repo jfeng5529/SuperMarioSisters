@@ -50,7 +50,7 @@ public class MimiFrontEnd implements JessiSupporter{
 				safeSpot = false;
 			}
 			else {
-				JessiBackEnd.getValidUserInput();
+				//JessiBackEnd.getValidUserInput();
 				if(backend.checkForMine()) {
 					safeSpot = false;
 				}
