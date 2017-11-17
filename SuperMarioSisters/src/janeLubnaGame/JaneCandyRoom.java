@@ -39,6 +39,7 @@ public class JaneCandyRoom extends JaneGameMap {
 	 * public NPC(String description, String inactiveDescriptions)
 	 */
 	public boolean isActive() {
+		
 		return active;
 	}
 	public void setPosition(int row, int col) {
