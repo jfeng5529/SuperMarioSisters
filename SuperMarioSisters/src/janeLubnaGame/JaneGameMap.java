@@ -1,33 +1,24 @@
 package janeLubnaGame;
 
-import caveExplore.CaveExplorer;
-import caveExplore.CaveRoom;
-import caveExplore.Door;
-import caveExplore.NPC;
-import caveExplore.NPCRoom;
-import caveExplore.Princess;
-import jessiMimiGame.JessiMerchantRoom;
-import jessiMimiGame.MimiRoom;
-
 public class JaneGameMap extends CaveRoom {
 	public static final int NORTH=0;
 	public static final int EAST=1;
 	public static final int SOUTH=2;
 	public static final int WEST=3;
-	private Candy candy;
+	
+	private boolean presentCandy;
 	private String description; // tells what the room looks like
 	private String direction;//tells what you can do
 	private String contents;//a symbol representing what's in the room
 	private String defaultContents;
 	//the rooms are organize by direction, "null" signifies no room/door in that direction
-	private CaveRoom[] borderingRooms;
-	private Door[] doors;
+	private JaneGameMap[] borderingRooms;
 	
-	
+	public void setConnection(){
+		
+	}
 	public JaneGameMap(String description) {
-		super(description);
-		doors=new Door[4];
-		candy= new Candy();
+		bordering
 	}
 	
 	public static void setUpCaves() {
