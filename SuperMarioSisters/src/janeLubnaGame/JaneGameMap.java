@@ -15,7 +15,6 @@ public class JaneGameMap extends CaveRoom {
 	public static final int SOUTH=2;
 	public static final int WEST=3;
 	private Candy candy;
-	public static CaveRoom[][] gameMap;
 	private String description; // tells what the room looks like
 	private String direction;//tells what you can do
 	private String contents;//a symbol representing what's in the room
@@ -27,24 +26,23 @@ public class JaneGameMap extends CaveRoom {
 	
 	public JaneGameMap(String description) {
 		super(description);
+		doors=new Door[4];
 		candy= new Candy();
-		gameMap =new NPCRoom[6][10];
 	}
 	
 	public static void setUpCaves() {
-		for(int row =0; row<gameMap.length; row++) {
-			for(int col=0; col<gameMap[row].length; col++) {
-				gameMap[row][col]=new NPCRoom("Room");
+		for(int row = 0; row<JaneBackEnd.gameMap.length; row++) {
+			for(int col=0; col<JaneBackEnd.gameMap[row].length; col++) {
+				JaneBackEnd.gameMap[row][col]=new JaneCandyRoom("Room");
 			}
 		}
-		
-		JaneBackEnd.enemies[0].setPosition(5, 9);
-		JaneBackEnd.enemies[1].setPosition(1, 3);
-		JaneBackEnd.enemies[2].setPosition(2, 4);
-		LubnaFrontEnd.currentRoom=gameMap[0][1];
+//		
+//		JaneBackEnd.enemies[0].setPosition(5, 9);
+//		JaneBackEnd.enemies[1].setPosition(1, 3);
+//		JaneBackEnd.enemies[2].setPosition(2, 4);
+		LubnaFrontEnd.currentRoom=JaneBackEnd.gameMap[0][1];
 		LubnaFrontEnd.currentRoom.enter();
 		setUpDoors();
-		
 		
 	}
 	
@@ -66,11 +64,21 @@ public class JaneGameMap extends CaveRoom {
 	
 	
 	public static void setUpDoors() {
-		CaveRoom[][] g =gameMap;
+		CaveRoom[][] g =JaneBackEnd.gameMap;
+		g[0][1].setConnection(SOUTH, g[1][1], new Door());
 	}
 	
 	public void enter() {
 		super.enter();
-		LubnaFrontEnd.bag.addPoints();
+		//LubnaFrontEnd.bag.addPoints();
 	}
+	public Door getDoor(int direction) {
+		if(direction>=0&& direction < doors.length) {
+			return doors[direction];
+		}
+		else {
+			return null;
+		}
+	}
+		
 }

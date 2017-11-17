@@ -7,16 +7,21 @@ public class LubnaFrontEnd implements JaneSupport {
 	
 	private LubnaSupport backend;
 	public static JaneStorageBag bag; 
-	public static JaneGameMap[][] caves; //every room in the cave
+	public static JaneGameMap[][] plot; //every room in the cave
 	public static CaveRoom currentRoom; // changes based on how the user navigate
 
 	public LubnaFrontEnd() {
 		backend= new JaneBackEnd(this);
-		bag=new JaneStorageBag();
+		plot=backend.getPlot();
 	}
 	
+	public static JaneGameMap[][] getCurrentPlot() {
+		return plot;
+	}
 	public static final void main(String[] args) {
 		LubnaFrontEnd demo = new LubnaFrontEnd();
+		JaneGameMap.setUpCaves();
+		bag=new JaneStorageBag();
 		demo.play();
 	}
 
@@ -34,6 +39,7 @@ public class LubnaFrontEnd implements JaneSupport {
 
 	private void startPlaying() {
 		while(backend.stillPlaying()) {
+			backend.action();
 			displayBoard();
 			displayScore();
 			String input = getValidUserInput();
@@ -59,8 +65,7 @@ public class LubnaFrontEnd implements JaneSupport {
 
 	private void displayBoard() {
 		//displays the map.
-		backend.getPlot();
-		JaneGameMap.setUpCaves();
+	
 		
 	}
 

@@ -231,7 +231,7 @@ public class CaveRoom {
 		c[2][7].setConnection(SOUTH, c[3][7], new Door());
 		c[1][7].setConnection(SOUTH, c[2][7], new Door());
 		c[2][8].setConnection(SOUTH, c[3][8], new Door());
-		
+	
 		
 		Door door1=new Door();
 		door1.setOpen(false);
