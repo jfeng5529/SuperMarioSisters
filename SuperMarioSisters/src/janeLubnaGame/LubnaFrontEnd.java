@@ -22,13 +22,13 @@ public class LubnaFrontEnd implements JaneSupport {
 		winResult=false;
 		candyNum=0;
 		CaveExplorer.in = new Scanner(System.in);
+		backend.setUpPlot();
 		
 	}
 
 
 	public static final void main(String[] args) {
 		LubnaFrontEnd demo = new LubnaFrontEnd();
-		backend.setUpPlot();
 		demo.play();
 	}
 
