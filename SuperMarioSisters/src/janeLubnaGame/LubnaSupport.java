@@ -2,17 +2,21 @@ package janeLubnaGame;
 
 public interface LubnaSupport {
 
-	/**
-	 * return the map for the game
-	 */
-	JaneGameMap[][] getPlot();
-	
-	/**
-	 * @ check if the game is still in session
-	 */
+
+	void enemiesAction();
+
+	int getCandy();
+
+
+	void respondToKey(int direction);
+
+	boolean isValid(String input);
+
 	boolean stillPlaying();
 
-	void action();
+
+	void setUpPlot();
+
 
 	
 }

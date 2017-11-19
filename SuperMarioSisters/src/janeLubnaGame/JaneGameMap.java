@@ -1,75 +1,92 @@
 package janeLubnaGame;
 
-public class JaneGameMap extends CaveRoom {
+public class JaneGameMap{
 	public static final int NORTH=0;
 	public static final int EAST=1;
 	public static final int SOUTH=2;
 	public static final int WEST=3;
 	
 	private boolean presentCandy;
-	private String description; // tells what the room looks like
 	private String direction;//tells what you can do
 	private String contents;//a symbol representing what's in the room
 	private String defaultContents;
 	//the rooms are organize by direction, "null" signifies no room/door in that direction
 	private JaneGameMap[] borderingRooms;
+	private Object[] door;
+	private JaneEnemies presentEnemies;
 	
-	public void setConnection(){
-		
-	}
-	public JaneGameMap(String description) {
-		bordering
-	}
 	
-	public static void setUpCaves() {
-		for(int row = 0; row<JaneBackEnd.gameMap.length; row++) {
-			for(int col=0; col<JaneBackEnd.gameMap[row].length; col++) {
-				JaneBackEnd.gameMap[row][col]=new JaneCandyRoom("Room");
-			}
-		}
-//		
-//		JaneBackEnd.enemies[0].setPosition(5, 9);
-//		JaneBackEnd.enemies[1].setPosition(1, 3);
-//		JaneBackEnd.enemies[2].setPosition(2, 4);
-		LubnaFrontEnd.currentRoom=JaneBackEnd.gameMap[0][1];
-		LubnaFrontEnd.currentRoom.enter();
-		setUpDoors();
+	public JaneGameMap() {
+		borderingRooms = new JaneGameMap[4];
+		presentCandy=false;
+		door= new Object[4];
+		defaultContents=" ";
+		contents=" ";
+		presentEnemies=null;
 		
 	}
 	
-	private void setDirections() {
-		direction="";
-		boolean doorFound=false;
-		for(int i=0; i<doors.length; i++) {
-			if(doors[i]!=null) {
-				doorFound=true;
-				direction+="\n  There is a "+doors[i].getDescription()+" to "+
-				toDirection(i)+ "." +doors[i].getDetails();
-			}
-		}
-		if(!doorFound) {
-			direction+="There are no doors, you are trapped in here";
-		}
-		
-	}
-	
-	
-	public static void setUpDoors() {
-		CaveRoom[][] g =JaneBackEnd.gameMap;
-		g[0][1].setConnection(SOUTH, g[1][1], new Door());
-	}
-	
-	public void enter() {
-		super.enter();
-		//LubnaFrontEnd.bag.addPoints();
-	}
-	public Door getDoor(int direction) {
-		if(direction>=0&& direction < doors.length) {
-			return doors[direction];
+	public void setContent(boolean candyPresent) {
+		if(candyPresent) {
+			contents = "*";
 		}
 		else {
-			return null;
+			contents=defaultContents;
 		}
 	}
+	
+	public String getContents() {
+		return contents;
+	}
+
+
+	public void enter(String contents) {
+		this.contents = contents;
+	}
+	
+	public void leave() {
+		this.contents=defaultContents;
+	}
+	
+	public boolean isPresentCandy() {
+		return presentCandy;
+	}
+	
+	public void setPresentCandy(boolean presentCandy) {
+		this.presentCandy = presentCandy;
+	}
+	
+	public void addRoom(int direction, Object door2, JaneGameMap map) {
+		borderingRooms[direction]=map;
+		door[direction]=door2;
+	}
+	public void setConnection(int direction, JaneGameMap map, Object door){
+		addRoom(direction, door, map);
+		map.addRoom(oppsiteDirection(direction), door, this);
 		
+}
+
+	private int oppsiteDirection(int direction) {
+		return (direction+2)%4;
+	}
+
+	public Object getConnection(int direction) {
+		return door[direction];
+	}
+
+	public JaneGameMap getBorderingRooms(int direction) {
+		return borderingRooms[direction];
+	}
+
+	public void enterNPC(JaneEnemies janeEnemies) {
+		presentEnemies=janeEnemies;
+		contents=presentEnemies.getSymbol();
+		
+	}
+
+	public void leaveNPC() {
+		presentEnemies=null;
+		contents=defaultContents;
+	}
+	
 }
