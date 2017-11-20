@@ -19,18 +19,19 @@ public class JaneBackEnd implements LubnaSupport {
 	}
 	public void setUpPlot() {
 		setUpMap();
-		setUpEnemies();
 		setUpDoors();
+		frontend.setCurrentRoom(frontend.getPlots()[0][1]);
+		frontend.getCurrentRoom().enter("x");
+		setUpEnemies();
 	}
 	public void setUpEnemies() {
 		enemies= new JaneEnemies[4];
 		for (int i =0; i <4; i++) {
 			enemies[i]=new JaneEnemies(frontend);
+			//frontend.setCurrentRoom(frontend.getPlots()[i+1][i+1]);
 			enemies[i].setPosition(i+1,i+1);
 		}
 		frontend.setEnemies(enemies);
-		frontend.setCurrentRoom(frontend.getPlots()[0][1]);
-		frontend.getCurrentRoom().enter("x");
 
 	}
 
@@ -67,6 +68,10 @@ public class JaneBackEnd implements LubnaSupport {
 						plots[row][col]=new JaneGameMap();
 						plots[row][col].setPresentCandy(true);
 					}
+					else
+					{
+						plots[row][col]=new JaneGameMap();
+					}
 				}
 			}
 		}
@@ -74,7 +79,7 @@ public class JaneBackEnd implements LubnaSupport {
 	}
 
 	public boolean stillPlaying() {
-		if(!enemies[enemiesCount].getResult().equals("lost")&&candy>=(getTotalCandy()*.8)) {
+		if(!enemies[enemiesCount-1].getResult().equals("lost")&&candy>=(getTotalCandy()*.8)) {
 			return true;
 		}
 		return false;
