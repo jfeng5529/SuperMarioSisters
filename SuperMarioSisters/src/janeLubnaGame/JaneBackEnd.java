@@ -7,13 +7,12 @@ import caveExplore.NPCRoom;
 public class JaneBackEnd implements LubnaSupport {
 
 		private int candy;
-		public static JaneSupport frontend;
-		private static int enemiesCount;
+		private JaneSupport frontend;
+		private int enemiesCount;
 		
 	public JaneBackEnd(JaneSupport frontend) {
 		enemiesCount=4;
 		this.frontend=frontend;
-		LubnaFrontEnd.enemies = new JaneEnemies[4];
 		this.candy=frontend.getCandy();
 	
 	}
@@ -23,10 +22,12 @@ public class JaneBackEnd implements LubnaSupport {
 		setUpDoors();
 	}
 	public void setUpEnemies() {
+		JaneEnemies[] enemies= new JaneEnemies[4];
 		for (int i =0; i <4; i++) {
-			LubnaFrontEnd.enemies[i]=new JaneEnemies();
-			LubnaFrontEnd.enemies[i].setPosition(i+1,i+1);
+			enemies[i]=new JaneEnemies();
+			enemies[i].setPosition(i+1,i+1);
 		}
+		frontend.setEnemies(enemies);
 		LubnaFrontEnd.currentRoom = LubnaFrontEnd.plot[0][1];
 		LubnaFrontEnd.currentRoom.enter("x");
 		

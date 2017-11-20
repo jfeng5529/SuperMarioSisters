@@ -12,4 +12,6 @@ public interface JaneSupport {
 
 	void updatePlot();
 
+	void setEnemies(JaneEnemies[] enemies);
+
 }
