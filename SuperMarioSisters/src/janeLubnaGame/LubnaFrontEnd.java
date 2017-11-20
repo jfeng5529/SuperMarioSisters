@@ -161,4 +161,31 @@ public class LubnaFrontEnd implements JaneSupport {
 		
 	}
 
+
+	@Override
+	public void setCurrentRoom( JaneGameMap currentRoom) {
+		
+		this.currentRoom = currentRoom;
+	}
+
+
+	@Override
+	public JaneGameMap getCurrentRoom() {
+		
+		return currentRoom;
+	}
+
+
+	@Override
+	public JaneEnemies[] getEnemies() {
+		
+		return enemies;
+	}
+
+
+	@Override
+	public void setPlots(JaneGameMap[][] plot) {
+		this.plot = plot;
+	}
+
 }
