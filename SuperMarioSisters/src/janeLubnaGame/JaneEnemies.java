@@ -9,8 +9,8 @@ public class JaneEnemies  {
 	private Inventory inventory;
 	private String result;
 	private JaneEnemies[] enemies;
-	
-	
+
+
 	public JaneEnemies(JaneSupport frontend) {
 		this.frontend= frontend;
 		this.currentCol=-1;
@@ -22,16 +22,15 @@ public class JaneEnemies  {
 	}
 	public void setPosition(int row, int col) {
 		JaneGameMap[][] plot=frontend.getPlots();
-		 JaneGameMap currentRoom = frontend.getCurrentRoom();
+		JaneGameMap currentRoom = frontend.getCurrentRoom();
 		if(row>= 0&& row <plot.length && col>=0 && col <plot[row].length) {
-		if(currentRoom!=null) {
-		currentRoom.leaveNPC();
-		}else {
-			currentRow =row;
-			currentCol = col;
-			currentRoom=(JaneGameMap)plot[row][col];
-			currentRoom.enterNPC(this);
-	}
+			if(currentRoom!=null) {
+				currentRoom.leaveNPC();
+			}else {
+				currentRow =row;
+				currentCol = col;
+				currentRoom.enterNPC(this);
+			}
 		}
 	}
 	public void interaction(int enemiesCount) {
@@ -45,17 +44,17 @@ public class JaneEnemies  {
 		else {
 			result="lost";
 		}
-		
+
 	}
 	public void act() {
-			int[] move = calculateMovement();
-			int newRow=  move[0];
-			int newCol = move[1];
-			setPosition(newRow, newCol);
+		int[] move = calculateMovement();
+		int newRow=  move[0];
+		int newCol = move[1];
+		setPosition(newRow, newCol);
 
 	}
 	public int[] calculateMovement() {
-		 JaneGameMap currentRoom = frontend.getCurrentRoom();
+		JaneGameMap currentRoom = frontend.getCurrentRoom();
 		int[] moves=new int[2];
 		int [][] possibleMoves = {{-1,0},{0,1},{1,0},{0, -1}};
 		int rand=(int)(Math.random()*possibleMoves.length);
