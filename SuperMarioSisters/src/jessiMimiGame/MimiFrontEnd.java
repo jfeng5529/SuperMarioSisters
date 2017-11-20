@@ -59,7 +59,7 @@ public class MimiFrontEnd implements JessiSupporter{
 		System.out.println("___________Game Over___________\n");
 	}
 
-	public boolean checkWin(){
+	public boolean checkForWin(){
         int count=0;
         for(int line = 1 ; line < 9 ; line++)
             for(int column = 1 ; column < 9 ; column++)
