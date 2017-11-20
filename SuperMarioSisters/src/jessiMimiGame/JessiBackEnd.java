@@ -8,11 +8,15 @@ public class JessiBackEnd implements MimiSupporter{
 	private int score;
 	private int numberOfMines;
 	private boolean safeSpot;
+	private int space;
+	
+	public String unknown = " ";
+	public String mine = "*";
 
 	public JessiBackEnd(JessiSupporter frontend) {
 		this.frontend = frontend;
-		plots = new JessiMimiPlot[8][8];
-		numberOfMines = 6;
+		plots = new JessiMimiPlot[12][12];
+		numberOfMines = 10;
 		createPlots();
 	}
 
@@ -23,28 +27,50 @@ public class JessiBackEnd implements MimiSupporter{
 			}
 		}
 		while (safeSpot) {
-			//System.out.println("Enter Row");
-			//int row = input.nextInt();
-			//System.out.println("Enter Column");
-			//int column = input.nextInt();
+			System.out.println("Enter Row");
+		
+			System.out.println("Enter Column");
+
 			
-			//if (plots != 8) {
-				//bombs = 0;
+			if (space != 10 ) {
+				numberOfMines = 0;
 			}
-			//else if (plots == 8) {
-				//System.out.println("You hit a mine!");
-				//safeSpot = false;
-				//break;
+			else if (space == 10) {
+				System.out.println("You hit a mine!");
+				safeSpot = false;
+				break;
 			}
-		//}
-	//}
+		}
+	}
 	
-
-
 	public JessiMimiPlot[][] getPlots() {
 		return plots;
 	}	
 
+	
+	public void generateMines() {
+		Mines.createMines();
+	}
+	
+	public void clear(int row, int col) {
+		 for(int i = (row - 1); i <= (row + 1); i++){
+		      for(int j = (col - 1); j <= (col + 1); j++){
+		        if(int[row][col].equals(unknown) == true) {
+		        	display();
+		        }
+		      }
+		 }
+	}
+	
+	private void display() {
+		
+		
+	}
+
+	public JessiMimiPlot getTile(int row, int col){
+		return plots[row][col];
+	}
+	
 	@Override
 	public boolean checkForMine() {
 		if(!safeSpot) {
@@ -54,8 +80,20 @@ public class JessiBackEnd implements MimiSupporter{
 	}
 	
 	public int[] getValidUserInput() {
-		
 		return null;
+	}
+
+	public  boolean isRevealed() {
+		if(!safeSpot) {
+			gameRevealed();
+			gameOver();
+		}
+		return false;
+	}
+	
+	private void gameRevealed() {
+		
+		
 	}
 
 	@Override

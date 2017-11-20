@@ -3,7 +3,7 @@ package jessiMimiGame;
 public class JessiMimiPlot {
 	
 	public JessiMimiPlot(int row2, int col) {
-		
+		// TODO Auto-generated constructor stub
 	}
 	public int getRow() {
 		return row;
@@ -19,5 +19,9 @@ public class JessiMimiPlot {
 	}
 	private int row;
 	private int column;
+	public boolean isRevealed() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 
 }
