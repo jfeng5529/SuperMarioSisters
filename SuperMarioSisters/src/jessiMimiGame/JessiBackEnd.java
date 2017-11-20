@@ -4,7 +4,7 @@ package jessiMimiGame;
 
 public class JessiBackEnd implements MimiSupporter{
 	private JessiSupporter frontend;
-	private JessiMimiPlot[][] plots;
+	public static JessiMimiPlot[][] plots;
 	private int score;
 	private int numberOfMines;
 	private boolean safeSpot;
@@ -20,6 +20,21 @@ public class JessiBackEnd implements MimiSupporter{
 		for(int row = 0; row < plots.length; row++){
 			for(int col = 0; col < plots[row].length; col++){
 				plots[row][col] = new JessiMimiPlot(row, col);
+			}
+		}
+		while (safeSpot) {
+			System.out.println("Enter Row");
+			int row = input.nextInt();
+			System.out.println("Enter Column");
+			int column = input.nextInt();
+			
+			if (plots != 8) {
+				bombs = 0;
+			}
+			else if (plots == 8) {
+				System.out.println("You hit a mine!");
+				safeSpot = false;
+				break;
 			}
 		}
 	}
