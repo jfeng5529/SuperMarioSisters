@@ -154,4 +154,11 @@ public class LubnaFrontEnd implements JaneSupport {
 		return candyNum;
 	}
 
+
+	@Override
+	public void setEnemies(JaneEnemies[] enemies) {
+		this.enemies = enemies;
+		
+	}
+
 }
