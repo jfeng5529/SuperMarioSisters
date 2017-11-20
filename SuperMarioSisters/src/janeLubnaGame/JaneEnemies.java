@@ -37,6 +37,7 @@ public class JaneEnemies  {
 			if(JaneBackEnd.enemiesCount()-1>=0) {
 				LubnaFrontEnd.enemies[JaneBackEnd.enemiesCount()-1]=null;
 			}
+			inventory.decreaseFlashLight();
 		}
 		else {
 			result="lost";

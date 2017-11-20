@@ -90,5 +90,8 @@ public class Inventory {
 	public int getFlashLight() {
 		return flashlight;
 	}
+	public int decreaseFlashLight() {
+		return flashlight--;
+	}
 
 }
