@@ -1,92 +1,73 @@
 package janeLubnaGame;
 
-public class JaneGameMap{
-	public static final int NORTH=0;
-	public static final int EAST=1;
-	public static final int SOUTH=2;
-	public static final int WEST=3;
-	
-	private boolean presentCandy;
-	private String direction;//tells what you can do
-	private String contents;//a symbol representing what's in the room
-	private String defaultContents;
-	//the rooms are organize by direction, "null" signifies no room/door in that direction
-	private JaneGameMap[] borderingRooms;
-	private Object[] door;
-	private JaneEnemies presentEnemies;
-	
-	
-	public JaneGameMap() {
-		borderingRooms = new JaneGameMap[4];
-		presentCandy=false;
-		door= new Object[4];
-		defaultContents=" ";
-		contents=" ";
-		presentEnemies=null;
-		
+import caveExplore.Inventory;
+
+public class JaneEnemies  {
+	private int currentRow;
+	private int currentCol;
+	private JaneSupport frontend;
+	private Inventory inventory;
+	private String result;
+	private JaneEnemies[] enemies;
+
+
+	public JaneEnemies(JaneSupport frontend) {
+		this.frontend= frontend;
+		this.currentCol=-1;
+		this.currentRow=-1;
+		result="";
 	}
-	
-	public void setContent(boolean candyPresent) {
-		if(candyPresent) {
-			contents = "*";
+	public String getSymbol() {
+		return "E";
+	}
+	public void setPosition(int row, int col) {
+		JaneGameMap[][] plot=frontend.getPlots();
+		JaneGameMap currentRoom = frontend.getCurrentRoom();
+		if(row>= 0&& row <plot.length && col>=0 && col <plot[row].length) {
+			if(currentRoom!=null) {
+				currentRoom.leaveNPC();
+			}else {
+				currentRow =row;
+				currentCol = col;
+				currentRoom.enterNPC(this);
+			}
+		}
+	}
+	public void interaction(int enemiesCount) {
+		enemies= new JaneEnemies[4];
+		if(inventory.getFlashLight()>0) {
+			if(enemiesCount-1>=0) {
+				enemies[enemiesCount-1]=null;
+			}
+			inventory.decreaseFlashLight();
 		}
 		else {
-			contents=defaultContents;
+			result="lost";
 		}
-	}
-	
-	public String getContents() {
-		return contents;
-	}
 
+	}
+	public void act() {
+		int[] move = calculateMovement();
+		int newRow=  move[0];
+		int newCol = move[1];
+		setPosition(newRow, newCol);
 
-	public void enter(String contents) {
-		this.contents = contents;
 	}
-	
-	public void leave() {
-		this.contents=defaultContents;
+	public int[] calculateMovement() {
+		JaneGameMap currentRoom = frontend.getCurrentRoom();
+		int[] moves=new int[2];
+		int [][] possibleMoves = {{-1,0},{0,1},{1,0},{0, -1}};
+		int rand=(int)(Math.random()*possibleMoves.length);
+		moves[0]=possibleMoves[rand][0]+currentRow;
+		moves[1]=possibleMoves[rand][1]+currentCol;
+		while(currentRoom.getConnection(rand)==null) {
+			rand=(int)(Math.random()*possibleMoves.length);
+			moves[0]=possibleMoves[rand][0]+currentRow;
+			moves[1]=possibleMoves[rand][1]+currentCol;
+		}
+		return moves;
 	}
-	
-	public boolean isPresentCandy() {
-		return presentCandy;
+	public String getResult() {
+		return result;
 	}
-	
-	public void setPresentCandy(boolean presentCandy) {
-		this.presentCandy = presentCandy;
-	}
-	
-	public void addRoom(int direction, Object door2, JaneGameMap map) {
-		borderingRooms[direction]=map;
-		door[direction]=door2;
-	}
-	public void setConnection(int direction, JaneGameMap map, Object door){
-		addRoom(direction, door, map);
-		map.addRoom(oppsiteDirection(direction), door, this);
-		
-}
-
-	private int oppsiteDirection(int direction) {
-		return (direction+2)%4;
-	}
-
-	public Object getConnection(int direction) {
-		return door[direction];
-	}
-
-	public JaneGameMap getBorderingRooms(int direction) {
-		return borderingRooms[direction];
-	}
-
-	public void enterNPC(JaneEnemies janeEnemies) {
-		presentEnemies=janeEnemies;
-		contents=presentEnemies.getSymbol();
-		
-	}
-
-	public void leaveNPC() {
-		presentEnemies=null;
-		contents=defaultContents;
-	}
-	
 }
