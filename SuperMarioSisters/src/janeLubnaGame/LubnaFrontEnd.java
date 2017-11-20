@@ -8,11 +8,11 @@ import caveExplore.NPCRoom;
 
 public class LubnaFrontEnd implements JaneSupport {
 	
-	private static LubnaSupport backend;
-	public static JaneEnemies[] enemies;
+	private LubnaSupport backend;
+	private JaneEnemies[] enemies;
 	private int candyNum;
-	public static JaneGameMap[][] plot; //every room in the cave
-	public static JaneGameMap currentRoom; // changes based on how the user navigate
+	private JaneGameMap[][] plot; //every room in the cave
+	private JaneGameMap currentRoom; // changes based on how the user navigate
 	private boolean winResult;
 	private String map;
 	
