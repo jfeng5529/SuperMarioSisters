@@ -6,15 +6,16 @@ import caveExplore.NPCRoom;
 
 public class JaneBackEnd implements LubnaSupport {
 
-		private int candy;
-		private JaneSupport frontend;
-		private int enemiesCount;
-		
+	private int candy;
+	private JaneSupport frontend;
+	private int enemiesCount;
+	private JaneEnemies[] enemies;
+
 	public JaneBackEnd(JaneSupport frontend) {
 		enemiesCount=4;
 		this.frontend=frontend;
 		this.candy=frontend.getCandy();
-	
+
 	}
 	public void setUpPlot() {
 		setUpMap();
@@ -22,22 +23,22 @@ public class JaneBackEnd implements LubnaSupport {
 		setUpDoors();
 	}
 	public void setUpEnemies() {
-		JaneEnemies[] enemies= new JaneEnemies[4];
+		enemies= new JaneEnemies[4];
 		for (int i =0; i <4; i++) {
-			enemies[i]=new JaneEnemies();
+			enemies[i]=new JaneEnemies(frontend);
 			enemies[i].setPosition(i+1,i+1);
 		}
 		frontend.setEnemies(enemies);
 		frontend.setCurrentRoom(frontend.getPlots()[0][1]);
 		frontend.getCurrentRoom().enter("x");
-		
+
 	}
 
 	public boolean enemiesPresent() {
 		return frontend.getEnemies() != null;
-		
+
 	}
-	
+
 	public void setUpDoors() {
 		int height=5; int width=9;
 		for(int row=0; row<5; row++) {
@@ -54,7 +55,7 @@ public class JaneBackEnd implements LubnaSupport {
 
 	public void setUpMap() {
 		JaneGameMap[][] plots= new JaneGameMap[6][10]; 
-		
+
 		for(int row =0; row<plots.length; row++) {
 			for(int col=0; col<plots[row].length; col++) {
 				if(row==0 && col==0|| row==6 && col==0 || row==0&& col==9|| row==6&& col==0) {
@@ -73,12 +74,12 @@ public class JaneBackEnd implements LubnaSupport {
 	}
 
 	public boolean stillPlaying() {
-		if(!JaneEnemies.getResult().equals("lost")&&candy>=(getTotalCandy()*.8)) {
+		if(!enemies[enemiesCount].getResult().equals("lost")&&candy>=(getTotalCandy()*.8)) {
 			return true;
 		}
 		return false;
 	}
-	
+
 	private double getTotalCandy() {
 		JaneGameMap[][] plots= frontend.getPlots(); 
 		int candyCount=0; 
@@ -101,44 +102,46 @@ public class JaneBackEnd implements LubnaSupport {
 			frontend.printAllowedEntry();
 		}
 		if(direction <4) {
-		if(LubnaFrontEnd.currentRoom.getConnection(direction)!=null) {
-			LubnaFrontEnd.currentRoom.leave();
-			LubnaFrontEnd.currentRoom=LubnaFrontEnd.currentRoom.getBorderingRooms(direction);
-			LubnaFrontEnd.currentRoom.enter("x");
-			frontend.updatePlot();
-			if(LubnaFrontEnd.currentRoom.isPresentCandy()) {
-				LubnaFrontEnd.currentRoom.setPresentCandy(false);
-				candy++;
+			JaneGameMap currentRoom = frontend.getCurrentRoom();
+			if(currentRoom.getConnection(direction)!=null) {
+				currentRoom.leave();
+				frontend.setCurrentRoom(currentRoom.getBorderingRooms(direction));
+				 currentRoom = frontend.getCurrentRoom();
+				currentRoom.enter("x");
+				frontend.updatePlot();
+				if(currentRoom.isPresentCandy()) {
+					currentRoom.setPresentCandy(false);
+					candy++;
+				}
 			}
-		}
 		}
 		else {
 			performAction(direction);
 		}
 	}
-	
+
 	private void performAction(int direction) {
 		if(enemiesPresent()) {
-			LubnaFrontEnd.enemies[enemiesCount].interaction();
+			enemies[enemiesCount].interaction(enemiesCount);
 			enemiesCount--;
-		 }
-		 else {
-			 CaveExplorer.print("There is nothing to interact with");
-		 }
-		
+		}
+		else {
+			CaveExplorer.print("There is nothing to interact with");
+		}
+
 	}
 
-	public static int enemiesCount() {
+	public int enemiesCount() {
 		return enemiesCount;
 	}
 
 	public void enemiesAction() {
 		for (int i =0; i <4; i++) {
-			LubnaFrontEnd.enemies[i].act();
+			enemies[i].act();
 		}
 	}
-	
-	public static JaneSupport getFrontend() {
+
+	public JaneSupport getFrontend() {
 		return frontend;
 	}
 	public int getCandy() {
