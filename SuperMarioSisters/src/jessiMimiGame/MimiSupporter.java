@@ -8,4 +8,6 @@ public interface MimiSupporter {
 
 	boolean checkWin();
 
+	void getValidUserInput();
+
 }

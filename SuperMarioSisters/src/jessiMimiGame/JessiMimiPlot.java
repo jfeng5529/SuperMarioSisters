@@ -3,7 +3,7 @@ package jessiMimiGame;
 public class JessiMimiPlot {
 	
 	public JessiMimiPlot(int row2, int col) {
-		// TODO Auto-generated constructor stub
+		
 	}
 	public int getRow() {
 		return row;
