@@ -28,13 +28,13 @@ public class JaneBackEnd implements LubnaSupport {
 			enemies[i].setPosition(i+1,i+1);
 		}
 		frontend.setEnemies(enemies);
-		LubnaFrontEnd.currentRoom = LubnaFrontEnd.plot[0][1];
-		LubnaFrontEnd.currentRoom.enter("x");
+		frontend.setCurrentRoom(frontend.getPlots()[0][1]);
+		frontend.getCurrentRoom().enter("x");
 		
 	}
 
 	public boolean enemiesPresent() {
-		return LubnaFrontEnd.enemies != null;
+		return frontend.getEnemies() != null;
 		
 	}
 	
@@ -42,32 +42,34 @@ public class JaneBackEnd implements LubnaSupport {
 		int height=5; int width=9;
 		for(int row=0; row<5; row++) {
 			for(int col=0; col<width; col++) {
-				LubnaFrontEnd.plot[row][col].setConnection(JaneGameMap.EAST, LubnaFrontEnd.plot[row][col+1], new Object());
+				frontend.getPlots()[row][col].setConnection(JaneGameMap.EAST, frontend.getPlots()[row][col+1], new Object());
 			}
 		}
 		for(int col=0; col<width; col++) {
 			for(int row=0; row<height; row++) {
-				LubnaFrontEnd.plot[row][col].setConnection(JaneGameMap.SOUTH, LubnaFrontEnd.plot[row][col+1], new Object());
+				frontend.getPlots()[row][col].setConnection(JaneGameMap.SOUTH, frontend.getPlots()[row][col+1], new Object());
 			}
 		}
 	}
 
 	public void setUpMap() {
-		LubnaFrontEnd.plot=new JaneGameMap[6][10];
-		for(int row =0; row<LubnaFrontEnd.plot.length; row++) {
-			for(int col=0; col<LubnaFrontEnd.plot[row].length; col++) {
+		JaneGameMap[][] plots= new JaneGameMap[6][10]; 
+		
+		for(int row =0; row<plots.length; row++) {
+			for(int col=0; col<plots[row].length; col++) {
 				if(row==0 && col==0|| row==6 && col==0 || row==0&& col==9|| row==6&& col==0) {
-					LubnaFrontEnd.plot[row][col]=new JaneGameMap();
+					plots[row][col]=new JaneGameMap();
 				}
 				else
 				{
 					if((int)(Math.random())>.3) {
-						LubnaFrontEnd.plot[row][col]=new JaneGameMap();
-						LubnaFrontEnd.plot[row][col].setPresentCandy(true);
+						plots[row][col]=new JaneGameMap();
+						plots[row][col].setPresentCandy(true);
 					}
 				}
 			}
 		}
+		frontend.setPlots(plots);
 	}
 
 	public boolean stillPlaying() {
@@ -78,10 +80,11 @@ public class JaneBackEnd implements LubnaSupport {
 	}
 	
 	private double getTotalCandy() {
+		JaneGameMap[][] plots= frontend.getPlots(); 
 		int candyCount=0; 
-		for(int row=0; row<LubnaFrontEnd.plot.length; row++) {
-			for( int col=0; col<LubnaFrontEnd.plot[row].length; col++) {
-				if(LubnaFrontEnd.plot[row][col].isPresentCandy()) {
+		for(int row=0; row<plots.length; row++) {
+			for( int col=0; col<plots[row].length; col++) {
+				if(plots[row][col].isPresentCandy()) {
 					candyCount++;
 				}
 			}

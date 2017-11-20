@@ -14,4 +14,12 @@ public interface JaneSupport {
 
 	void setEnemies(JaneEnemies[] enemies);
 
+	void setCurrentRoom(JaneGameMap janeGameMap);
+
+	JaneGameMap getCurrentRoom();
+
+	JaneEnemies[] getEnemies();
+
+	void setPlots(JaneGameMap[][] janeGameMaps);
+
 }
