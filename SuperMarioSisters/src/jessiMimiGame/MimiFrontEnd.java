@@ -61,9 +61,9 @@ public class MimiFrontEnd implements JessiSupporter{
 
 	public boolean checkForWin(){
         int count=0;
-        for(int line = 1 ; line < 9 ; line++)
+        for(int row = 1 ; row < 9 ; row++)
             for(int column = 1 ; column < 9 ; column++)
-                if(plot[line][column]=='_')
+                if(JessiMimiPlot[row][column]=='_')
                     count++;
         if(count == 10)
             return true;
@@ -71,9 +71,32 @@ public class MimiFrontEnd implements JessiSupporter{
             return false;                
     }
 	
-	public int getPosition(int Line, int Column){
-        return plot[Line][Column];
+	public int getPosition(int row, int column){
+        return JessiMimiPlot[row][column];
     }
+	
+	private void displayField(JessiMimiPlot[][] plots) {
+		String rows = "0123456789";
+		String columns = "  0123456789";
+		for(int row = 0; row < plots.length; row++){
+			System.out.print(rows.substring(row, row+1)+"-");
+			for(int col = 0; col < plots[row].length; col++){
+				if(plots[row][col].isRevealed()){
+					if(plots[row][col].JessiBackEnd.isMine()){
+						System.out.print("*");
+					}//else{
+						//System.out.print("-");	
+					//}
+
+				//}else{
+					//System.out.print(".");
+				//}
+			}
+			System.out.println(" " + rows.substring(row, row+1));
+		}
+		System.out.println(columns.substring(0, plots[0].length+2));
+	}
+
 	
 	public static void displayScoreStatus() {
 		String scoreStatus = "";

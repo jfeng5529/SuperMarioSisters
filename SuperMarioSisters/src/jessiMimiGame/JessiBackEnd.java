@@ -23,21 +23,21 @@ public class JessiBackEnd implements MimiSupporter{
 			}
 		}
 		while (safeSpot) {
-			System.out.println("Enter Row");
-			int row = input.nextInt();
-			System.out.println("Enter Column");
-			int column = input.nextInt();
+			//System.out.println("Enter Row");
+			//int row = input.nextInt();
+			//System.out.println("Enter Column");
+			//int column = input.nextInt();
 			
-			if (plots != 8) {
-				bombs = 0;
+			//if (plots != 8) {
+				//bombs = 0;
 			}
-			else if (plots == 8) {
-				System.out.println("You hit a mine!");
-				safeSpot = false;
-				break;
+			//else if (plots == 8) {
+				//System.out.println("You hit a mine!");
+				//safeSpot = false;
+				//break;
 			}
-		}
-	}
+		//}
+	//}
 	
 
 
