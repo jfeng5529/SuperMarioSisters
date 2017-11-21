@@ -152,8 +152,6 @@ public class LubnaFrontEnd implements JaneSupport {
 		instructions = false;
 		}
 
-		rules();
-
 	}
 
 	public JaneGameMap[][] getPlots() {
