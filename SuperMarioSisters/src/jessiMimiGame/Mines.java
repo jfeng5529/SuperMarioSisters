@@ -23,7 +23,14 @@ public class Mines extends JessiBackEnd {
 		isMine = true;
 	}
 
-	public void neighboringMines() {
-		if()
+	public void countNeighboringMines() {
+		for (int row = 0; row < plots.length; row++) {
+			 for (int col = 0; col < plots.length; col++) {
+				 if (!(plots[row][col].getIsMine())) {
+					 
+				 }
+					 
+			 }
+		}
 	}
 }

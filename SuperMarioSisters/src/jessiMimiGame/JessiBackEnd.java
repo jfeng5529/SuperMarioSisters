@@ -28,16 +28,16 @@ public class JessiBackEnd implements MimiSupporter{
 			System.out.println("Enter Column");
 			//int column = input.nextInt();
 			
-			if (plots != 10) {
-				bombs = 0;
-			}
-			else if (plots == 10) {
-				System.out.println("You hit a mine!");
-				safeSpot = false;
-				break;
+		//	if (plots != 10) {
+				//bombs = 0;
+			//}
+			//else if (plots == 10) {
+				//System.out.println("You hit a mine!");
+				//safeSpot = false;
+				//break;
 			}
 		}
-	}
+	//}
 	
 
 
