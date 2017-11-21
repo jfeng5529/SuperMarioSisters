@@ -7,7 +7,8 @@ import caveExplore.NPCRoom;
 
 public class MimiRoom extends NPCRoom {
 	
-	//This room makes the NPC say different things to the player 
+	//This room makes the NPC say different things to the player
+	// NOTE TO SELF: change toa d into bowser? make the npc give tips on how to play the game in general as well.
 
 	public MimiRoom(String description) {
 		super(description);
@@ -18,7 +19,7 @@ public class MimiRoom extends NPCRoom {
 	}
 	
 	public String getContents() {
-		return "j";
+		return "A";
 	}
 	public void performAction(int direction) {
 		if(direction == 5) {
@@ -53,3 +54,4 @@ public class MimiRoom extends NPCRoom {
 		CaveExplorer.print(taunt);
 	}
 }
+

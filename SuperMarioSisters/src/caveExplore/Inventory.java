@@ -69,18 +69,26 @@ public class Inventory {
 		return life++;
 	}
 	
-	public int hpCost() {
-		return money = money - 50;
-	}
-	public int increaseHP() {
-		return hp = hp + 20;
-	}
+	//public int hpCost() {
+	//	return money = money - 50;
+	//}
+	//public int increaseHP() {
+	//	return hp = hp + 20;
+	//}
 	public int storageCost() {
 		return money = money - 80;
 	}
 	public int increaseStorage() {
 		return storageBag = storageBag + 3;
 	}
+<<<<<<< HEAD
+	//public int flashlightCost() {
+	//	return money = money - 30;
+	//}
+	//public int increaseFlash() {
+	//	return flashlight = flashlight + 1;
+	//}
+=======
 	public int flashlightCost() {
 		return money = money - 30;
 	}
@@ -93,5 +101,6 @@ public class Inventory {
 	public int decreaseFlashLight() {
 		return flashlight--;
 	}
+>>>>>>> branch 'Develop' of https://github.com/jfeng5529/SuperMarioSisters
 
 }
