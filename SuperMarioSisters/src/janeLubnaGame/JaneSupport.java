@@ -21,5 +21,4 @@ public interface JaneSupport {
 	JaneEnemies[] getEnemies();
 
 	void setPlots(JaneGameMap[][] janeGameMaps);
-
 }

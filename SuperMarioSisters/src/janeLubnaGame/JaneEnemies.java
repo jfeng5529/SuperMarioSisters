@@ -68,6 +68,6 @@ public class JaneEnemies  {
 		return moves;
 	}
 	public String getResult() {
-		return result;
+		return result;//
 	}
 }

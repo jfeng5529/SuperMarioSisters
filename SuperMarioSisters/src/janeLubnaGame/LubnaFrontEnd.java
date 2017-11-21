@@ -139,7 +139,7 @@ public class LubnaFrontEnd implements JaneSupport {
 
 	private void rules() {
 		System.out.println("You must avoid Boo and eat all the candy to win and get the key to enter last challenge");
-		
+
 	}
 
 	private void introduction() {
@@ -151,6 +151,8 @@ public class LubnaFrontEnd implements JaneSupport {
 		rules();
 		instructions = false;
 		}
+
+		rules();
 
 	}
 
@@ -195,5 +197,4 @@ public class LubnaFrontEnd implements JaneSupport {
 	public void setPlots(JaneGameMap[][] plot) {
 		this.plot = plot;
 	}
-
 }

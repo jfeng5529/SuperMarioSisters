@@ -151,6 +151,6 @@ public class JaneBackEnd implements LubnaSupport {
 	}
 	public int getCandy() {
 		return candy;
-	}
+	} //
 
 }

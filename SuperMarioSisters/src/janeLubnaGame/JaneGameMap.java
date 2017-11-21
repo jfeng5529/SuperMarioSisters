@@ -53,7 +53,7 @@ public class JaneGameMap{
 	}
 	
 	public void setPresentCandy(boolean presentCandy) {
-		this.presentCandy = presentCandy;
+		this.presentCandy = presentCandy;//
 	}
 	
 	public void addRoom(int direction, Object door2, JaneGameMap map) {
