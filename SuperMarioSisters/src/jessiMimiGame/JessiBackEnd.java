@@ -8,15 +8,11 @@ public class JessiBackEnd implements MimiSupporter{
 	private int score;
 	private int numberOfMines;
 	private boolean safeSpot;
-	private int space;
-	
-	public String unknown = " ";
-	public String mine = "*";
 
 	public JessiBackEnd(JessiSupporter frontend) {
 		this.frontend = frontend;
-		plots = new JessiMimiPlot[12][12];
-		numberOfMines = 10;
+		plots = new JessiMimiPlot[10][10];
+		numberOfMines = 6;
 		createPlots();
 	}
 
@@ -28,14 +24,14 @@ public class JessiBackEnd implements MimiSupporter{
 		}
 		while (safeSpot) {
 			System.out.println("Enter Row");
-		
+			//int row = input.nextInt();
 			System.out.println("Enter Column");
-
+			//int column = input.nextInt();
 			
-			if (space != 10 ) {
-				numberOfMines = 0;
+			if (plots != 10) {
+				bombs = 0;
 			}
-			else if (space == 10) {
+			else if (plots == 10) {
 				System.out.println("You hit a mine!");
 				safeSpot = false;
 				break;
@@ -43,34 +39,25 @@ public class JessiBackEnd implements MimiSupporter{
 		}
 	}
 	
+
+
 	public JessiMimiPlot[][] getPlots() {
 		return plots;
 	}	
 
-	
-	public void generateMines() {
-		Mines.createMines();
-	}
-	
 	public void clear(int row, int col) {
-		 for(int i = (row - 1); i <= (row + 1); i++){
-		      for(int j = (col - 1); j <= (col + 1); j++){
-		        if(int[row][col].equals(unknown) == true) {
-		        	display();
-		        }
-		      }
-		 }
+		for(i = (row-1); i < (row+1); i++) {
+			for(j = (col-1); j< (col+1); j++) {
+				display();
+			}
+		}
 	}
 	
 	private void display() {
-		
+		// TODO Auto-generated method stub
 		
 	}
 
-	public JessiMimiPlot getTile(int row, int col){
-		return plots[row][col];
-	}
-	
 	@Override
 	public boolean checkForMine() {
 		if(!safeSpot) {
@@ -80,20 +67,8 @@ public class JessiBackEnd implements MimiSupporter{
 	}
 	
 	public int[] getValidUserInput() {
+		
 		return null;
-	}
-
-	public  boolean isRevealed() {
-		if(!safeSpot) {
-			gameRevealed();
-			gameOver();
-		}
-		return false;
-	}
-	
-	private void gameRevealed() {
-		
-		
 	}
 
 	@Override
