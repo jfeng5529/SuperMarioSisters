@@ -1,5 +1,8 @@
 package jessiMimiGame;
 
+import caveExplore.CaveExplorer;
+import caveExplore.CaveRoom;
+
 public class MimiFrontEnd implements JessiSupporter{
 
 	private static MimiSupporter backend;
@@ -34,6 +37,15 @@ public class MimiFrontEnd implements JessiSupporter{
 
 	public String validKeys() {
 		return "wasdrp";
+	}
+	
+	public void performAction(int direction) {
+		if(direction == 5) {
+			rules();
+		}
+		else if (direction == 6){
+			startGame();
+		}
 	}
 
 	private String rules() {

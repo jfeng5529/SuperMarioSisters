@@ -2,25 +2,27 @@ package jessiMimiGame;
 
 public class JessiMimiPlot {
 	
+	private boolean revealed;
+	private int row;
+	private int column;
+	
 	public JessiMimiPlot(int row2, int col) {
-		// TODO Auto-generated constructor stub
+		this.row = row;
+		this.column = column;
+		revealed = false;
 	}
 	public int getRow() {
 		return row;
 	}
-	public void setRow(int row) {
-		this.row = row;
-	}
 	public int getColumn() {
 		return column;
 	}
-	public void setColumn(int column) {
-		this.column = column;
+	
+	public void revealed() {
+		revealed = true;
 	}
-	private int row;
-	private int column;
+	
 	public boolean isRevealed() {
-		// TODO Auto-generated method stub
 		return false;
 	}
 
