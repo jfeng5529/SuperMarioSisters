@@ -25,9 +25,9 @@ public class JessiMimiPlot {
 	public boolean isRevealed() {
 		return false;
 	}
+	
 	public boolean getIsMine() {
-		// TODO Auto-generated method stub
-		return false;c
+		return false;
 	}
-
+	
 }
