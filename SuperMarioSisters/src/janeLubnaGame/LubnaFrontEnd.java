@@ -7,23 +7,23 @@ import caveExplore.CaveRoom;
 import caveExplore.NPCRoom;
 
 public class LubnaFrontEnd implements JaneSupport {
-	
-	private static LubnaSupport backend;
-	public static JaneEnemies[] enemies;
+
+	private LubnaSupport backend;
+	private JaneEnemies[] enemies;
 	private int candyNum;
-	public static JaneGameMap[][] plot; //every room in the cave
-	public static JaneGameMap currentRoom; // changes based on how the user navigate
+	private JaneGameMap[][] plot; //every room in the cave
+	private JaneGameMap currentRoom; // changes based on how the user navigate
 	private boolean winResult;
 	private String map;
-	
-	
+
+
 	public LubnaFrontEnd() {
 		backend=new JaneBackEnd(this);
 		winResult=false;
 		candyNum=0;
 		CaveExplorer.in = new Scanner(System.in);
 		backend.setUpPlot();
-		
+
 	}
 
 
@@ -36,13 +36,13 @@ public class LubnaFrontEnd implements JaneSupport {
 		updatePlot();
 		introduction();
 		menu();
-		
+
 	}
 
 	private void menu() {
 		rules();
 		startPlaying();
-		
+
 	}
 
 	private void startPlaying() {
@@ -62,10 +62,10 @@ public class LubnaFrontEnd implements JaneSupport {
 		}
 		printGameResult();
 	}
-	
+
 	private void update() {
 		// TODO Auto-generated method stub
-		
+
 	}
 
 	private int convertToDirection(String input) {
@@ -75,11 +75,11 @@ public class LubnaFrontEnd implements JaneSupport {
 	public void printAllowedEntry() {
 		System.out.println("You can only enter w, a, s, d to move and 'e' to interact with Boo the enemie");
 	}
-	
+
 	private void printGameResult() {
 		//need more work from backend
 		CaveExplorer.print("Winner");
-		
+
 	}
 
 	private String getValidUserInput() {
@@ -96,17 +96,17 @@ public class LubnaFrontEnd implements JaneSupport {
 
 	private void displayScore() {
 		// displays scores from the backend.
-		
+
 	}
 
 	private void displayBoard() {
 		CaveExplorer.print(mapDescription());
-	
-		
+
+
 	}
 
 	public  void updatePlot() {
-		 map = "\n ";
+		map = "\n ";
 		for(int i = 0; i < plot[0].length - 1; i++)
 			map += "____";
 		map += "___\n";
@@ -132,7 +132,7 @@ public class LubnaFrontEnd implements JaneSupport {
 				map += text + "\n";
 			}
 	}
-	
+
 	public String mapDescription() {
 		return map;
 	}
@@ -143,7 +143,15 @@ public class LubnaFrontEnd implements JaneSupport {
 	}
 
 	private void introduction() {
-		System.out.println("Welcome to our game.");
+		System.out.println("LEVEL ONE:YOU'VE ENCOUNTERED BOO, IN ORDER TO RESCUE YOUR PRINCE WIN THIS GAME.");
+		System.out.println("Press Enter to get the instructions.");
+		CaveExplorer.in.nextLine();
+		boolean instructions = true;
+		while(instructions == true ) {
+		rules();
+		instructions = false;
+		}
+
 	}
 
 	public JaneGameMap[][] getPlots() {
@@ -152,6 +160,40 @@ public class LubnaFrontEnd implements JaneSupport {
 
 	public int getCandy() {
 		return candyNum;
+	}
+
+
+	@Override
+	public void setEnemies(JaneEnemies[] enemies) {
+		this.enemies = enemies;
+
+	}
+
+
+	@Override
+	public void setCurrentRoom( JaneGameMap currentRoom) {
+
+		this.currentRoom = currentRoom;
+	}
+
+
+	@Override
+	public JaneGameMap getCurrentRoom() {
+
+		return currentRoom;
+	}
+
+
+	@Override
+	public JaneEnemies[] getEnemies() {
+
+		return enemies;
+	}
+
+
+	@Override
+	public void setPlots(JaneGameMap[][] plot) {
+		this.plot = plot;
 	}
 
 }
