@@ -1,5 +1,7 @@
 package caveExplore;
 
+import janeLubnaGame.JaneCandyRoom;
+
 public class NPCRoom extends CaveRoom {
 
 	private NPC presentNPC;
@@ -17,9 +19,9 @@ public class NPCRoom extends CaveRoom {
 		return presentNPC==null;
 	}
 	
-	public void enterNPC(NPC m) {
-		presentNPC =m;
-	}
+//	public void enterNPC(JaneCandyRoom janeCandyRoom) {
+//		presentNPC =janeCandyRoom;
+//	}
 	
 	public void leaveNPC() {
 		presentNPC= null;
@@ -82,6 +84,11 @@ public class NPCRoom extends CaveRoom {
 			}
 			return super.getDescription()+"\n"+npcDescription;
 		}
+	}
+
+	public void enterNPC(NPC npc) {
+		presentNPC=npc;
+		
 	}
 
 	

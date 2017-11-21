@@ -7,7 +7,7 @@ public class Princess extends NPC {
 		content = "P";
 	}
 	
-	public void act() {
+	public void act() {//
 		if(isActive()) {
 			CaveExplorer.print("Far off in the distance, you hear a Prince in distress.");
 		}
