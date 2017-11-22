@@ -4,8 +4,8 @@ import java.util.Random;
 
 public class Mines extends JessiBackEnd {
 
-	int [][] array = new int[10][10];
-	private boolean isMine;
+	boolean [][] mineField = new boolean[10][10];
+//	private boolean isMine;
 	
 	public Mines(JessiSupporter frontend) {
 		super(frontend);
@@ -19,30 +19,29 @@ public class Mines extends JessiBackEnd {
 		for (int i = 0; i < numMines; i++) { 
 			int randRow = (int)(Math.random()*10);
 			int randCol = (int)(Math.random()*10);
+			mineField[randRow][randCol] = true;
 		}
-		isMine = true;
-	}
-
-	public void countNeighboringMines() {
-		for (int row = 0; row < plots.length; row++) {
-			 for (int col = 0; col < plots.length; col++) {
-				 if (!(plots[row][col].getIsMine())) {
-					 int count = 0;
-					 for (int i = row - 1; i <= row + 1; i++) {
-	                    for (int j = col - 1; j <= col + 1; j++) {
-	                    	 if (0 <= i && i < plots.length && 0 <= j && j < plots.length) {
-	                                 if (plots[row][col].getIsMine()) {
-	                                     count++;
-	                                 }
-	                    	 }
-	                    }
-					 }
-					  plots[row][col].setAdjacentMines(count);
-				 }
-			 }
-		}
+//		isMine = true;
 	}
 	
-	public void 
-
+	public int countNeighboringMines(int row,int col) {
+		int count = 0;
+		if(checkIsMine(row-1,col-1)) count++;
+		if(checkIsMine(row-1,col)) count++;
+		if(checkIsMine(row-1,col+1)) count++;
+		if(checkIsMine(row,col-1)) count++;
+		if(checkIsMine(row,col+1)) count++;
+		if(checkIsMine(row+1,col-1)) count++;
+		if(checkIsMine(row+1,col)) count++;
+		if(checkIsMine(row+1,col+1)) count++;
+		return count;
+	}
+	
+	public boolean checkIsMine(int row, int col) {
+		if(row < 0 || row > 10) return false;
+		if(col < 0 || col > 10) return false;
+		return mineField[row][col];
+	}
+	
+	
 }
