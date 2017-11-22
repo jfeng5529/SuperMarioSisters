@@ -40,11 +40,21 @@ public class LubnaFrontEnd implements JaneSupport {
 	}
 
 	private void menu() {
-		rules();
 		startPlaying();
 
 	}
 
+	private void introduction() {
+		System.out.println("LEVEL ONE:YOU'VE ENCOUNTERED BOO, IN ORDER TO RESCUE YOUR PRINCE WIN THIS GAME.");
+		System.out.println("Press Enter to get the instructions.");
+		String input = CaveExplorer.in.nextLine();
+		while(input.length()>1) {
+		System.out.println("Press Enter to get the instructions. It's not that hard.");
+		input = CaveExplorer.in.nextLine();
+		}
+		rules();
+	}
+	
 	private void startPlaying() {
 		while(backend.stillPlaying()) {
 			backend.enemiesAction();
@@ -58,7 +68,7 @@ public class LubnaFrontEnd implements JaneSupport {
 			}
 			int direction =convertToDirection(input);
 			backend.respondToKey(direction);
-			update();
+			updatePlot();
 		}
 		printGameResult();
 	}
@@ -142,19 +152,6 @@ public class LubnaFrontEnd implements JaneSupport {
 
 	}
 
-	private void introduction() {
-		System.out.println("LEVEL ONE:YOU'VE ENCOUNTERED BOO, IN ORDER TO RESCUE YOUR PRINCE WIN THIS GAME.");
-		System.out.println("Press Enter to get the instructions.");
-		CaveExplorer.in.nextLine();
-		boolean instructions = true;
-		while(instructions == true ) {
-		rules();
-		instructions = false;
-		}
-
-		rules();
-
-	}
 
 	public JaneGameMap[][] getPlots() {
 		return plot;

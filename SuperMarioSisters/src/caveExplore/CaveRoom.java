@@ -228,18 +228,21 @@ public class CaveRoom {
 		c[1][6].setConnection(NORTH, c[0][6], new Door());
 		c[1][6].setConnection(EAST, c[1][7], new Door());
 		c[2][7].setConnection(EAST, c[2][8], new Door());
+		c[4][7].setConnection(EAST, c[4][8], new Door());
 		c[2][7].setConnection(SOUTH, c[3][7], new Door());
 		c[1][7].setConnection(SOUTH, c[2][7], new Door());
 		c[2][8].setConnection(SOUTH, c[3][8], new Door());
+		c[3][7].setConnection(SOUTH, c[4][7], new Door());
+		c[4][7].setConnection(SOUTH, c[5][7], new Door());
 			
 		for(int col=0; col<4; col++) {
 				c[col+1][col].setConnection(SOUTH, c[col+2][col], new Door());
 				c[col+2][col+1].setConnection(EAST, c[col+2][col+1], new Door());
 			}
 		
-		for(int col=0; col<4; col++) {
-			c[col+1][col].setConnection(SOUTH, c[col+2][col], new Door());
-			c[col+2][col+1].setConnection(EAST, c[col+2][col+1], new Door());
+		for(int col=6; col<9; col++) {
+			c[col-6][col+1].setConnection(SOUTH, c[col-5][col+1], new Door());
+			c[col-6][col].setConnection(EAST, c[col-6][col+1], new Door());
 		}
 		
 		Door door1=new Door();
