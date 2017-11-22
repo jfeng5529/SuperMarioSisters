@@ -4,6 +4,7 @@ import janeLubnaGame.BooNPC;
 import janeLubnaGame.JanePipeRoom;
 import janeLubnaGame.LubnaFindLives;
 import janeLubnaGame.LubnaToadAdvise;
+import jessiMimiGame.Bowser;
 import jessiMimiGame.JessiMerchantRoom;
 import jessiMimiGame.MimiRoom;
 
@@ -167,11 +168,13 @@ public class CaveRoom {
 		}
 		//3.replace default room with custom room
 		//DO LATER
-		CaveExplorer.npcs =new NPC[2];
+		CaveExplorer.npcs =new NPC[3];
 		CaveExplorer.npcs[0] = new Princess();
 		CaveExplorer.npcs[0].setPosition(5, 9);
 		CaveExplorer.npcs[1] = new BooNPC();
-		CaveExplorer.npcs[1].setPosition(1, 3);//
+		CaveExplorer.npcs[1].setPosition(1, 3);
+		CaveExplorer.npcs[2] = new Bowser();
+		CaveExplorer.npcs[2].setPosition(5, 7);
 		CaveRoom customRoom = new JanePipeRoom("Room");
 		CaveExplorer.caves[4][9] = customRoom;
 		CaveRoom customRoom2 = new LubnaFindLives("Room");
