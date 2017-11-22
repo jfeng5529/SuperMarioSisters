@@ -23,11 +23,16 @@ public class JessiMimiPlot {
 	}
 	
 	public boolean isRevealed() {
-		return false;
+		return revealed;
 	}
 	
 	public boolean getIsMine() {
 		return false;
+	}
+	
+	public void createPlot() {
+		createMines();
+		countNeighboringMines();
 	}
 	
 }

@@ -1,16 +1,13 @@
 package jessiMimiGame;
 
-
-import caveExplore.CaveExplorer;
-import caveExplore.CaveRoom;
-import caveExplore.NPCRoom;
-
 public class MimiFrontEnd implements JessiSupporter{
-
+	
 	private static MimiSupporter backend;
 	private static int score;
 	private static boolean safeSpot;
 	private int moves;
+	
+	private int[][] mines;
 
 	public static final void main(String[] args) {
 		MimiFrontEnd demo = new MimiFrontEnd();
@@ -39,15 +36,6 @@ public class MimiFrontEnd implements JessiSupporter{
 
 	public String validKeys() {
 		return "wasdrp";
-	}
-	
-	public void performAction(int direction) {
-		if(direction == 5) {
-			rules();
-		}
-		else if (direction == 6){
-			startGame();
-		}
 	}
 
 	private String rules() {
@@ -90,10 +78,9 @@ public class MimiFrontEnd implements JessiSupporter{
 			return false;                
 	}
 
-	private void displayField(JessiMimiPlot[][] plots) {
+	public void displayField(JessiMimiPlot[][] plots) {
 		String rows = "0123456789";
 		String columns = "  0123456789";
-		createMines();
 		for(int row = 0; row < plots.length; row++){
 			System.out.print(rows.substring(row, row+1)+"-");
 			for(int col = 0; col < plots[row].length; col++){
@@ -108,6 +95,12 @@ public class MimiFrontEnd implements JessiSupporter{
 			}
 			System.out.println(columns.substring(0, plots[0].length+2));
 		}
+		
+		public void startBoard(){
+	        for(int row = 1 ; row < mines.length ; row++)
+	            for(int col = 1 ; col < mines.length ; col++)
+	                JessiMimiPlot[row][col]= '-';
+	    }
 
 
 		public static void displayScoreStatus() {
