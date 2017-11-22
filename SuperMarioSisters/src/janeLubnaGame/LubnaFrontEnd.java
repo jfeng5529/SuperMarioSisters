@@ -32,7 +32,7 @@ public class LubnaFrontEnd implements JaneSupport {
 		demo.play();
 	}
 
-	private void play() {
+	public void play() {
 		updatePlot();
 		introduction();
 		menu();

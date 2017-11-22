@@ -50,7 +50,7 @@ public class NPCRoom extends CaveRoom {
 	
 	public void performAction(int direction) {
 		if(direction ==4) {
-		 if(containsNPC()&&presentNPC.isActive) {
+		 if(containsNPC()) {
 			 presentNPC.interact();
 		 }
 		 else {

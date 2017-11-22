@@ -26,10 +26,12 @@ public class LubnaFindLives extends NPCRoom {
 		System.out.println("Enter 'c' to collect a flashlight.");
 	}
 	public void performAction(int direction) {
+		if(direction<4) {
+			super.performAction(direction);
+		}
 		if(direction == 5) {
 		CaveExplorer.inventory.addLife();//
 		response();
-		
 		}
 		
 		

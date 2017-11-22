@@ -8,7 +8,7 @@ import jessiMimiGame.JessiMerchantRoom;
 import jessiMimiGame.MimiRoom;
 
 public class CaveRoom {
-	
+
 	private String description; // tells what the room looks like
 	private String direction;//tells what you can do
 	private String contents;//a symbol representing what's in the room
@@ -16,26 +16,26 @@ public class CaveRoom {
 	//the rooms are organize by direction, "null" signifies no room/door in that direction
 	private CaveRoom[] borderingRooms;
 	private Door[] doors;
-	
+
 	//constants
 	public static final int NORTH=0;
 	public static final int EAST=1;
 	public static final int SOUTH=2;
 	public static final int WEST=3;
-	
+
 	public CaveRoom(String description) {
 		this.description=description;
 		setDefaultContents(" ");
 		contents=defaultContents;
 		//difference between default content and content is 'content" becomes a x when you are inside this room
 		//when you leave, it goes back to the defaultcontent
-		
+
 		//by default, arrays will populate with 'null', meaning theres no directions
 		borderingRooms=new CaveRoom[4];
 		doors=new Door[4];
 		setDirections();
 	}
-	
+
 	/**
 	 * For every door in the door array, appends a string to "direction" describing the access
 	 * for example:
@@ -51,15 +51,15 @@ public class CaveRoom {
 			if(doors[i]!=null) {
 				doorFound=true;
 				direction+="\n  There is a "+doors[i].getDescription()+" to "+
-				toDirection(i)+ "." +doors[i].getDetails();
+						toDirection(i)+ "." +doors[i].getDetails();
 			}
 		}
 		if(!doorFound) {
 			direction+="There are no doors, you are trapped in here";
 		}
-		
+
 	}
-	
+
 	/**
 	 * converts an int into a direction
 	 * toDirection(0) -> "the north"
@@ -69,17 +69,17 @@ public class CaveRoom {
 	public static String toDirection(int dir) {
 		String[] arr= {"the North", "the East", "the South", "the West"};
 		return arr[dir];
-		
+
 	}
-	
+
 	public void enter() {
 		contents="x";
-		
+
 	}
 	public void leave() {
 		contents=defaultContents;
 	}
-	
+
 	/**
 	 * gives this room access to anotherRoom(and vice-versa and sets a door between them,
 	 * updating the direction
@@ -99,9 +99,9 @@ public class CaveRoom {
 		borderingRooms[direction]=cave;
 		doors[direction]=door;
 		setDirections();
-		
+
 	}
-	
+
 	public void interpretInput(String input) {
 		while(!isValid(input)) {
 			printAllowedEntry();
@@ -111,7 +111,7 @@ public class CaveRoom {
 		String dir=validKeys();
 		respondToKey(dir.indexOf(input));
 	}
-	
+
 	//override to add more keys
 	public String validKeys() {
 		return "wdsa";
@@ -129,25 +129,25 @@ public class CaveRoom {
 	public void respondToKey(int direction) {
 		//first protect against null pointer exception(user cannot go through non-existent door
 		if(direction <4) {
-		if(borderingRooms[direction]!=null&&doors[direction]!=null) {
-			CaveExplorer.currentRoom.leave();
-			CaveExplorer.currentRoom=borderingRooms[direction];
-			CaveExplorer.currentRoom.enter();
-			CaveExplorer.inventory.updateMap();
-		}
+			if(borderingRooms[direction]!=null&&doors[direction]!=null) {
+				CaveExplorer.currentRoom.leave();
+				CaveExplorer.currentRoom=borderingRooms[direction];
+				CaveExplorer.currentRoom.enter();
+				CaveExplorer.inventory.updateMap();
+			}
 		}
 		else {
 			performAction(direction);
 		}
 	}
-	
+
 	/**
 	 * Override to give response to keys other than wasd
 	 * @param direction
 	 */
 	public void performAction(int direction) {
 		System.out.println("That key does nothing");
-		
+
 	}
 
 	/**
@@ -170,27 +170,22 @@ public class CaveRoom {
 		CaveExplorer.npcs =new NPC[2];
 		CaveExplorer.npcs[0] = new Princess();
 		CaveExplorer.npcs[0].setPosition(5, 9);
-		CaveExplorer.npcs[1] = new BooNPC();
-		CaveExplorer.npcs[1].setPosition(1, 3);//
+				CaveExplorer.npcs[1] = new BooNPC();
+				CaveExplorer.npcs[1].setPosition(1, 3);//
 		CaveRoom customRoom = new JanePipeRoom("Room");
 		CaveExplorer.caves[4][9] = customRoom;
-		CaveRoom customRoom2 = new LubnaFindLives("Room");
-		CaveExplorer.caves[3][3] = customRoom2;
-		CaveRoom customRoom3 = new JessiMerchantRoom("Room");
-		CaveExplorer.caves[3][1] = customRoom3;
-		CaveRoom customRoom4 = new MimiRoom("Room");
-		CaveExplorer.caves[3][4] = customRoom4;
+				CaveRoom customRoom2 = new LubnaFindLives("Room");
+				CaveExplorer.caves[3][3] = customRoom2;
+				CaveRoom customRoom3 = new JessiMerchantRoom("Room");
+				CaveExplorer.caves[3][1] = customRoom3;
+				CaveRoom customRoom4 = new MimiRoom("Room");
+				CaveExplorer.caves[3][4] = customRoom4;
 		CaveRoom customRoom5 = new LubnaToadAdvise("Room");
 		CaveExplorer.caves[1][1] = customRoom5;
 		//4.set your starting room:
 		CaveExplorer.currentRoom=CaveExplorer.caves[0][1];
 		CaveExplorer.currentRoom.enter();
 		//set up doors
-		setUpDoors();
-		
-		
-	}
-	public static void setUpDoors() {
 		CaveRoom[][]c=CaveExplorer.caves;
 		c[0][1].setConnection(SOUTH, c[1][1], new Door());
 		c[1][1].setConnection(EAST, c[1][2], new Door());
@@ -220,7 +215,8 @@ public class CaveRoom {
 		c[2][1].setConnection(EAST, c[2][2], new Door());
 		c[2][2].setConnection(SOUTH, c[3][2], new Door());
 		c[3][2].setConnection(EAST, c[3][3], new Door());
-		c[3][3].setConnection(SOUTH, c[3][4], new Door());
+		c[3][3].setConnection(SOUTH, c[4][3], new Door());
+		c[3][3].setConnection(EAST, c[3][4], new Door());
 		c[4][3].setConnection(EAST, c[4][4], new Door());
 		c[1][4].setConnection(NORTH, c[0][4], new Door());
 		c[1][4].setConnection(EAST, c[1][5], new Door());
@@ -234,22 +230,24 @@ public class CaveRoom {
 		c[2][8].setConnection(SOUTH, c[3][8], new Door());
 		c[3][7].setConnection(SOUTH, c[4][7], new Door());
 		c[4][7].setConnection(SOUTH, c[5][7], new Door());
-			
+
+
 		for(int col=0; col<4; col++) {
-				c[col+1][col].setConnection(SOUTH, c[col+2][col], new Door());
-				c[col+2][col+1].setConnection(EAST, c[col+2][col+1], new Door());
-			}
-		
+			c[col+1][col].setConnection(SOUTH, c[col+2][col], new Door());
+			c[col+2][col].setConnection(EAST, c[col+2][col+1], new Door());
+		}
+
+
 		for(int col=6; col<9; col++) {
 			c[col-6][col+1].setConnection(SOUTH, c[col-5][col+1], new Door());
 			c[col-6][col].setConnection(EAST, c[col-6][col+1], new Door());
 		}
-		
+
 		Door door1=new Door();
 		door1.setOpen(false);
 		door1.setLocked(true);
 		c[5][8].setConnection(EAST, c[5][9], door1);
-		
+
 	}
 
 	public String getDescription() {
@@ -260,7 +258,7 @@ public class CaveRoom {
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	
+
 
 
 	public String getContents() {

@@ -4,12 +4,9 @@ import caveExplore.CaveExplorer;
 import caveExplore.NPC;
 
 public class BooNPC extends NPC {
-	
-	private boolean active;
 
 	public BooNPC() {
 		super();
-		
 	}
 	
 	public String getSymbol() {
@@ -21,13 +18,13 @@ public class BooNPC extends NPC {
 				+ "I'm spooooky~~~ ");
 		CaveExplorer.print("Press Enter to continue.");
 		CaveExplorer.in.nextLine();
-		String s = CaveExplorer.in.nextLine();
-		while(!s.equalsIgnoreCase(" ")) {
-			CaveExplorer.print("Press Enter and get ready to lose!");
-			s=CaveExplorer.in.nextLine();
+		String input = CaveExplorer.in.nextLine();
+		while(input.length()>1) {
+		System.out.println("Press Enter and get ready to lose.");
+		input = CaveExplorer.in.nextLine();
 		}
 		LubnaFrontEnd game = new LubnaFrontEnd();
-		this.active =false;
-
+		game.play();
 	}
+	
 }
