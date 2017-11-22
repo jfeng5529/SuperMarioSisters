@@ -4,6 +4,7 @@ import janeLubnaGame.BooNPC;
 import janeLubnaGame.JanePipeRoom;
 import janeLubnaGame.LubnaFindLives;
 import janeLubnaGame.LubnaToadAdvise;
+import jessiMimiGame.Bowser;
 import jessiMimiGame.JessiMerchantRoom;
 import jessiMimiGame.MimiRoom;
 
