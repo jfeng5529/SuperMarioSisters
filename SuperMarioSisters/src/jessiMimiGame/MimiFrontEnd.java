@@ -1,5 +1,9 @@
 package jessiMimiGame;
 
+import caveExplore.CaveExplorer;
+import caveExplore.CaveRoom;
+import caveExplore.NPCRoom;
+
 public class MimiFrontEnd implements JessiSupporter{
 	
 	private static MimiSupporter backend;
@@ -30,8 +34,18 @@ public class MimiFrontEnd implements JessiSupporter{
 
 	public void menu() {
 		System.out.println("BOSS BATTLE! Press 'r' for the rules of my game or press 'p' to play, but it won't be easy!");
-		rules();
-		startGame();
+		String command = MimiUtility.waitForLetterInput("rp");
+		if(command.equals("r")){
+			MimiUtility.print("MWAHAHAHAAA! This is Bob-omb Sweeper! Try not to choose a space with Bob-ombs hidden in them."
+					+ "\n Enter in the coordinates of a space on my map, and some empty spaces will open up."
+					+ "\n Each time an empty space is revealed, it will show the number of spaces in its perimeter that have Bob-ombs hidden in them!"
+					+ "\n Each time you successfully choose an empty space, you earn five points!"
+					+ "\n If you can get 50 points, you have defeated me, but I'm not an easy guy to beat! Try me!");
+			CaveExplorer.in.nextLine();
+			menu();
+		}else{
+			startGame();
+		}
 	}
 
 	public String validKeys() {
@@ -39,7 +53,6 @@ public class MimiFrontEnd implements JessiSupporter{
 	}
 
 	private String rules() {
-		validKeys();
 		return "MWAHAHAHAAA! This is Bob-omb Sweeper! Try not to choose a space with Bob-ombs hidden in them."
 		+ "\n Enter in the coordinates of a space on my map, and some empty spaces will open up."
 		+ "\n Each time an empty space is revealed, it will show the number of spaces in its perimeter that have Bob-ombs hidden in them!"

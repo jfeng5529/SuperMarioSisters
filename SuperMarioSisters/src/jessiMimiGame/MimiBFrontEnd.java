@@ -12,7 +12,7 @@ package jessiMimiGame;
 	    
 	    public MimiBFrontEnd (){
 	        mines = new int[10][10];
-	        plot = new char[10][10];
+	        plots = new char[10][10];
 	        startMines();
 	        randomMines();
 	        fillTips();
