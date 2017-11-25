@@ -31,6 +31,7 @@ public class JaneGameMap{
 	public void setContent() {
 		if(presentCandy) {
 			contents = "*";
+			defaultContents="*";
 		}
 		else {
 			contents=defaultContents;
@@ -47,7 +48,7 @@ public class JaneGameMap{
 	}
 	
 	public void leave() {
-		this.contents=defaultContents;
+		this.contents="";
 	}
 	
 	public boolean isPresentCandy() {
