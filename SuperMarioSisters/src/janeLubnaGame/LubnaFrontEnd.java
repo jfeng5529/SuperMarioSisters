@@ -15,6 +15,7 @@ public class LubnaFrontEnd implements JaneSupport {
 	private JaneGameMap currentRoom; // changes based on how the user navigate
 	private boolean winResult;
 	private String map;
+	private int candyCollected;
 
 
 	public LubnaFrontEnd() {
@@ -107,6 +108,10 @@ public class LubnaFrontEnd implements JaneSupport {
 
 	private void displayScore() {
 		// displays scores from the backend.
+		candyNum = backend.getTotalCandy();
+		candyCollected =  60 - candyNum;
+		System.out.println("You've collected "+ candyCollected +" candies. You still need to collect "+ candyNum+
+				" more candies to defeat Boo!" );
 
 	}
 

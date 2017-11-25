@@ -81,7 +81,7 @@ public class JaneBackEnd implements LubnaSupport {
 		return false;
 	}
 
-	private double getTotalCandy() {
+	public int getTotalCandy() {
 		JaneGameMap[][] plots= frontend.getPlots(); 
 		int candyCount=0; 
 		for(int row=0; row<plots.length; row++) {

@@ -17,6 +17,9 @@ public interface LubnaSupport {
 
 	void setUpPlot();
 
+	int getTotalCandy();
+
+	
 
 	
 }
