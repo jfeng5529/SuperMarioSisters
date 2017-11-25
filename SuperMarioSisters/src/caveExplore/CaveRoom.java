@@ -2,7 +2,7 @@ package caveExplore;
 
 import janeLubnaGame.BooNPC;
 import janeLubnaGame.JanePipeRoom;
-import janeLubnaGame.LubnaFindLives;
+import janeLubnaGame.LubnaFlashLights;
 import janeLubnaGame.LubnaToadAdvise;
 import jessiMimiGame.Bowser;
 import jessiMimiGame.JessiMerchantRoom;
@@ -175,7 +175,7 @@ public class CaveRoom {
 				CaveExplorer.npcs[1].setPosition(1, 3);//
 		CaveRoom customRoom = new JanePipeRoom("Room");
 		CaveExplorer.caves[4][9] = customRoom;
-				CaveRoom customRoom2 = new LubnaFindLives("Room");
+				CaveRoom customRoom2 = new LubnaFlashLights("Room");
 				CaveExplorer.caves[3][3] = customRoom2;
 				CaveRoom customRoom3 = new JessiMerchantRoom("Room");
 				CaveExplorer.caves[3][1] = customRoom3;

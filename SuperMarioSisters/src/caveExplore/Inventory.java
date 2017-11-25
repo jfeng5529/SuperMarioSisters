@@ -3,14 +3,12 @@ package caveExplore;
 public class Inventory {
 	private String map;
 	private int money;
-	private int life;
 	private int hp;
 	private int storageBag;
 	private int flashlight;
 	public Inventory() {
 		money=0;
 		//updateMap();
-		life = 0;
 		hp = 50;
 		storageBag = 2;
 		flashlight = 0;
@@ -64,9 +62,6 @@ public class Inventory {
 	}
 	public int getMoney() {
 		return money;
-	}
-	public  int addLife() {
-		return life++;
 	}
 	
 	//public int hpCost() {
