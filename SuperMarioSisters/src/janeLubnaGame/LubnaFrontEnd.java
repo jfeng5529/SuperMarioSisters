@@ -152,9 +152,13 @@ public class LubnaFrontEnd implements JaneSupport {
 	}
 
 	private void rules() {
-		CaveExplorer.print("You must avoid Boo and eat all the candy to win and get the key to enter last challenge. \nHints: if you have collected flashlights in the cave, then you use it to scare off Boo"
-				+ " if the time comes. GOOOOOOD LUCKKK~~");
+		CaveExplorer.print("As you enter you see you're surrounded by candy. "
+				+ "You need to eat all the candy to win and obtain the key to enter the last challenge. ");
+		CaveExplorer.print("Press Enter for Hints.");
+		CaveExplorer.in.nextLine();
 
+		CaveExplorer.print("If you have collect flashlights, you can use them to scare of Boo when the time comes."
+				+ " ~~~~GOOD LUCK!!~~~");
 	}
 
 
