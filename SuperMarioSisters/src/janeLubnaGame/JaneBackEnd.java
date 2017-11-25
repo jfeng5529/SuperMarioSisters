@@ -91,7 +91,7 @@ public class JaneBackEnd implements LubnaSupport {
 				}
 			}
 		}
-		return candyCount; 
+		return candyCount; //
 	}
 
 	public boolean isValid(String input) {

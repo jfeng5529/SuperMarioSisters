@@ -92,8 +92,10 @@ public class JaneGameMap{
 	}
 
 	public String getDescription() {
-		// TODO Auto-generated method stub
-		return null;
+		if(presentEnemies!=null) {
+			description ="Oh no, Boo caught you! Press e to interact";
+		}
+	return description;
 	}
 	
 }

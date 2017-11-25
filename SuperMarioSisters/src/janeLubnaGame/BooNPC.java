@@ -6,7 +6,7 @@ import caveExplore.NPC;
 public class BooNPC extends NPC {
 	private boolean move;
 	public BooNPC() {
-		super("You finally encounter the ghost Boo that has been haunting you down. Press e to interact");
+		super("You finally encounter the ghost Boo that has been haunting you down. Press e to interact.");
 		
 	}
 	

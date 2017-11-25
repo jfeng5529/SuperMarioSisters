@@ -3,8 +3,6 @@ package janeLubnaGame;
 import java.util.Scanner;
 
 import caveExplore.CaveExplorer;
-import caveExplore.CaveRoom;
-import caveExplore.NPCRoom;
 
 public class LubnaFrontEnd implements JaneSupport {
 
