@@ -28,12 +28,11 @@ public class JaneEnemies  {
 		if(row>= 0&& row <plot.length && col>=0 && col <plot[row].length) {
 			if(currentRoom!=null) {
 				currentRoom.leave();
-			}else {
+			}
 				currentRow =row;
 				currentCol = col;
 				currentRoom=(JaneGameMap)plot[row][col];
-				currentRoom.enter("b");
-			}
+				currentRoom.enterNPC(this);
 		}
 		frontend.setPlots(plot);
 	}
@@ -58,7 +57,6 @@ public class JaneEnemies  {
 
 	}
 	public int[] calculateMovement() {
-		JaneGameMap currentRoom = frontend.getCurrentRoom();
 		int[] moves=new int[2];
 		int [][] possibleMoves = {{-1,0},{0,1},{1,0},{0, -1}};
 		int rand=(int)(Math.random()*possibleMoves.length);

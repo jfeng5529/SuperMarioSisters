@@ -123,7 +123,7 @@ public class JaneBackEnd implements LubnaSupport {
 
 	private void performAction(int direction) {
 		if(enemiesPresent()) {
-			enemies[enemiesCount].interaction(enemiesCount);
+			enemies[enemiesCount-1].interaction(enemiesCount);
 			enemiesCount--;
 		}
 		else {

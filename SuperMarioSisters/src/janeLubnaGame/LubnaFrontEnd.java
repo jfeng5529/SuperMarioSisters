@@ -33,7 +33,6 @@ public class LubnaFrontEnd implements JaneSupport {
 	}
 
 	public void play() {
-		updatePlot();
 		introduction();
 		menu();
 
@@ -66,6 +65,7 @@ public class LubnaFrontEnd implements JaneSupport {
 			updatePlot();
 			displayBoard();
 			displayScore();
+			CaveExplorer.print(currentRoom.getDescription());
 			String input = getValidUserInput();
 			if(input.equals("cheatcode")) {
 				printGameResult();

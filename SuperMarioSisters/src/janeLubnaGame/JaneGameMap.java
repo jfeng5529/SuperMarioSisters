@@ -14,6 +14,7 @@ public class JaneGameMap{
 	private JaneGameMap[] borderingRooms;
 	private Object[] door;
 	private JaneEnemies presentEnemies;
+	private String description;
 	
 	
 	public JaneGameMap() {
@@ -23,6 +24,7 @@ public class JaneGameMap{
 		defaultContents=" ";
 		contents=" ";
 		presentEnemies=null;
+		description = "The Enemies are coming, hurry!";
 		
 	}
 	
@@ -80,13 +82,18 @@ public class JaneGameMap{
 
 	public void enterNPC(JaneEnemies janeEnemies) {
 		presentEnemies=janeEnemies;
-		contents=presentEnemies.getSymbol();
+		contents="b";
 		
 	}
 
 	public void leaveNPC() {
 		presentEnemies=null;
 		contents=defaultContents;
+	}
+
+	public String getDescription() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	
 }
