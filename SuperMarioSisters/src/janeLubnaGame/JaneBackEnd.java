@@ -5,6 +5,7 @@ import caveExplore.Inventory;
 import caveExplore.NPCRoom;
 
 public class JaneBackEnd implements LubnaSupport {
+	
 
 	private int candy;
 	private JaneSupport frontend;
@@ -42,14 +43,14 @@ public class JaneBackEnd implements LubnaSupport {
 
 	public void setUpDoors() {
 		int height=5; int width=9;
-		for(int row=0; row<5; row++) {
+		for(int row=0; row<6; row++) {
 			for(int col=0; col<width; col++) {
 				frontend.getPlots()[row][col].setConnection(JaneGameMap.EAST, frontend.getPlots()[row][col+1], new Object());
 			}
 		}
-		for(int col=0; col<width; col++) {
+		for(int col=0; col<10; col++) {
 			for(int row=0; row<height; row++) {
-				frontend.getPlots()[row][col].setConnection(JaneGameMap.SOUTH, frontend.getPlots()[row][col+1], new Object());
+				frontend.getPlots()[row][col].setConnection(JaneGameMap.SOUTH, frontend.getPlots()[row+1][col], new Object());
 			}
 		}
 	}
@@ -59,27 +60,22 @@ public class JaneBackEnd implements LubnaSupport {
 
 		for(int row =0; row<plots.length; row++) {
 			for(int col=0; col<plots[row].length; col++) {
-				if(row==0 && col==0|| row==6 && col==0 || row==0&& col==9|| row==6&& col==0) {
-					plots[row][col]=new JaneGameMap();
-				}
-				else
-				{
-					if((int)(Math.random())>.3) {
+//					if((int)(Math.random())>.1) {
 						plots[row][col]=new JaneGameMap();
 						plots[row][col].setPresentCandy(true);
-					}
-					else
-					{
-						plots[row][col]=new JaneGameMap();
-					}
-				}
-			}
+						plots[row][col].setContent();
+//					}
+//					else
+//					{
+//						plots[row][col]=new JaneGameMap();
+//					}
+						}
 		}
 		frontend.setPlots(plots);
 	}
 
 	public boolean stillPlaying() {
-		if(!enemies[enemiesCount-1].getResult().equals("lost")&&candy>=(getTotalCandy()*.8)) {
+		if(!enemies[enemiesCount-1].getResult().equals("lost")&&candy<=(getTotalCandy()*.8)) {
 			return true;
 		}
 		return false;

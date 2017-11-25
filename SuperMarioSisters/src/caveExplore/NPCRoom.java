@@ -1,7 +1,5 @@
 package caveExplore;
 
-import janeLubnaGame.JaneCandyRoom;
-
 public class NPCRoom extends CaveRoom {
 
 	private NPC presentNPC;
@@ -47,7 +45,24 @@ public class NPCRoom extends CaveRoom {
 	public void printAllowedEntry() {
 		System.out.println("You can only enter w, a, s, d to move or you can type 'e' to interact.");
 	}
-	
+	public int convertInput(String input) {
+		return validKeys().indexOf(input);
+	}
+	public void respondToKey(int direction) {
+		String input="";
+		if(containsNPC()) {
+			while(direction!=4){
+				CaveExplorer.print("You can't get escape from Boo. Let's just face the reality and press e");
+				input = CaveExplorer.in.nextLine();
+				direction=convertInput(input);
+				}
+			presentNPC.interact();
+		}
+		else {
+			super.respondToKey(direction);
+		}
+	}
+
 	public void performAction(int direction) {
 		if(direction ==4) {
 		 if(containsNPC()) {

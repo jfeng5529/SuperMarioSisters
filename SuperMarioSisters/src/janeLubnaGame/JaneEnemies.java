@@ -1,10 +1,12 @@
 package janeLubnaGame;
 
 import caveExplore.Inventory;
+import caveExplore.NPCRoom;
 
 public class JaneEnemies  {
 	private int currentRow;
 	private int currentCol;
+	private JaneGameMap currentRoom;
 	private JaneSupport frontend;
 	private Inventory inventory;
 	private String result;
@@ -15,6 +17,7 @@ public class JaneEnemies  {
 		this.frontend= frontend;
 		this.currentCol=-1;
 		this.currentRow=-1;
+		this.currentRoom=null;
 		result="";
 	}
 	public String getSymbol() {
@@ -22,16 +25,17 @@ public class JaneEnemies  {
 	}
 	public void setPosition(int row, int col) {
 		JaneGameMap[][] plot=frontend.getPlots();
-		JaneGameMap currentRoom = frontend.getCurrentRoom();
 		if(row>= 0&& row <plot.length && col>=0 && col <plot[row].length) {
 			if(currentRoom!=null) {
-				currentRoom.leaveNPC();
+				currentRoom.leave();
 			}else {
 				currentRow =row;
 				currentCol = col;
-				currentRoom.enterNPC(this);
+				currentRoom=(JaneGameMap)plot[row][col];
+				currentRoom.enter("b");
 			}
 		}
+		frontend.setPlots(plot);
 	}
 	public void interaction(int enemiesCount) {
 		enemies= new JaneEnemies[4];

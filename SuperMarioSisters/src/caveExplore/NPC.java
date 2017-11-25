@@ -15,9 +15,9 @@ public class NPC {
 	private String activeDescription;
 	private String inactiveDescription;
 
-	public NPC() {
+	public NPC(String inactiveDescription) {
 		this.floor=CaveExplorer.caves;
-		this.inactiveDescription="The person you spoke to earlier is standing";
+		this.inactiveDescription=inactiveDescription;
 		this.activeDescription="There is a person waiting to talk to you.";
 		//to indicate that the NPC doesn't have a position yet, use coordinates -1, -1
 		this.currentCol=-1;
@@ -90,4 +90,5 @@ public class NPC {
 	public String getSymbol() {
 		return "M";
 	}
+
 }

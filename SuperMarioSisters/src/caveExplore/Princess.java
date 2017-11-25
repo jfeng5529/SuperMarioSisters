@@ -3,7 +3,7 @@ package caveExplore;
 public class Princess extends NPC {
 	 private String content;
 	public Princess() {
-		super();
+		super("The prince has been waiting for you to rescue him");
 		content = "P";
 	}
 	

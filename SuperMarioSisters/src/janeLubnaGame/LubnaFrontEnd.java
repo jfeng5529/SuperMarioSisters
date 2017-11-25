@@ -40,8 +40,13 @@ public class LubnaFrontEnd implements JaneSupport {
 	}
 
 	private void menu() {
+		CaveExplorer.print("Are you ready to beat Boo and move on to the next level to save Prince Peach? Press 'r' for ready!");
+		String input = CaveExplorer.in.nextLine();
+		while(!input.equals("r")) {
+		System.out.println("Too bad if you are not ready. Heroes don't wait for time. Press 'r'!");
+		input = CaveExplorer.in.nextLine();
+		}
 		startPlaying();
-
 	}
 
 	private void introduction() {
@@ -73,13 +78,9 @@ public class LubnaFrontEnd implements JaneSupport {
 		printGameResult();
 	}
 
-	private void update() {
-		// TODO Auto-generated method stub
-
-	}
 
 	private int convertToDirection(String input) {
-		return "wasde".indexOf(input);
+		return "wdsae".indexOf(input);
 	}
 
 	public void printAllowedEntry() {
@@ -94,7 +95,7 @@ public class LubnaFrontEnd implements JaneSupport {
 
 	private String getValidUserInput() {
 		String input= CaveExplorer.in.nextLine();
-		if(input.equals("cheatCode")) {
+		if(input.equals("cheatcode")) {
 			return input;
 		}
 		while(!backend.isValid(input)) {
@@ -123,17 +124,17 @@ public class LubnaFrontEnd implements JaneSupport {
 		for(JaneGameMap[] row: plot)
 			for(int i = 0; i < 3; i++) {
 				String text = "";
-				for(JaneGameMap plot: row) {
-					if(plot.getConnection(JaneGameMap.WEST) != null )
+				for(JaneGameMap plot1: row) {
+					if(plot1.getConnection(JaneGameMap.WEST) != null )
 						text += " ";
 					else
 						text += "|";
 					if(i == 0)
 						text += "   ";
 					else if(i == 1)
-						text += " " + plot.getContents() + " ";
+						text += " " + plot1.getContents() + " ";
 					else if(i == 2)
-						if(plot.getConnection(JaneGameMap.SOUTH) != null)
+						if(plot1.getConnection(JaneGameMap.SOUTH) != null)
 							text += "   ";
 						else
 							text += "___";
@@ -148,7 +149,8 @@ public class LubnaFrontEnd implements JaneSupport {
 	}
 
 	private void rules() {
-		System.out.println("You must avoid Boo and eat all the candy to win and get the key to enter last challenge");
+		CaveExplorer.print("You must avoid Boo and eat all the candy to win and get the key to enter last challenge. \nHints: if you have collected flashlights in the cave, then you use it to scare off Boo"
+				+ " if the time comes. GOOOOOOD LUCKKK~~");
 
 	}
 
