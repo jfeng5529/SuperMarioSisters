@@ -27,7 +27,7 @@ public class JaneEnemies  {
 		JaneGameMap[][] plot=frontend.getPlots();
 		if(row>= 0&& row <plot.length && col>=0 && col <plot[row].length) {
 			if(currentRoom!=null) {
-				currentRoom.leave();
+				currentRoom.leaveNPC();
 			}
 				currentRow =row;
 				currentCol = col;

@@ -60,7 +60,7 @@ public class JaneBackEnd implements LubnaSupport {
 
 		for(int row =0; row<plots.length; row++) {
 			for(int col=0; col<plots[row].length; col++) {
-//					if((int)(Math.random())>.1) {
+//					if((int)(Math.random()*1)>) {
 						plots[row][col]=new JaneGameMap();
 						plots[row][col].setPresentCandy(true);
 						plots[row][col].setContent();
@@ -91,7 +91,7 @@ public class JaneBackEnd implements LubnaSupport {
 				}
 			}
 		}
-		return candyCount; //
+		return candyCount; 
 	}
 
 	public boolean isValid(String input) {
