@@ -8,7 +8,7 @@ public class LubnaFrontEnd implements JaneSupport {
 
 	private LubnaSupport backend;
 	private JaneEnemies[] enemies;
-	private int candyNum;
+	private int candyLeft;
 	private JaneGameMap[][] plot; //every room in the cave
 	private JaneGameMap currentRoom; // changes based on how the user navigate
 	private boolean winResult;
@@ -19,7 +19,7 @@ public class LubnaFrontEnd implements JaneSupport {
 	public LubnaFrontEnd() {
 		backend=new JaneBackEnd(this);
 		winResult=false;
-		candyNum=0;
+		candyLeft=73;
 		CaveExplorer.in = new Scanner(System.in);
 		backend.setUpPlot();
 
@@ -106,9 +106,9 @@ public class LubnaFrontEnd implements JaneSupport {
 
 	private void displayScore() {
 		// displays scores from the backend.
-		candyNum = backend.getTotalCandy();
-		candyCollected =  60 - candyNum;
-		System.out.println("You've collected "+ candyCollected +" candies. You still need to collect "+ candyNum+
+		candyCollected =backend.getCandy();
+		candyLeft = backend.getTotalCandy();
+		System.out.println("You've collected "+ candyCollected +" candies. You still need to collect "+ candyLeft+
 				" more candies to defeat Boo!" );
 
 	}

@@ -11,11 +11,13 @@ public class JaneBackEnd implements LubnaSupport {
 	private JaneSupport frontend;
 	private int enemiesCount;
 	private JaneEnemies[] enemies;
+	private int totalCandy;
 
 	public JaneBackEnd(JaneSupport frontend) {
 		enemiesCount=4;
 		this.frontend=frontend;
-		this.candy=frontend.getCandy();
+		this.candy=0;
+		this.totalCandy=73;
 
 	}
 	public void setUpPlot() {
@@ -75,7 +77,7 @@ public class JaneBackEnd implements LubnaSupport {
 	}
 
 	public boolean stillPlaying() {
-		if(!enemies[enemiesCount-1].getResult().equals("lost")&&candy<=(getTotalCandy()*.8)) {
+		if(!enemies[enemiesCount-1].getResult().equals("lost")&&candy!=totalCandy) {
 			return true;
 		}
 		return false;
@@ -114,6 +116,7 @@ public class JaneBackEnd implements LubnaSupport {
 					currentRoom.setPresentCandy(false);
 					candy++;
 				}
+				frontend.setCurrentRoom(currentRoom);
 			}
 		}
 		else {

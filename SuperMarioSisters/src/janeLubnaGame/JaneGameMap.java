@@ -31,7 +31,6 @@ public class JaneGameMap{
 	public void setContent() {
 		if(presentCandy) {
 			contents = "*";
-			defaultContents="*";
 		}
 		else {
 			contents=defaultContents;
@@ -83,13 +82,18 @@ public class JaneGameMap{
 
 	public void enterNPC(JaneEnemies janeEnemies) {
 		presentEnemies=janeEnemies;
-		contents="b";
+		contents="E";
 		
 	}
 
 	public void leaveNPC() {
 		presentEnemies=null;
-		contents=defaultContents;
+		if(!presentCandy) {
+			contents=defaultContents;
+		}
+		else {
+		contents="*";
+		}
 	}
 
 	public String getDescription() {
