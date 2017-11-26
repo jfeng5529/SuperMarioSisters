@@ -24,18 +24,13 @@ public class FrontEnd implements JessiSupporter{
 
 	private void play() {
 		introduction();
-		menu();
-	}
-	
-	private void menu() {
-		startGame();
+		//startGame();
 	}
 	
 	private void startGame() {
 		MineField plots = backend.getPlots();
 		while(safeSpot) {
 			JessiBackEnd.displayField(plots);
-			displayScoreStatus(plots);
 			System.out.println("Type in the row and column!");
 			int[] coords = backend.getCoordInput();
 			if (backend.reveal(coords[0], coords[1])) {
@@ -43,10 +38,8 @@ public class FrontEnd implements JessiSupporter{
 				JessiBackEnd.displayField(plots);
 			}
 		}
-		displayScoreStatus(plots);
-		gameOver = true;
-		System.out.println("YOU HAVE HIT A BOB-OMB!!!;(");
-		System.out.println("__________Game Over__________\n");
+		System.out.println("                   YOU HAVE HIT A BOB-OMB!!!");
+		System.out.println("                 __________Game Over__________\n");
 	}
 	
 	public String validKeys() {
@@ -67,13 +60,11 @@ public class FrontEnd implements JessiSupporter{
 		String command = MimiUtility.waitForLetterInput("rp");
 		if(command.equals("r")) {
 			rules();
+			startGame();
 		}else {
 			startGame();
 		}
 	
 	}
 	
-	private void displayScoreStatus(MineField p) {
-		String status = "";
-	}
 }
