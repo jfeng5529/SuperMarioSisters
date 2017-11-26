@@ -1,8 +1,6 @@
 package janeLubnaGame;
 
 import caveExplore.CaveExplorer;
-import caveExplore.Inventory;
-import caveExplore.NPCRoom;
 
 public class JaneEnemies  {
 	private int currentRow;
@@ -11,14 +9,16 @@ public class JaneEnemies  {
 	private JaneSupport frontend;
 	private String result;
 	private JaneEnemies[] enemies;
+	private int currentIndex;
 
 
-	public JaneEnemies(JaneSupport frontend) {
+	public JaneEnemies(JaneSupport frontend, int i) {
 		this.frontend= frontend;
 		this.currentCol=-1;
 		this.currentRow=-1;
 		this.currentRoom=null;
 		result="";
+		currentIndex=i;
 	}
 	public String getSymbol() {
 		return "E";
@@ -32,23 +32,23 @@ public class JaneEnemies  {
 				currentRow =row;
 				currentCol = col;
 				currentRoom=(JaneGameMap)plot[row][col];
-				currentRoom.enterNPC();
+				currentRoom.enterNPC(this);
 		}
 		frontend.setPlots(plot);
 	}
-	public void interaction(int enemiesCount) {
+	public boolean interaction() {
 		enemies= frontend.getEnemies();
 		if(CaveExplorer.inventory.getFlashLight()>0) {
-			if(enemiesCount-1>=0) {
-				enemies[enemiesCount-1]=null;
+				enemies[currentIndex]=null;
+				frontend.getCurrentRoom().leaveNPC();
 				CaveExplorer.inventory.decreaseFlashLight();
 				CaveExplorer.print("Yay! You defeated one Enemy by using a flashlight!. Now you have "+CaveExplorer.inventory.getFlashLight()+" flashlights left. Be careful!");
+				frontend.setEnemies(enemies);
+				return true;
 			}
-		}
 		else {
-			result="lost";
+			return false;
 		}
-		frontend.setEnemies(enemies);
 	}
 	public void act() {
 		int[] move = calculateMovement();
@@ -70,6 +70,7 @@ public class JaneEnemies  {
 		}
 		return moves;
 	}
+	
 	public String getResult() {
 		return result;//
 	}

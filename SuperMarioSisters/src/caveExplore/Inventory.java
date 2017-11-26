@@ -6,12 +6,14 @@ public class Inventory {
 	private int hp;
 	private int storageBag;
 	private int flashlight;
+	private boolean key;
 	public Inventory() {
 		money=0;
 		//updateMap();
 		hp = 50;
 		storageBag = 2;
 		flashlight = 0;
+		key=false;
 	}
 
 	public void updateMap() {
@@ -88,6 +90,14 @@ public class Inventory {
 	}
 	public int decreaseFlashLight() {
 		return flashlight--;
+	}
+
+	public void setKey(boolean b) {
+		key=b;
+		
+	}
+	public boolean getKey() {
+		return key;
 	}
 
 }

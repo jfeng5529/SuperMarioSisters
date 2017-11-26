@@ -13,8 +13,9 @@ public class JaneGameMap{
 	//the rooms are organize by direction, "null" signifies no room/door in that direction
 	private JaneGameMap[] borderingRooms;
 	private Object[] door;
-	private boolean presentEnemies;
+	private JaneEnemies presentEnemies;
 	private String description;
+	private String defaultDescription;
 	
 	
 	public JaneGameMap() {
@@ -23,9 +24,8 @@ public class JaneGameMap{
 		door= new Object[4];
 		setDefaultContents(" ");
 		contents=defaultContents;
-		presentEnemies=false;
-		description = "The Enemies are coming, hurry!";
-		
+		presentEnemies=null;
+		defaultDescription = "The Enemies are coming, hurry!";
 	}
 	
 	public void setContent() {
@@ -50,8 +50,8 @@ public class JaneGameMap{
 		this.contents=" ";
 	}
 	
-	public boolean getPresentEnemies() {
-		return presentEnemies;
+	public boolean containEnemies() {
+		return presentEnemies != null;
 	}
 
 	public boolean isPresentCandy() {
@@ -84,14 +84,14 @@ public class JaneGameMap{
 		return borderingRooms[direction];
 	}
 
-	public void enterNPC() {
-		presentEnemies=true;
+	public void enterNPC(JaneEnemies e) {
+		presentEnemies=e;
 		contents="E";
 		
 	}
 
 	public void leaveNPC() {
-		presentEnemies=false;
+		presentEnemies=null;
 		if(!presentCandy) {
 			contents=defaultContents;
 		}
@@ -99,21 +99,28 @@ public class JaneGameMap{
 		contents="*";
 		}
 	}
-
 	public String getDescription() {
-		if(presentEnemies) {
-			description ="Oh no, Boo caught you! Press e to interact";
-		}
-	return description;
+		if(containEnemies()) 
+			description="Oh no! You got caught by Boo! Press 'e' to interact";
+		else
+			description=defaultDescription;
+		return description;
 	}
-	
 
 	public void setDefaultContents(String defaultContents) {
 		this.defaultContents = defaultContents;
 	}
 	
 	public boolean canEnter() {
-		return !presentEnemies;
+		return !containEnemies();
+	}
+
+	public JaneEnemies getPresentEnemies() {
+		return presentEnemies;
+	}
+
+	public void setPresentEnemies(JaneEnemies presentEnemies) {
+		this.presentEnemies = presentEnemies;
 	}
 
 	

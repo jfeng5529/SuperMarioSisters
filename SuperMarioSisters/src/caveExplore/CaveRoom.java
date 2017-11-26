@@ -181,6 +181,8 @@ public class CaveRoom {
 				CaveExplorer.caves[3][1] = customRoom3;
 				CaveRoom customRoom4 = new MimiRoom("Room");
 				CaveExplorer.caves[3][4] = customRoom4;
+				CaveRoom customRoom6 = new BowserRoom("Room");
+				CaveExplorer.caves[5][8] = customRoom6;
 		CaveRoom customRoom5 = new LubnaToadAdvise("Room");
 		CaveExplorer.caves[1][1] = customRoom5;
 		//4.set your starting room:
@@ -231,6 +233,8 @@ public class CaveRoom {
 		c[2][8].setConnection(SOUTH, c[3][8], new Door());
 		c[3][7].setConnection(SOUTH, c[4][7], new Door());
 		c[4][7].setConnection(SOUTH, c[5][7], new Door());
+		c[4][9].setConnection(SOUTH, c[5][9], new Door());
+		c[5][8].setConnection(EAST, c[5][9], new Door());
 
 
 		for(int col=0; col<4; col++) {
@@ -244,10 +248,10 @@ public class CaveRoom {
 			c[col-6][col].setConnection(EAST, c[col-6][col+1], new Door());
 		}
 
-		Door door1=new Door();
-		door1.setOpen(false);
-		door1.setLocked(true);
-		c[5][8].setConnection(EAST, c[5][9], door1);
+//		Door door1=new Door();
+//		door1.setOpen(false);
+//		door1.setLocked(true);
+//		c[5][8].setConnection(EAST, c[5][9], door1);
 
 	}
 

@@ -23,7 +23,7 @@ public class CaveExplorer {
 	private static void startExploring() {
 		while(playing) {
 			npcActions();
-			print(inventory.getDescription());
+			System.out.println(inventory.getDescription());
 			print(currentRoom.getDescription());
 			print("what would you like to do?");
 			String input= in.nextLine();
@@ -43,7 +43,39 @@ public class CaveExplorer {
 	}
 
 	public static void print(String s) {
-		//NOTE LATER YOU CAN REPLACE THIS LINE WITH THE MORE SOPHISCATED "MULTILINE" IN CHATBOT
-		System.out.println(s);
+		String printString = "";
+		int cutoff = 80;
+		//this while loop last as long as there are words left in the original String
+		while(s.length() > 0){
+
+			String currentCut = "";
+			String nextWord = "";
+
+			//while the current cut is still less than the line length 
+			//AND there are still words left to add
+			while(currentCut.length()+nextWord.length() < cutoff && s.length() > 0){
+
+				//add the next word
+				currentCut += nextWord;
+
+				//remove the word that was added from the original String
+				s = s.substring(nextWord.length());
+
+				//identify the following word, exclude the space
+				int endOfWord = s.indexOf(" ");
+
+				//if there are no more spaces, this is the last word, so add the whole thing
+				if(endOfWord == -1) {
+					endOfWord = s.length()-1;//subtract 1 because index of last letter is one les than length
+				}
+
+				//the next word should include the space
+				nextWord = s.substring(0,endOfWord+1);
+			}
+
+			printString +=currentCut+"\n";
+
+		}
+		System.out.print(printString);
 	}
 }

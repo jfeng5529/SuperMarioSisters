@@ -53,7 +53,7 @@ public class LubnaFrontEnd implements JaneSupport {
 		System.out.println("LEVEL ONE:YOU'VE ENCOUNTERED BOO, IN ORDER TO RESCUE YOUR PRINCE WIN THIS GAME.");
 		System.out.println("Press Enter to get the instructions.");
 		String input = CaveExplorer.in.nextLine();
-		while(input.length()>1) {
+		while(input.length()>0) {
 		System.out.println("Press Enter to get the instructions. It's not that hard.");
 		input = CaveExplorer.in.nextLine();
 		}
@@ -69,6 +69,7 @@ public class LubnaFrontEnd implements JaneSupport {
 			CaveExplorer.print(currentRoom.getDescription());
 			String input = getValidUserInput();
 			if(input.equals("cheatcode")) {
+				cheat=true;
 				break;
 			}
 			int direction =convertToDirection(input);
@@ -169,8 +170,11 @@ public class LubnaFrontEnd implements JaneSupport {
 		CaveExplorer.print("As you enter you see you're surrounded by candy. "
 				+ "You need to eat all the candy to win and obtain the key to enter the last challenge. ");
 		CaveExplorer.print("Press Enter for Hints.");
-		CaveExplorer.in.nextLine();
-
+		String input =CaveExplorer.in.nextLine();
+		while(input.length()>0) {
+			System.out.println("Press Enter to get the instructions. It's not that hard.");
+			input = CaveExplorer.in.nextLine();
+			}
 		CaveExplorer.print("If you have collect flashlights, you can use them to scare of Boo when the time comes."
 				+ " ~~~~GOOD LUCK!!~~~");
 	}
@@ -211,6 +215,9 @@ public class LubnaFrontEnd implements JaneSupport {
 	@Override
 	public void setPlots(JaneGameMap[][] plot) {
 		this.plot = plot;
+	}
+	public boolean getCheat() {
+		return cheat;
 	}
 
 }
