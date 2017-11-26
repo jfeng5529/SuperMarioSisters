@@ -32,7 +32,7 @@ public class JaneEnemies  {
 				currentRow =row;
 				currentCol = col;
 				currentRoom=(JaneGameMap)plot[row][col];
-				currentRoom.enterNPC(this);
+				currentRoom.enterNPC();
 		}
 		frontend.setPlots(plot);
 	}

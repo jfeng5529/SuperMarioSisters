@@ -13,7 +13,7 @@ public class JaneGameMap{
 	//the rooms are organize by direction, "null" signifies no room/door in that direction
 	private JaneGameMap[] borderingRooms;
 	private Object[] door;
-	private JaneEnemies presentEnemies;
+	private boolean presentEnemies;
 	private String description;
 	
 	
@@ -23,7 +23,7 @@ public class JaneGameMap{
 		door= new Object[4];
 		setDefaultContents(" ");
 		contents=defaultContents;
-		presentEnemies=null;
+		presentEnemies=false;
 		description = "The Enemies are coming, hurry!";
 		
 	}
@@ -50,8 +50,8 @@ public class JaneGameMap{
 		this.contents=" ";
 	}
 	
-	public boolean containsEnemies() {
-		return presentEnemies!=null;
+	public boolean getPresentEnemies() {
+		return presentEnemies;
 	}
 
 	public boolean isPresentCandy() {
@@ -84,14 +84,14 @@ public class JaneGameMap{
 		return borderingRooms[direction];
 	}
 
-	public void enterNPC(JaneEnemies janeEnemies) {
-		presentEnemies=janeEnemies;
+	public void enterNPC() {
+		presentEnemies=true;
 		contents="E";
 		
 	}
 
 	public void leaveNPC() {
-		presentEnemies=null;
+		presentEnemies=false;
 		if(!presentCandy) {
 			contents=defaultContents;
 		}
@@ -101,7 +101,7 @@ public class JaneGameMap{
 	}
 
 	public String getDescription() {
-		if(presentEnemies!=null) {
+		if(presentEnemies) {
 			description ="Oh no, Boo caught you! Press e to interact";
 		}
 	return description;
@@ -113,7 +113,7 @@ public class JaneGameMap{
 	}
 	
 	public boolean canEnter() {
-		return presentEnemies==null;
+		return !presentEnemies;
 	}
 
 	

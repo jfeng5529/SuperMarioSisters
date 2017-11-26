@@ -39,7 +39,7 @@ public class JaneBackEnd implements LubnaSupport {
 	}
 
 	public boolean enemiesPresent() {
-		return frontend.getCurrentRoom().containsEnemies();
+		return frontend.getCurrentRoom().getPresentEnemies();
 
 	}
 
@@ -122,6 +122,10 @@ public class JaneBackEnd implements LubnaSupport {
 					currentRoom.setPresentCandy(false);
 					candy++;
 				}
+				if(currentRoom.getPresentEnemies()) {
+					enemies[enemiesCount-1].interaction(enemiesCount);
+					enemiesCount--;
+				}
 				frontend.setCurrentRoom(currentRoom);
 			}
 		}
@@ -131,13 +135,13 @@ public class JaneBackEnd implements LubnaSupport {
 	}
 
 	private void performAction(int direction) {
-		if(frontend.getCurrentRoom().containsEnemies()) {
-			enemies[enemiesCount-1].interaction(enemiesCount);
-			enemiesCount--;
-		}
-		else {
-			CaveExplorer.print("There is nothing to interact with");
-		}
+//		if(frontend.getCurrentRoom().containsEnemies()) {
+//			enemies[enemiesCount-1].interaction(enemiesCount);
+//			enemiesCount--;
+//		}
+//		else {
+//			CaveExplorer.print("There is nothing to interact with");
+//		}
 
 	}
 
