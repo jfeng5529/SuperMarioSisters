@@ -89,7 +89,8 @@ public class LubnaFrontEnd implements JaneSupport {
 
 	private void printGameResult() {
 		//need more work from backend
-		CaveExplorer.print("Winner");
+		CaveExplorer.print("You've defeated Boo! That's one more step closer to getting your Prince back."
+				+ "Go to Bowser and get your Prince.");
 
 	}
 
