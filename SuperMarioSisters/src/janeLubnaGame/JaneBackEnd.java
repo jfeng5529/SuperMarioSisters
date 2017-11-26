@@ -12,7 +12,7 @@ public class JaneBackEnd implements LubnaSupport {
 	private int enemiesCount;
 	private JaneEnemies[] enemies;
 	private int totalCandy;
-	private String gameResult;
+	private boolean win;
 
 	public JaneBackEnd(JaneSupport frontend) {
 		enemiesCount=4;
@@ -81,10 +81,10 @@ public class JaneBackEnd implements LubnaSupport {
 			return true;
 		}
 		if(enemies[enemiesCount-1].getResult().equals("lost")) {
-			setGameResult("lost");
+			setGameResult(false);
 		}
 		if(candy==totalCandy) {
-			setGameResult("win");
+			setGameResult(true);
 		}
 		return false;
 	}
@@ -157,11 +157,11 @@ public class JaneBackEnd implements LubnaSupport {
 	public int getCandy() {
 		return candy;
 	} 
-	public void setGameResult(String result) {
-		gameResult=result;
+	public void setGameResult(boolean result) {
+		win=result;
 	}
-	public String gameResult() {
-		return gameResult;
+	public boolean gameResult() {
+		return win;
 	}
 
 }
