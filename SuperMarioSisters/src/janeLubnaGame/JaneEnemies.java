@@ -1,5 +1,6 @@
 package janeLubnaGame;
 
+import caveExplore.CaveExplorer;
 import caveExplore.Inventory;
 import caveExplore.NPCRoom;
 
@@ -38,11 +39,12 @@ public class JaneEnemies  {
 		frontend.setPlots(plot);
 	}
 	public void interaction(int enemiesCount) {
-		enemies= frontend.getEnemies();//
+		enemies= frontend.getEnemies();
 		if(inventory.getFlashLight()>0) {
 			if(enemiesCount-1>=0) {
 				enemies[enemiesCount-1]=null;
 				inventory.decreaseFlashLight();
+				CaveExplorer.print("Yay! You defeated one Enemy by using a flashlight!. Now you have "+inventory.getFlashLight()+" flashlights left. Be careful!");
 			}
 		}
 		else {
