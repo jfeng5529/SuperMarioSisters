@@ -14,6 +14,7 @@ public class LubnaFrontEnd implements JaneSupport {
 	private boolean winResult;
 	private String map;
 	private int candyCollected;
+	private boolean cheat;
 
 
 	public LubnaFrontEnd() {
@@ -22,6 +23,7 @@ public class LubnaFrontEnd implements JaneSupport {
 		candyLeft=40;
 		CaveExplorer.in = new Scanner(System.in);
 		backend.setUpPlot();
+		cheat=false;
 
 	}
 
@@ -67,14 +69,12 @@ public class LubnaFrontEnd implements JaneSupport {
 			CaveExplorer.print(currentRoom.getDescription());
 			String input = getValidUserInput();
 			if(input.equals("cheatcode")) {
-				printGameResult();
 				break;
 			}
 			int direction =convertToDirection(input);
 			backend.respondToKey(direction);
 		}
-		updatePlot();
-		displayBoard();
+		winResult = backend.gameResult();
 		printGameResult();
 	}
 
@@ -88,9 +88,8 @@ public class LubnaFrontEnd implements JaneSupport {
 	}
 
 	private void printGameResult() {
-		winResult = backend.gameResult();
-		if(winResult == true) {
-		
+		if(cheat||winResult) 
+		 {
 		CaveExplorer.print("You've defeated Boo! That's one more step closer to getting your Prince back."
 				+ "Go to Bowser and get your Prince.");
 		}
@@ -109,6 +108,7 @@ public class LubnaFrontEnd implements JaneSupport {
 	private String getValidUserInput() {
 		String input= CaveExplorer.in.nextLine();
 		if(input.equals("cheatcode")) {
+			cheat=true;
 			return input;
 		}
 		while(!backend.isValid(input)) {
