@@ -20,8 +20,10 @@ public class Princess extends NPC {
 	public void interact() {
 		super.setActive(false);
 		CaveExplorer.print("I know. Bowser is nothing compare to your strength and our love. Thank you Maria!");
+		CaveExplorer.playing=false;
 	}
 	public void respondToKey(int direction) {
 		CaveExplorer.print("You are not going anywere Maria. HAPPY ENDING!");
+		CaveExplorer.playing=false;
 	}
 }
