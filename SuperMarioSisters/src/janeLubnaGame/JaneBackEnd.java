@@ -126,7 +126,7 @@ public class JaneBackEnd implements LubnaSupport {
 					enemies[enemiesCount-1].interaction(enemiesCount);
 					enemiesCount--;
 				}
-				frontend.setCurrentRoom(currentRoom);
+				frontend.setCurrentRoom(currentRoom);//
 			}
 		}
 		else {
