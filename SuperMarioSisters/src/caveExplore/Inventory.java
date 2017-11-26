@@ -3,17 +3,17 @@ package caveExplore;
 public class Inventory {
 	private String map;
 	private int money;
-	private int life;
 	private int hp;
 	private int storageBag;
 	private int flashlight;
+	private boolean key;
 	public Inventory() {
 		money=0;
-		updateMap();
-		life = 0;
+		//updateMap();
 		hp = 50;
 		storageBag = 2;
 		flashlight = 0;
+		key=false;
 	}
 
 	public void updateMap() {
@@ -65,27 +65,39 @@ public class Inventory {
 	public int getMoney() {
 		return money;
 	}
-	public  int addLife() {
-		return life++;
-	}
 	
-	public int hpCost() {
-		return money = money - 50;
-	}
-	public int increaseHP() {
-		return hp = hp + 20;
-	}
+	//public int hpCost() {
+	//	return money = money - 50;
+	//}
+	//public int increaseHP() {
+	//	return hp = hp + 20;
+	//}
 	public int storageCost() {
 		return money = money - 80;
 	}
 	public int increaseStorage() {
 		return storageBag = storageBag + 3;
 	}
+
 	public int flashlightCost() {
 		return money = money - 30;
 	}
 	public int increaseFlash() {
-		return flashlight = flashlight + 1;
+		return flashlight++;
+	}
+	public int getFlashLight() {
+		return flashlight;
+	}
+	public int decreaseFlashLight() {
+		return flashlight--;
+	}
+
+	public void setKey(boolean b) {
+		key=b;
+		
+	}
+	public boolean getKey() {
+		return key;
 	}
 
 }
