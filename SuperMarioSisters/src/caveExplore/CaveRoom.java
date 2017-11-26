@@ -171,8 +171,8 @@ public class CaveRoom {
 		CaveExplorer.npcs =new NPC[2];
 		CaveExplorer.npcs[0] = new Princess();
 		CaveExplorer.npcs[0].setPosition(5, 9);
-				CaveExplorer.npcs[1] = new BooNPC();
-				CaveExplorer.npcs[1].setPosition(1, 3);//
+		CaveExplorer.npcs[1] = new BooNPC();
+		CaveExplorer.npcs[1].setPosition(3, 7);
 		CaveRoom customRoom = new JanePipeRoom("Room");
 		CaveExplorer.caves[4][9] = customRoom;
 				CaveRoom customRoom2 = new LubnaFlashLights("Room");

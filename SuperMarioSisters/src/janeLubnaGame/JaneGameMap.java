@@ -26,13 +26,15 @@ public class JaneGameMap{
 		contents=defaultContents;
 		presentEnemies=null;
 		defaultDescription = "The Enemies are coming, hurry!";
+		
 	}
 	
 	public void setContent() {
 		if(presentCandy) {
 			contents = "*";
 		}
-		else {
+		else 
+		{
 			contents=defaultContents;
 		}
 	}
@@ -92,6 +94,7 @@ public class JaneGameMap{
 
 	public void leaveNPC() {
 		presentEnemies=null;
+		if(!contents.equals("x")) {
 		if(!presentCandy) {
 			contents=defaultContents;
 		}
@@ -99,6 +102,7 @@ public class JaneGameMap{
 		contents="*";
 		}
 	}
+	}		
 	public String getDescription() {
 		if(containEnemies()) 
 			description="Oh no! You got caught by Boo! Press 'e' to interact";

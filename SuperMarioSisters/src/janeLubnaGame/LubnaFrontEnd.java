@@ -23,6 +23,7 @@ public class LubnaFrontEnd implements JaneSupport {
 		candyLeft=40;
 		CaveExplorer.in = new Scanner(System.in);
 		backend.setUpPlot();
+		candyLeft=backend.getTotalCandy();
 		cheat=false;
 
 	}
@@ -95,7 +96,7 @@ public class LubnaFrontEnd implements JaneSupport {
 				+ "Go to Bowser and get your Prince.");
 		}
 		else {
-			CaveExplorer.print("You've been defeated. We expected better from you. Try harder next time,"
+			CaveExplorer.print("You've been defeated by the Enemies. We expected better from you. Try harder next time,"
 					+ "the prince is still waiting for you.");
 			
 		}
@@ -129,7 +130,7 @@ public class LubnaFrontEnd implements JaneSupport {
 	}
 
 	private void displayBoard() {
-		CaveExplorer.print(mapDescription());
+		System.out.println(mapDescription());
 
 
 	}
