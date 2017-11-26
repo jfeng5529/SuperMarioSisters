@@ -14,7 +14,6 @@ public interface LubnaSupport {
 
 	boolean stillPlaying();
 
-
 	void setUpPlot();
 
 	int getTotalCandy();
@@ -22,6 +21,6 @@ public interface LubnaSupport {
 	boolean gameResult();
 
 	
-//
+
 	
 }

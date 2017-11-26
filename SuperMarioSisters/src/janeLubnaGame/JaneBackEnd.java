@@ -151,7 +151,9 @@ public class JaneBackEnd implements LubnaSupport {
 
 	public void enemiesAction() {
 		for (int i =0; i <4; i++) {
+			if(enemies[i] != null) {
 			enemies[i].act();
+			}
 		}
 	}
 

@@ -30,6 +30,8 @@ public class BooNPC extends NPC {
 	if(game.result() == true) {
 			CaveExplorer.npcs[1] = null;
 		}
+	CaveExplorer.currentRoom=CaveExplorer.caves[0][1];
+	CaveExplorer.currentRoom.enter();
 	}
 	
 }
