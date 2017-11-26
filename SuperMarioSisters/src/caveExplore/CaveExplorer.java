@@ -33,7 +33,7 @@ public class CaveExplorer {
 	}
 	private static void npcActions() {
 		for(NPC n: npcs) {
-			if(n != null) {
+		if(n != null) {
 				n.act();
 			}
 			

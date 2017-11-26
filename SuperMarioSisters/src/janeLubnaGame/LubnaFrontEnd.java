@@ -101,7 +101,7 @@ public class LubnaFrontEnd implements JaneSupport {
 		}
 		
 
-	}
+	} 
 	public boolean result() {
 		return winResult;
 	} 
