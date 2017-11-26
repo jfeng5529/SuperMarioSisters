@@ -38,7 +38,7 @@ public class JaneEnemies  {
 		frontend.setPlots(plot);
 	}
 	public void interaction(int enemiesCount) {
-		enemies= frontend.getEnemies();
+		enemies= frontend.getEnemies();//
 		if(inventory.getFlashLight()>0) {
 			if(enemiesCount-1>=0) {
 				enemies[enemiesCount-1]=null;
