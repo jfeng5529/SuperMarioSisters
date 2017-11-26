@@ -29,6 +29,8 @@ public class CaveExplorer {
 			String input= in.nextLine();
 			currentRoom.interpretInput(input);
 		}
+		System.out.println("                    SUPER HAPPY EVER AFTER !!!");
+		System.out.println("                 __________Game Over__________\n");
 		
 	}
 	private static void npcActions() {
