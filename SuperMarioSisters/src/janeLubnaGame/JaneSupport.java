@@ -8,8 +8,6 @@ public interface JaneSupport {
 
 	void printAllowedEntry();
 
-	int getCandy();
-
 	void updatePlot();
 
 	void setEnemies(JaneEnemies[] enemies);

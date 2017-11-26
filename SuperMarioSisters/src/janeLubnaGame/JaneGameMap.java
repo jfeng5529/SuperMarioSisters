@@ -21,8 +21,8 @@ public class JaneGameMap{
 		borderingRooms = new JaneGameMap[4];
 		presentCandy=false;
 		door= new Object[4];
-		defaultContents=" ";
-		contents=" ";
+		setDefaultContents(" ");
+		contents=defaultContents;
 		presentEnemies=null;
 		description = "The Enemies are coming, hurry!";
 		
@@ -47,9 +47,13 @@ public class JaneGameMap{
 	}
 	
 	public void leave() {
-		this.contents="";
+		this.contents=" ";
 	}
 	
+	public boolean containsEnemies() {
+		return presentEnemies!=null;
+	}
+
 	public boolean isPresentCandy() {
 		return presentCandy;
 	}
@@ -102,5 +106,15 @@ public class JaneGameMap{
 		}
 	return description;
 	}
+	
+
+	public void setDefaultContents(String defaultContents) {
+		this.defaultContents = defaultContents;
+	}
+	
+	public boolean canEnter() {
+		return presentEnemies==null;
+	}
+
 	
 }

@@ -19,7 +19,7 @@ public class LubnaFrontEnd implements JaneSupport {
 	public LubnaFrontEnd() {
 		backend=new JaneBackEnd(this);
 		winResult=false;
-		candyLeft=73;
+		candyLeft=40;
 		CaveExplorer.in = new Scanner(System.in);
 		backend.setUpPlot();
 
@@ -72,8 +72,9 @@ public class LubnaFrontEnd implements JaneSupport {
 			}
 			int direction =convertToDirection(input);
 			backend.respondToKey(direction);
-			updatePlot();
 		}
+		updatePlot();
+		displayBoard();
 		printGameResult();
 	}
 
@@ -166,11 +167,6 @@ public class LubnaFrontEnd implements JaneSupport {
 		return plot;
 	}
 
-	public int getCandy() {
-		return candyNum;
-	}
-
-
 	@Override
 	public void setEnemies(JaneEnemies[] enemies) {
 		this.enemies = enemies;
@@ -203,4 +199,5 @@ public class LubnaFrontEnd implements JaneSupport {
 	public void setPlots(JaneGameMap[][] plot) {
 		this.plot = plot;
 	}
+
 }

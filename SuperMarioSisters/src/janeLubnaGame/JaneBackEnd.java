@@ -17,13 +17,13 @@ public class JaneBackEnd implements LubnaSupport {
 		enemiesCount=4;
 		this.frontend=frontend;
 		this.candy=0;
-		this.totalCandy=73;
+		this.totalCandy=40;
 
 	}
 	public void setUpPlot() {
 		setUpMap();
 		setUpDoors();
-		frontend.setCurrentRoom(frontend.getPlots()[0][1]);
+		frontend.setCurrentRoom(frontend.getPlots()[0][2]);
 		frontend.getCurrentRoom().enter("x");
 		setUpEnemies();
 	}
@@ -39,18 +39,18 @@ public class JaneBackEnd implements LubnaSupport {
 	}
 
 	public boolean enemiesPresent() {
-		return frontend.getEnemies() != null;
+		return frontend.getCurrentRoom().containsEnemies();
 
 	}
 
 	public void setUpDoors() {
-		int height=5; int width=9;
-		for(int row=0; row<6; row++) {
+		int height=4; int width=7;
+		for(int row=0; row<5; row++) {
 			for(int col=0; col<width; col++) {
 				frontend.getPlots()[row][col].setConnection(JaneGameMap.EAST, frontend.getPlots()[row][col+1], new Object());
 			}
 		}
-		for(int col=0; col<10; col++) {
+		for(int col=0; col<8; col++) {
 			for(int row=0; row<height; row++) {
 				frontend.getPlots()[row][col].setConnection(JaneGameMap.SOUTH, frontend.getPlots()[row+1][col], new Object());
 			}
@@ -58,7 +58,7 @@ public class JaneBackEnd implements LubnaSupport {
 	}
 
 	public void setUpMap() {
-		JaneGameMap[][] plots= new JaneGameMap[6][10]; 
+		JaneGameMap[][] plots= new JaneGameMap[5][8]; 
 
 		for(int row =0; row<plots.length; row++) {
 			for(int col=0; col<plots[row].length; col++) {
@@ -125,7 +125,7 @@ public class JaneBackEnd implements LubnaSupport {
 	}
 
 	private void performAction(int direction) {
-		if(enemiesPresent()) {
+		if(frontend.getCurrentRoom().containsEnemies()) {
 			enemies[enemiesCount-1].interaction(enemiesCount);
 			enemiesCount--;
 		}

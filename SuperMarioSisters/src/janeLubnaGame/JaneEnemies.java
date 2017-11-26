@@ -14,6 +14,7 @@ public class JaneEnemies  {
 
 
 	public JaneEnemies(JaneSupport frontend) {
+		this.inventory= new Inventory();
 		this.frontend= frontend;
 		this.currentCol=-1;
 		this.currentRow=-1;
@@ -37,17 +38,17 @@ public class JaneEnemies  {
 		frontend.setPlots(plot);
 	}
 	public void interaction(int enemiesCount) {
-		enemies= new JaneEnemies[4];
+		enemies= frontend.getEnemies();
 		if(inventory.getFlashLight()>0) {
 			if(enemiesCount-1>=0) {
 				enemies[enemiesCount-1]=null;
+				inventory.decreaseFlashLight();
 			}
-			inventory.decreaseFlashLight();
 		}
 		else {
 			result="lost";
 		}
-
+		frontend.setEnemies(enemies);
 	}
 	public void act() {
 		int[] move = calculateMovement();
@@ -62,7 +63,7 @@ public class JaneEnemies  {
 		int rand=(int)(Math.random()*possibleMoves.length);
 		moves[0]=possibleMoves[rand][0]+currentRow;
 		moves[1]=possibleMoves[rand][1]+currentCol;
-		while(currentRoom.getConnection(rand)==null) {
+		while(currentRoom.getConnection(rand)==null||!frontend.getPlots()[moves[0]][moves[1]].canEnter()) {
 			rand=(int)(Math.random()*possibleMoves.length);
 			moves[0]=possibleMoves[rand][0]+currentRow;
 			moves[1]=possibleMoves[rand][1]+currentCol;
