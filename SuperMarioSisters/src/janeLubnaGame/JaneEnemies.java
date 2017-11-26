@@ -9,13 +9,11 @@ public class JaneEnemies  {
 	private int currentCol;
 	private JaneGameMap currentRoom;
 	private JaneSupport frontend;
-	private Inventory inventory;
 	private String result;
 	private JaneEnemies[] enemies;
 
 
 	public JaneEnemies(JaneSupport frontend) {
-		this.inventory= new Inventory();
 		this.frontend= frontend;
 		this.currentCol=-1;
 		this.currentRow=-1;
@@ -40,11 +38,11 @@ public class JaneEnemies  {
 	}
 	public void interaction(int enemiesCount) {
 		enemies= frontend.getEnemies();
-		if(inventory.getFlashLight()>0) {
+		if(CaveExplorer.inventory.getFlashLight()>0) {
 			if(enemiesCount-1>=0) {
 				enemies[enemiesCount-1]=null;
-				inventory.decreaseFlashLight();
-				CaveExplorer.print("Yay! You defeated one Enemy by using a flashlight!. Now you have "+inventory.getFlashLight()+" flashlights left. Be careful!");
+				CaveExplorer.inventory.decreaseFlashLight();
+				CaveExplorer.print("Yay! You defeated one Enemy by using a flashlight!. Now you have "+CaveExplorer.inventory.getFlashLight()+" flashlights left. Be careful!");
 			}
 		}
 		else {
