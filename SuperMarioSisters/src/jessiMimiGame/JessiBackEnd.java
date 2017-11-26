@@ -50,8 +50,7 @@ public class JessiBackEnd implements MimiSupporter{
 		String input = CaveExplorer.in.nextLine();
 		int[] coords = toCoords(input);
 		while(coords == null){
-			System.out.println("You must enter cordinates of the form:\n          <row>,<col>"
-					+ "\n<row> and <col> should be integers.");
+			System.out.println("Please type in the correct integers in the form <row>,<col>.");
 			input = CaveExplorer.in.nextLine();
 			coords = toCoords(input);
 		}
@@ -74,13 +73,15 @@ public class JessiBackEnd implements MimiSupporter{
 	}
 
 	@Override
-	public void reveal(int row, int col) {
+	public boolean reveal(int row, int col) {
 		if (plots.checkIsMine(row, col)) {
 			plots.setRevealAll();
+			return true;
 		}
 		else {
 			plots.setRevealed(row,col);
+			return false;
 		}
 	}
-	
+
 }

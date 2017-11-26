@@ -38,9 +38,14 @@ public class FrontEnd implements JessiSupporter{
 			displayScoreStatus(plots);
 			System.out.println("Type in the row and column!");
 			int[] coords = backend.getCoordInput();
-			backend.reveal(coords[0], coords[1]);
+			if (backend.reveal(coords[0], coords[1])) {
+				safeSpot = false;
+				JessiBackEnd.displayField(plots);
+			}
 		}
 		displayScoreStatus(plots);
+		gameOver = true;
+		System.out.println("YOU HAVE HIT A BOB-OMB!!!;(");
 		System.out.println("__________Game Over__________\n");
 	}
 	
