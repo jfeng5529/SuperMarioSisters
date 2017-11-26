@@ -1,96 +1,86 @@
 package jessiMimiGame;
 
-//import caveExplorer.JessiMimiPlot;
+import caveExplore.CaveExplorer;
 
 public class JessiBackEnd implements MimiSupporter{
 	private JessiSupporter frontend;
-	public static JessiMimiPlot[][] plots;
-	private int score;
+	public static MineField plots;
 	private int numberOfMines;
 	private boolean safeSpot;
 
 	public JessiBackEnd(JessiSupporter frontend) {
 		this.frontend = frontend;
-		plots = new JessiMimiPlot[10][10];
-		numberOfMines = 6;
+		plots = new MineField();
+		numberOfMines = 10;
 		createPlots();
 	}
 
 	public void createPlots() {
-		for(int row = 0; row < plots.length; row++){
-			for(int col = 0; col < plots[row].length; col++){
-				plots[row][col] = new JessiMimiPlot(row, col);
-			}
-		}
-		while (safeSpot) {
-			System.out.println("Enter Row");
-			//int row = input.nextInt();
-			System.out.println("Enter Column");
-			//int column = input.nextInt();
-			
-		//	if (plots != 10) {
-				//bombs = 0;
-			//}
-			//else if (plots == 10) {
-				//System.out.println("You hit a mine!");
-				//safeSpot = false;
-				//break;
-			}
-		}
-	//}
+		plots = new MineField();
+	}
 	
-
-
-	public JessiMimiPlot[][] getPlots() {
+	public MineField getPlots() {
 		return plots;
-	}	
-
-	public void clear(int row, int col) {
-		for(i = (row-1); i < (row+1); i++) {
-			for(j = (col-1); j< (col+1); j++) {
-				display();
+	}
+	
+	public static void displayField(MineField plots) {
+	    System.out.println("           0    1    2    3    4    5    6    7    8    9");
+	    System.out.println("        -------------------------------------------------");
+        for(int row = 0 ; row < 10 ; row++){
+            System.out.print("       "+row + "|");
+            
+            for(int col = 0 ; col < 10 ; col++) {
+            		String display = "-";
+            		if (plots.isRevealed(row, col)) {
+            			if (plots.checkIsMine(row, col)) {
+            				display = "*";
+            			}
+            			else {
+            				display = "" + plots.countNeighboringMines(row, col);
+            			}
+            		}
+            		System.out.print("  " + display + "  ");
+            }
+                
+            System.out.println();
+        }
+	}
+		
+	public int[] getCoordInput() {
+		String input = CaveExplorer.in.nextLine();
+		int[] coords = toCoords(input);
+		while(coords == null){
+			System.out.println("You must enter cordinates of the form:\n          <row>,<col>"
+					+ "\n<row> and <col> should be integers.");
+			input = CaveExplorer.in.nextLine();
+			coords = toCoords(input);
+		}
+		return coords;
+	}
+	
+	private int[] toCoords(String input) {
+		try{
+			int a = Integer.parseInt(input.substring(0,1));
+			int b = Integer.parseInt(input.substring(2,3));
+			if(input.substring(1,2).equals(",") && input.length() ==3){
+				int[] coords = {a,b};
+				return coords;
+			}else{
+				return null;
 			}
+		}catch(Exception e){
+			return null;
 		}
-	}
-	
-	private void display() {
-		// TODO Auto-generated method stub
-		
 	}
 
 	@Override
-	public boolean checkForMine() {
-		if(!safeSpot) {
-		return true;
+	public void reveal(int row, int col) {
+		if (plots.checkIsMine(row, col)) {
+			plots.setRevealAll();
 		}
-		return false;
-	}
-	
-	public int[] getValidUserInput() {
-		
-		return null;
-	}
-
-	@Override
-	public boolean checkWin() {
-		if(score == 50) {
-			return true;
+		else {
+			plots.setRevealed(row,col);
 		}
-		return false;
-	}	
-	
-
-	public void gameOver() {
-		if(checkForMine() == true) {
-			MimiFrontEnd.startGame();
-		}
-		if(checkWin() == true) {
-			System.out.println("Wahh! Nooo! You have defeated me!");
-			//Mini game over proceeds to the next room
-		}
-		//else {
-		//	MimiFrontEnd.displayScoreStatus();
-		//}
 	}
 	
 }

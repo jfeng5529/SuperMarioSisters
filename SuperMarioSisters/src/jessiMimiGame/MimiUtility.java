@@ -1,11 +1,9 @@
 package jessiMimiGame;
 
 import caveExplore.CaveExplorer;
-import caveExplore.CaveRoom;
-import caveExplore.NPCRoom;
 
 public class MimiUtility {
-	
+
 	public static void print(String s){
 		String printString = "";
 		int cutoff = 55;
@@ -46,4 +44,3 @@ public class MimiUtility {
 		return input.toLowerCase().substring(0, 1);
 	}
 }
-	
