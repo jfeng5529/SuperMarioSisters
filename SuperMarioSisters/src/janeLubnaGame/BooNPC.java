@@ -27,6 +27,9 @@ public class BooNPC extends NPC {
 		}
 		LubnaFrontEnd game = new LubnaFrontEnd();
 		game.play();
+		if(game.result() == true) {
+			CaveExplorer.npcs[1] = null;
+		}
 	}
 	
 }

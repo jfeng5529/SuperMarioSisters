@@ -19,6 +19,8 @@ public interface LubnaSupport {
 
 	int getTotalCandy();
 
+	boolean gameResult();
+
 	
 
 	

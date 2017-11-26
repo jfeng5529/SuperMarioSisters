@@ -33,7 +33,10 @@ public class CaveExplorer {
 	}
 	private static void npcActions() {
 		for(NPC n: npcs) {
-			n.act();
+			if(n != null) {
+				n.act();
+			}
+			
 		}
 		inventory.updateMap();
 		
