@@ -24,7 +24,7 @@ public class MimiFrontEnd implements JessiSupporter{
 		demo.play();
 	}
 
-	private void play() {
+	public void play() {
 		introduction();
 		//startGame();
 	}

@@ -1,5 +1,7 @@
 package caveExplore;
 
+import jessiMimiGame.MimiFrontEnd;
+
 public class BowserRoom extends NPCRoom {
 
 	public BowserRoom(String description) {
@@ -17,6 +19,8 @@ public class BowserRoom extends NPCRoom {
 		if(CaveExplorer.inventory.getKey()) {
 			if(direction==4) {
 				CaveExplorer.print("BOWWWW You think you can beat me Maria?! How funny! Let me show you how this is going down! Press 'e' to continue.");
+				MimiFrontEnd game = new MimiFrontEnd();
+				game.play();
 			}
 			else	{
 				super.respondToKey(direction);

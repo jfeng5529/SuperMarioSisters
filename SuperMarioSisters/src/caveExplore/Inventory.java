@@ -1,30 +1,23 @@
 package caveExplore;
 
 public class Inventory {
-<<<<<<< HEAD
 	private String map;
 	private int life;
-=======
-	private String map;
 	private int money;
 	private int hp;
 	private int storageBag;
->>>>>>> branch 'master' of https://github.com/jfeng5529/SuperMarioSisters
 	private int flashlight;
 	private boolean key;
 	public Inventory() {
-<<<<<<< HEAD
 		updateMap();
 		life = 0;
 		flashlight = 0;
-=======
 		money=0;
 		//updateMap();
 		hp = 50;
 		storageBag = 2;
 		flashlight = 0;
 		key=false;
->>>>>>> branch 'master' of https://github.com/jfeng5529/SuperMarioSisters
 	}
 
 	public void updateMap() {
@@ -73,19 +66,15 @@ public class Inventory {
 	public String getDescription() {
 		return map;
 	}
-<<<<<<< HEAD
 	
 	public  int addLife() {
 		return life++;
-=======
-	public int getMoney() {
-		return money;
->>>>>>> branch 'master' of https://github.com/jfeng5529/SuperMarioSisters
 	}
 	
-<<<<<<< HEAD
+	public int getMoney() {
+		return money;
+	}
 	
-=======
 	//public int hpCost() {
 	//	return money = money - 50;
 	//}
@@ -119,6 +108,5 @@ public class Inventory {
 	public boolean getKey() {
 		return key;
 	}
->>>>>>> branch 'master' of https://github.com/jfeng5529/SuperMarioSisters
 
 }

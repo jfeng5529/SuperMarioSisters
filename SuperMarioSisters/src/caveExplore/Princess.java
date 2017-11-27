@@ -10,15 +10,9 @@ public class Princess extends NPC {
 	public void act() {//
 		if(isActive()) {
 			CaveExplorer.print("Far off in the distance, you hear a Prince in distress.");
-<<<<<<< HEAD
-=======
-			CaveExplorer.print("Far off in the distance, you hear a prince in distress.");
->>>>>>> refs/heads/master
 		}
 		else {
-			CaveExplorer.print("HI");//
-=======
->>>>>>> branch 'master' of https://github.com/jfeng5529/SuperMarioSisters
+			CaveExplorer.print("HI");
 		}
 		
 	}
