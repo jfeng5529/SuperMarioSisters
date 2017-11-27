@@ -22,13 +22,12 @@ public class JessiMerchantRoom extends NPCRoom {
 	
 	public void performAction(int direction) {
 		if(direction == 4) {
-			CaveExplorer.print("Hello there I'm Toad the Merchant. What would you like to buy today?");
+			merchantToad.chat();
 			
 		}else {
 			 super.performAction(direction);
 		}
 	}
-	
 	
 	
 }
