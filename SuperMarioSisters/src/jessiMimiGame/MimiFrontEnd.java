@@ -43,6 +43,7 @@ public class MimiFrontEnd implements JessiSupporter{
 				safeSpot = false;
 				JessiBackEnd.displayField(plots);
 			}
+			isWin=backend.isWin();
 			if(backend.isWin()) {
 				System.out.println("Ahhh YOU WIN!! FINE! Take your prince!!");
 				//JessiBackEnd.displayField(plots);
@@ -82,6 +83,9 @@ public class MimiFrontEnd implements JessiSupporter{
 			startGame();
 		}
 	
+	}
+	public boolean getIsWin() {
+		return isWin;
 	}
 	
 }
