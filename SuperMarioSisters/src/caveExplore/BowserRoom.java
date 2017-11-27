@@ -18,7 +18,7 @@ public class BowserRoom extends NPCRoom {
 	public void respondToKey(int direction) {
 		if(CaveExplorer.inventory.getKey()) {
 			if(direction==4) {
-				CaveExplorer.print("BOWWWW You think you can beat me Maria?! How funny! Let me show you how this is going down! Press 'e' to continue.");
+				CaveExplorer.print("BOWWWW You think you can beat me Maria?! How funny! Let me show you how this is going down!");
 				MimiFrontEnd game = new MimiFrontEnd();
 				game.play();
 			}
@@ -61,7 +61,7 @@ public class BowserRoom extends NPCRoom {
 	
 	
 	public String getDescription() {
-		return super.getDescription()+"\n Wahahahaha I am Bowser. This is the final level you need to past to get to your precious Prince Peach. Press Enter.";
+		return super.getDescription()+"\n Wahahahaha I am Bowser. This is the final level you need to past to get to your precious Prince Peach. Press 'e'.";
 	}
 //
 }
