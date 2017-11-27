@@ -71,6 +71,13 @@ public class JaneEnemies  {
 		return moves;
 	}
 	
+	
+	public int getCurrentRow() {
+		return currentRow;
+	}
+	public int getCurrentCol() {
+		return currentCol;
+	}
 	public String getResult() {
 		return result;//
 	}

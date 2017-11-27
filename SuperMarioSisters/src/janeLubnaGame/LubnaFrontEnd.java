@@ -15,10 +15,14 @@ public class LubnaFrontEnd implements JaneSupport {
 	private String map;
 	private int candyCollected;
 	private boolean cheat;
+	private int[] currentPlot;
 
 
 	public LubnaFrontEnd() {
 		backend=new JaneBackEnd(this);
+		currentPlot= new int[2];
+		currentPlot[0]=0;
+		currentPlot[1]=0;
 		winResult=false;
 		candyLeft=40;
 		CaveExplorer.in = new Scanner(System.in);
@@ -75,6 +79,7 @@ public class LubnaFrontEnd implements JaneSupport {
 			}
 			int direction =convertToDirection(input);
 			backend.respondToKey(direction);
+			CaveExplorer.print(" "+getCurrentPlot()[0]+", "+getCurrentPlot()[1]);
 		}
 		winResult = backend.gameResult();
 		printGameResult();
@@ -219,6 +224,16 @@ public class LubnaFrontEnd implements JaneSupport {
 	}
 	public boolean getCheat() {
 		return cheat;
+	}
+
+	public int[] getCurrentPlot() {
+		return currentPlot;
+	}
+	@Override
+	public void setCurrentPlot(int i, int j) {
+		currentPlot[0]=i;
+		currentPlot[1]=j;
+		
 	}
 
 }

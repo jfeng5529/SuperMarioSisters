@@ -13,6 +13,7 @@ public class JaneBackEnd implements LubnaSupport {
 	private int totalCandy;
 	private boolean win;
 	private boolean playing;
+	private boolean row;
 
 	public JaneBackEnd(JaneSupport frontend) {
 		enemiesCount=4;
@@ -24,6 +25,7 @@ public class JaneBackEnd implements LubnaSupport {
 		setUpMap();
 		setUpDoors();
 		frontend.setCurrentRoom(frontend.getPlots()[0][2]);
+		frontend.setCurrentPlot(0,2);
 		frontend.getCurrentRoom().enter("x");
 		setUpEnemies();
 		totalCandy=getTotalCandy();
@@ -107,6 +109,7 @@ public class JaneBackEnd implements LubnaSupport {
 				currentRoom.leave();
 				frontend.setCurrentRoom(currentRoom.getBorderingRooms(direction));
 				emptyRoom();
+				setUpCurrentPlot(direction);
 				currentRoom = frontend.getCurrentRoom();
 				currentRoom.enter("x");
 				frontend.updatePlot();
@@ -123,6 +126,25 @@ public class JaneBackEnd implements LubnaSupport {
 		}
 	}
 	
+	private void setUpCurrentPlot(int dir) {
+		int temp=convertToPlot(dir);
+		if(row)
+			frontend.setCurrentPlot(frontend.getCurrentPlot()[0], frontend.getCurrentPlot()[1]+temp);
+		else
+			frontend.setCurrentPlot(frontend.getCurrentPlot()[0]+temp, frontend.getCurrentPlot()[1]);
+		
+	}
+	public int convertToPlot(int dir){
+		if(dir==0||dir==2)
+			row=false;
+		else
+			row=true;
+		if(dir==1||dir==2) {
+			return 1;
+		}
+		else
+			return -1;
+	}
 	public void emptyRoom() {
 		if(frontend.getCurrentRoom()!=null) {
 			frontend.getCurrentRoom().leaveNPC();
@@ -145,6 +167,7 @@ public class JaneBackEnd implements LubnaSupport {
 				playing=false;
 			}else {
 				frontend.setCurrentRoom(frontend.getPlots()[0][2]);
+				frontend.setCurrentPlot(0, 2);
 				frontend.getCurrentRoom().enter("x");
 			}
 
@@ -160,11 +183,24 @@ public class JaneBackEnd implements LubnaSupport {
 	}
 
 	public void enemiesAction() {
+		int difference =10;
+		int temp=0;
+		CaveExplorer.print("The enemies are at positions: ");
 		for (int i =0; i <4; i++) {
 			if(enemies[i] != null) {
 				enemies[i].act();
+				CaveExplorer.print("( "+enemies[i].getCurrentRow()+", "+enemies[i].getCurrentCol()+" )");
+				 temp = Math.abs(enemies[i].getCurrentRow()-frontend.getCurrentPlot()[0])+Math.abs(enemies[i].getCurrentCol()-frontend.getCurrentPlot()[1]);
+				if(temp<difference) {
+					difference=temp;
+				}	
 			}
 		}
+		if(temp<difference) {
+			difference=temp;
+		}
+		CaveExplorer.print("The closest enemy is "+difference+" steps away from you!");
+		
 	}
 
 	public JaneSupport getFrontend() {

@@ -19,4 +19,8 @@ public interface JaneSupport {
 	JaneEnemies[] getEnemies();
 
 	void setPlots(JaneGameMap[][] janeGameMaps);
+
+	void setCurrentPlot(int i, int j);
+
+	int[] getCurrentPlot();
 }
