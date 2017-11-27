@@ -4,26 +4,26 @@ import caveExplore.CaveExplorer;
 
 public class JessiBackEnd implements MimiSupporter{
 	private JessiSupporter frontend;
-	public static MineField plots;
+	public static JessiMineField plots;
 	private int numberOfMines;
 	private boolean safeSpot;
 
 	public JessiBackEnd(JessiSupporter frontend) {
 		this.frontend = frontend;
-		plots = new MineField();
+		plots = new JessiMineField();
 		numberOfMines = 10;
 		createPlots();
 	}
 
 	public void createPlots() {
-		plots = new MineField();
+		plots = new JessiMineField();
 	}
 	
-	public MineField getPlots() {
+	public JessiMineField getPlots() {
 		return plots;
 	}
 	
-	public static void displayField(MineField plots) {
+	public static void displayField(JessiMineField plots) {
 	    System.out.println("           0    1    2    3    4    5    6    7    8    9");
 	    System.out.println("        -------------------------------------------------");
         for(int row = 0 ; row < 10 ; row++){
@@ -48,13 +48,22 @@ public class JessiBackEnd implements MimiSupporter{
 		
 	public int[] getCoordInput() {
 		String input = CaveExplorer.in.nextLine();
+		if(input.equals("skip")) {
+			int[] coords = {0,0,1};
+			return coords;
+		}
 		int[] coords = toCoords(input);
 		while(coords == null){
 			System.out.println("Please type in the correct integers in the form <row>,<col>.");
 			input = CaveExplorer.in.nextLine();
+			if(input.equals("skip")) {
+				int[] coords2 = {0,0,1};
+				return coords2;
+			}
 			coords = toCoords(input);
 		}
-		return coords;
+		int[] coords2 = {coords[0], coords[1], 0};
+		return coords2;
 	}
 	
 	private int[] toCoords(String input) {
@@ -82,6 +91,19 @@ public class JessiBackEnd implements MimiSupporter{
 			plots.setRevealed(row,col);
 			return false;
 		}
+	}
+
+	@Override
+	public boolean isWin() {
+		int count = 0;
+        for(int row = 0 ; row < 10 ; row++)
+            for(int col = 0 ; col < 10 ; col++)
+                if(plots.isRevealed(row, col) == false)
+                    count++;
+        if(count == 10)
+            return true;
+        else
+            return false;                
 	}
 
 }

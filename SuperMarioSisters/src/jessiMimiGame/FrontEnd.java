@@ -9,12 +9,14 @@ import caveExplore.NPCRoom;
 public class FrontEnd implements JessiSupporter{
 	private static MimiSupporter backend;
 	private boolean safeSpot = true;
-	boolean gameOver = false;
-    boolean isWin = false;
+    private boolean isWin;
+    private boolean cheat;
 
 	public FrontEnd() {
 		backend = new JessiBackEnd(this);
 		CaveExplorer.in = new Scanner(System.in);
+		isWin = false;
+		cheat = false;
 	}
 	
 	public static final void main(String[] args) {
@@ -28,20 +30,35 @@ public class FrontEnd implements JessiSupporter{
 	}
 	
 	private void startGame() {
-		MineField plots = backend.getPlots();
+		JessiMineField plots = backend.getPlots();
 		while(safeSpot) {
 			JessiBackEnd.displayField(plots);
 			System.out.println("Type in the row and column!");
 			int[] coords = backend.getCoordInput();
+			if(coords[2] == 1) {
+				cheat = true;
+				break;
+			}
 			if (backend.reveal(coords[0], coords[1])) {
 				safeSpot = false;
 				JessiBackEnd.displayField(plots);
 			}
+			if(backend.isWin()) {
+				System.out.println("Ah noooo you have defeated me!!! YOU WIN!");
+				JessiBackEnd.displayField(plots);
+			}
 		}
-		System.out.println("                   YOU HAVE HIT A BOB-OMB!!!");
-		System.out.println("                 __________Game Over__________\n");
+		if (cheat) {
+			System.out.println("Too Hard?  Here's the answer!");
+			plots.setRevealAll();
+			JessiBackEnd.displayField(plots);
+		}
+		else {
+			System.out.println("                   YOU HAVE HIT A BOB-OMB!!!");
+			System.out.println("                 __________Game Over__________\n");
+		}
 	}
-	
+		
 	public String validKeys() {
 		return "wasdrp";
 	}

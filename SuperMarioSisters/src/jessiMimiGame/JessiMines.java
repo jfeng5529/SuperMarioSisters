@@ -1,11 +1,11 @@
 package jessiMimiGame;
 
-public class Mines {
+public class JessiMines {
 	private boolean isRevealed;
 	private boolean isMine;
 
 	
-	public Mines() {
+	public JessiMines() {
 		isRevealed = false;
 		isMine = false;
 	}

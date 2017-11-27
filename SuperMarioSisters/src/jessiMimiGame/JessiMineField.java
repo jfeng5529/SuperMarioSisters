@@ -1,13 +1,13 @@
 package jessiMimiGame;
 
-public class MineField {
-    Mines [][] MineField;
+public class JessiMineField {
+    JessiMines [][] MineField;
 	
-	public MineField() {
-		MineField = new Mines[10][10];
+	public JessiMineField() {
+		MineField = new JessiMines[10][10];
 		for (int row=0;row<10;row++) {
 			for (int col=0;col<10;col++) {
-				MineField[row][col] = new Mines();
+				MineField[row][col] = new JessiMines();
 			}
 		}
 		createMines();

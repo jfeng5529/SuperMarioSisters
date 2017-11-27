@@ -2,10 +2,12 @@ package jessiMimiGame;
 
 public interface MimiSupporter {
 
-	MineField getPlots();
+	JessiMineField getPlots();
 
 	int[] getCoordInput();
 
 	boolean reveal(int row, int col);
+
+	boolean isWin();
 
 }
