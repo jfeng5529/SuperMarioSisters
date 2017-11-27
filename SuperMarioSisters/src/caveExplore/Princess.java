@@ -9,7 +9,11 @@ public class Princess extends NPC {
 	
 	public void act() {
 		if(isActive()) {
+<<<<<<< HEAD
 			CaveExplorer.print("Far off in the distance, you hear a Prince in distress.");
+=======
+			CaveExplorer.print("Far off in the distance, you hear a prince in distress.");
+>>>>>>> refs/heads/master
 		}
 		else {
 			CaveExplorer.print("HI");//

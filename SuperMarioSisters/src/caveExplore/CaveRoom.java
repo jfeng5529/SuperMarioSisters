@@ -177,8 +177,12 @@ public class CaveRoom {
 		CaveExplorer.caves[3][1] = customRoom3;
 		CaveRoom customRoom4 = new MimiRoom("Room");
 		CaveExplorer.caves[3][4] = customRoom4;
+<<<<<<< HEAD
 		CaveRoom customRoom5 = new LubnaToadAdvise("Room");
 		CaveExplorer.caves[1][1] = customRoom5;
+=======
+		
+>>>>>>> refs/heads/master
 		//4.set your starting room:
 		CaveExplorer.currentRoom=CaveExplorer.caves[0][1];
 		CaveExplorer.currentRoom.enter();
