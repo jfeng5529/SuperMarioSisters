@@ -185,64 +185,6 @@ public class CaveRoom {
 				CaveExplorer.caves[5][8] = customRoom6;
 		CaveRoom customRoom5 = new LubnaToadAdvise("Room");
 		CaveExplorer.caves[1][1] = customRoom5;
-<<<<<<< HEAD
-=======
-		
->>>>>>> refs/heads/master
-		//4.set your starting room:
-		CaveExplorer.currentRoom=CaveExplorer.caves[0][1];
-		CaveExplorer.currentRoom.enter();
-		//set up doors
-		CaveRoom[][]c=CaveExplorer.caves;
-		c[0][1].setConnection(SOUTH, c[1][1], new Door());
-		c[1][1].setConnection(EAST, c[1][2], new Door());
-		c[1][2].setConnection(EAST, c[1][3], new Door());
-		c[1][3].setConnection(SOUTH, c[2][3], new Door());
-		c[2][3].setConnection(SOUTH, c[3][3], new Door());
-		c[3][3].setConnection(EAST, c[3][4], new Door());
-		c[3][3].setConnection(WEST, c[3][2], new Door());
-		c[3][2].setConnection(WEST, c[3][1], new Door());
-		c[1][1].setConnection(SOUTH, c[2][1], new Door());
-		c[2][1].setConnection(SOUTH, c[3][1], new Door());
-	}
-	public String getDescription() {
-		return description+"\n"+direction;
-	}
-
-
-	public void setDescription(String description) {
-		this.description = description;
-	}
-	
-
-
-	public String getContents() {
-		return contents;
-	}
-
-
-	public void setContents(String contents) {
-		this.contents = contents;
-	}
-
-
-	public void setDefaultContents(String defaultContents) {
-		this.defaultContents = defaultContents;
-	}
-
-	public Door getDoor(int direction) {
-		if(direction>=0&& direction < doors.length) {
-			return doors[direction];
-		}
-		else {
-			return null;
-		}
-	}
-
-
-
-}
-=======
 		//4.set your starting room:
 		CaveExplorer.currentRoom=CaveExplorer.caves[0][1];
 		CaveExplorer.currentRoom.enter();
@@ -350,4 +292,3 @@ public class CaveRoom {
 
 
 }
->>>>>>> branch 'master' of https://github.com/jfeng5529/SuperMarioSisters
