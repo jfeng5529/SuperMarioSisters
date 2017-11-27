@@ -5,12 +5,16 @@ import caveExplore.NPC;
 
 public class BooNPC extends NPC {
 	private String symbol;
+	private String interactDescription;
 	public BooNPC() {
 		super("You finally encounter the ghost Boo that has been haunting you down. Press e to interact.");
 		symbol="b";
+		interactDescription="You can't get escape from Boo. Let's just face the reality and press e";
 	}
 	
-
+	public String getInteractDescription(){
+		return interactDescription;
+	}
 	public String getSymbol() {
 		return symbol;
 	}

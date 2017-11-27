@@ -46,7 +46,7 @@ public class CaveExplorer {
 
 	public static void print(String s) {
 		String printString = "";
-		int cutoff = 80;
+		int cutoff = 100;
 		//this while loop last as long as there are words left in the original String
 		while(s.length() > 0){
 

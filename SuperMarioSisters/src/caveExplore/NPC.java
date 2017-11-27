@@ -96,5 +96,8 @@ public class NPC {
 	public NPCRoom currentNPCRoom() {
 		return currentRoom;
 	}
+	public String getInteractDescription() {
+		return "HI TALK TO ME";
+	}
 
 }

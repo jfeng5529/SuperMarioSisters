@@ -52,7 +52,7 @@ public class NPCRoom extends CaveRoom {
 		String input="";
 		if(containsNPC()) {
 			while(direction!=4){
-				CaveExplorer.print("You can't get escape from Boo. Let's just face the reality and press e");
+				CaveExplorer.print(presentNPC.getInteractDescription());
 				input = CaveExplorer.in.nextLine();
 				direction=convertInput(input);
 				}
