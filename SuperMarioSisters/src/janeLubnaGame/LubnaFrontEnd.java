@@ -79,7 +79,6 @@ public class LubnaFrontEnd implements JaneSupport {
 			}
 			int direction =convertToDirection(input);
 			backend.respondToKey(direction);
-			CaveExplorer.print(" "+getCurrentPlot()[0]+", "+getCurrentPlot()[1]);
 		}
 		winResult = backend.gameResult();
 		printGameResult();

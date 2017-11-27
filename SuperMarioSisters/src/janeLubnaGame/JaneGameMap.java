@@ -7,7 +7,6 @@ public class JaneGameMap{
 	public static final int WEST=3;
 	
 	private boolean presentCandy;
-	private String direction;//tells what you can do
 	private String contents;//a symbol representing what's in the room
 	private String defaultContents;
 	//the rooms are organize by direction, "null" signifies no room/door in that direction
