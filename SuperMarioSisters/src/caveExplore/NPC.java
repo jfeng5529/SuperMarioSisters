@@ -15,9 +15,9 @@ public class NPC {
 	private String activeDescription;
 	private String inactiveDescription;
 
-	public NPC() {
+	public NPC(String inactiveDescription) {
 		this.floor=CaveExplorer.caves;
-		this.inactiveDescription="The person you spoke to earlier is standing";
+		this.inactiveDescription=inactiveDescription;
 		this.activeDescription="There is a person waiting to talk to you.";
 		//to indicate that the NPC doesn't have a position yet, use coordinates -1, -1
 		this.currentCol=-1;
@@ -33,6 +33,9 @@ public class NPC {
 	 */
 	public boolean isActive() {
 		return active;
+	}
+	public void setActive(boolean b) {
+		active=b;
 	}
 	public void setPosition(int row, int col) {
 		if(row>= 0&& row<floor.length&& col>=0 &&
@@ -80,7 +83,7 @@ public class NPC {
 		int rand=(int)(Math.random()*possibleMoves.length);
 		moves[0]=possibleMoves[rand][0]+currentRow;
 		moves[1]=possibleMoves[rand][1]+currentCol;
-		while(currentRoom.getDoor(rand)==null||!(CaveExplorer.caves[moves[0]][moves[1]] instanceof NPCRoom)) {
+		while(currentRoom.getDoor(rand)==null||!(CaveExplorer.caves[moves[0]][moves[1]] instanceof NPCRoom)||(moves[0]==5&&moves[1]==9)) {
 			rand=(int)(Math.random()*possibleMoves.length);
 			moves[0]=possibleMoves[rand][0]+currentRow;
 			moves[1]=possibleMoves[rand][1]+currentCol;
@@ -90,4 +93,8 @@ public class NPC {
 	public String getSymbol() {
 		return "M";
 	}
+	public NPCRoom currentNPCRoom() {
+		return currentRoom;
+	}
+
 }
