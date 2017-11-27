@@ -9,7 +9,7 @@ import caveExplore.NPCRoom;
 public class MimiFrontEnd implements JessiSupporter{
 	private static MimiSupporter backend;
 	private boolean safeSpot = true;
-    private boolean isWin;
+    public boolean isWin;
     private boolean cheat;
 
 	public MimiFrontEnd() {

@@ -61,7 +61,7 @@ public class BowserRoom extends NPCRoom {
 	
 	
 	public String getDescription() {
-		return super.getDescription()+"\n Wahahahaha I am Bowser. This is the final level you need to past to get to your precious Prince Peach.";
+		return super.getDescription()+"\n Wahahahaha I am Bowser. This is the final level you need to past to get to your precious Prince Peach. Press Enter.";
 	}
 //
 }
