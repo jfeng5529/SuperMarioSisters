@@ -13,14 +13,12 @@ public class JaneBackEnd implements LubnaSupport {
 	private int totalCandy;
 	private boolean win;
 	private boolean playing;
-	private boolean swap;
 
 	public JaneBackEnd(JaneSupport frontend) {
 		enemiesCount=4;
 		this.frontend=frontend;
 		this.candy=0;
 		playing=true;
-		swap=false;
 	}
 	public void setUpPlot() {
 		setUpMap();
@@ -34,7 +32,6 @@ public class JaneBackEnd implements LubnaSupport {
 		enemies= new JaneEnemies[4];
 		for (int i =0; i <4; i++) {
 			enemies[i]=new JaneEnemies(frontend, i);
-			//frontend.setCurrentRoom(frontend.getPlots()[i+1][i+1]);
 			enemies[i].setPosition(i+1,i+1);
 		}
 		frontend.setEnemies(enemies);
@@ -65,15 +62,9 @@ public class JaneBackEnd implements LubnaSupport {
 
 		for(int row =0; row<plots.length; row++) {
 			for(int col=0; col<plots[row].length; col++) {
-				//					if((int)(Math.random()*1)>) {
 				plots[row][col]=new JaneGameMap();
 				plots[row][col].setPresentCandy(true);
 				plots[row][col].setContent();
-				//					}
-				//					else
-				//					{
-				//						plots[row][col]=new JaneGameMap();
-				//					}
 			}
 		}
 		frontend.setPlots(plots);
@@ -187,11 +178,5 @@ public class JaneBackEnd implements LubnaSupport {
 	}
 	public boolean gameResult() {
 		return win;
-	}
-	public void setSwap(boolean b) {
-		swap=b;
-	}
-	public boolean getSwap() {
-		return swap;
 	}
 }
