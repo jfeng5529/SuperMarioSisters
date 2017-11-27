@@ -54,6 +54,9 @@ public class BowserRoom extends NPCRoom {
 				super.respondToKey(direction);
 			}
 		}
+		CaveExplorer.currentRoom.leave();
+		CaveExplorer.currentRoom=CaveExplorer.caves[0][1];
+		CaveExplorer.currentRoom.enter();
 	}
 	
 	
