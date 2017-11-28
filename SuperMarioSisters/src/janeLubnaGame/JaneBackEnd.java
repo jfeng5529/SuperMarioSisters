@@ -34,7 +34,9 @@ public class JaneBackEnd implements LubnaSupport {
 		enemies= new JaneEnemies[4];
 		for (int i =0; i <4; i++) {
 			enemies[i]=new JaneEnemies(frontend, i);
-			enemies[i].setPosition(i+1,i+1);
+			int row=(int)(Math.random()*3)+2;
+			int col=(int)(Math.random()*8);
+			enemies[i].setPosition(row,col);
 		}
 		frontend.setEnemies(enemies);
 
@@ -96,6 +98,10 @@ public class JaneBackEnd implements LubnaSupport {
 	}
 
 	public boolean isValid(String input) {
+		if(input.equals("cheatcode")) {
+			return true;
+		}
+		else
 		return "wasde".indexOf(input)>-1&&input.length()==1;
 	}
 

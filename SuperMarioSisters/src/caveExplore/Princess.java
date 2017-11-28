@@ -6,7 +6,7 @@ public class Princess extends NPC {
 	public Princess() {
 		super("You finally rescue the prince has been waiting for you! \nMaria I knew I could depend on you! I shall love you forever~ \n Press 'e' to talk to me.");
 		content = "P";
-		interactDescription="\"Uh um honey. You are not going anywere Maria. press 'e' for HAPPY ENDING!";
+		interactDescription="Uh um honey. You are not going anywere Maria. press 'e' for HAPPY ENDING!";
 	}
 	
 	public String getInteractDescription(){
@@ -15,7 +15,7 @@ public class Princess extends NPC {
 	
 	public void act() {
 		if(isActive()) {
-			CaveExplorer.print("Far off in the distance, you hear a Prince in distress.");
+			CaveExplorer.print("\nFar off in the distance, you hear a Prince in distress.");
 		}
 		else {
 			CaveExplorer.print("HI");

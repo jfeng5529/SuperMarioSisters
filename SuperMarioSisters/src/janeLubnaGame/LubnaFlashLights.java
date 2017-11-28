@@ -22,7 +22,7 @@ public class LubnaFlashLights extends NPCRoom {
 		}
 		else
 		return "Congratulations, you've found a flashlight! The more flashlight you have the longer you can play!"
-				+ "You can only get three flashlights! Use them wisely. Press 'c' to collect or die fast.";
+				+ "You can only get two flashlights! Use them wisely. Press 'c' to collect or die fast.";
 		
 	}
 	public String validKeys() {
@@ -41,14 +41,14 @@ public class LubnaFlashLights extends NPCRoom {
 			super.performAction(direction);
 		}
 	
-	    if(CaveExplorer.inventory.getFlashLight() >= 3){
+	    if(CaveExplorer.inventory.getFlashLight() >= 2){
 				System.out.print("You've already received the maximum amount of flashlights. "
 						+ "Don't be greedy, go fight Boo. \n");
 				limit = true;
 			
 		}
 		
-		if(direction == 5 && CaveExplorer.inventory.getFlashLight() < 3) {
+		if(direction == 5 && CaveExplorer.inventory.getFlashLight() < 2) {
 		CaveExplorer.inventory.increaseFlash();//
 		response();
 		}
