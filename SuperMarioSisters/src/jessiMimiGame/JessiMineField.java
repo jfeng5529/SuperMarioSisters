@@ -43,10 +43,25 @@ public class JessiMineField {
 	}
 	
 	public void setRevealed(int row, int col) {
+		if (row < 0 || row >=10) return;
+		if (col < 0 || col >=10) return;
 		MineField[row][col].setIsRevealed(true);
+		int num = countNeighboringMines(row, col);
+		if (num == 0) {
+			if (!isRevealed(row-1, col-1)) setRevealed(row-1, col-1);
+			if (!isRevealed(row-1, col)) setRevealed(row-1, col);
+			if (!isRevealed(row-1, col+1)) setRevealed(row-1, col+1);
+			if (!isRevealed(row, col-1)) setRevealed(row, col-1);
+			if (!isRevealed(row, col+1)) setRevealed(row, col+1);
+			if (!isRevealed(row+1, col-1)) setRevealed(row+1, col-1);
+			if (!isRevealed(row+1, col)) setRevealed(row+1, col);
+			if (!isRevealed(row+1, col+1)) setRevealed(row+1, col+1);
+		}
 	}
 
 	public boolean isRevealed(int row, int col) {
+		if (row < 0 || row >=10) return false;
+		if (col < 0 || col >=10) return false;
 		return MineField[row][col].getIsRevealed();
 	}
 	
