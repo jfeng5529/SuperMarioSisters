@@ -78,7 +78,7 @@ public class JaneEnemies  {
 		moves=getBestMoves(index);
 		return moves;
 		}
-		//the other two will move randomly, so the player will have a chance of wining
+		//the other two will move randomly, so the player will have a chance of wining the mini game
 		else {
 			moves=randomMove(possibleMoves);
 			return moves;
