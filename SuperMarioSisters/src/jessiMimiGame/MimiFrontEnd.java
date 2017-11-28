@@ -64,7 +64,7 @@ public class MimiFrontEnd implements JessiSupporter{
 	}
 	
 	private void rules() {
-		MimiUtility.print("MWAHAHAHAAA! This is Bob-omb Sweeper! Try not to choose a space with Bob-ombs hidden in them."
+		MimiUtility.print("MWAHAHAHAAA! This is Bob-omb Sweeper! Try not to choose a space with Bob-ombs hidden in them. (There will be 10!)"
 				+ "\n Enter in the coordinates of a space on my map, and the space will either be empty or a Bob-omb!."
 				+ "\n Each time an empty space is revealed, it will show the number of spaces in its perimeter that have Bob-ombs hidden in them!"
 				+ "\n If you can reveal all of the empty spaces without revealing a Bob-omb, you can take your prince!"
