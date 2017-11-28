@@ -26,7 +26,6 @@ public class MimiFrontEnd implements JessiSupporter{
 
 	public void play() {
 		introduction();
-		//startGame();
 	}
 	
 	private void startGame() {
@@ -46,12 +45,12 @@ public class MimiFrontEnd implements JessiSupporter{
 			isWin=backend.isWin();
 			if(backend.isWin()) {
 				System.out.println("Ahhh YOU WIN!! FINE! Take your prince!!");
-				//JessiBackEnd.displayField(plots);
+				isWin=true;
 			}
 		}
 		if (cheat) {
 			isWin=true;
-			System.out.println("Too Hard?  Here's the answer!");
+			System.out.println("MARIA YOU'RE A CHEATER!!! THE GAME WASN'T THAT HARD TAKE A LOOK AT THE SOLUTION!");
 			plots.setRevealAll();
 			JessiBackEnd.displayField(plots);//
 		}
@@ -66,7 +65,7 @@ public class MimiFrontEnd implements JessiSupporter{
 	}
 	
 	private void rules() {
-		MimiUtility.print("MWAHAHAHAAA! This is Bob-omb Sweeper! Try not to choose a space with Bob-ombs hidden in them."
+		MimiUtility.print("MWAHAHAHAAA! This is Bob-omb Sweeper! Try not to choose a space with Bob-ombs hidden in them. (There will be 10!)"
 				+ "\n Enter in the coordinates of a space on my map, and the space will either be empty or a Bob-omb!."
 				+ "\n Each time an empty space is revealed, it will show the number of spaces in its perimeter that have Bob-ombs hidden in them!"
 				+ "\n If you can reveal all of the empty spaces without revealing a Bob-omb, you can take your prince!"
@@ -74,7 +73,7 @@ public class MimiFrontEnd implements JessiSupporter{
 	}
 	
 	private void introduction() {
-		System.out.println("BOSS LEVEL:YOU'VE ENCOUNTERED BOWSER, IN ORDER TO RESCUE YOUR PRINCE AND PROCEED TO THE NEXT ROOM WIN THIS GAME.");
+		System.out.println("BOSS LEVEL: YOU'VE ENCOUNTERED BOWSER, IN ORDER TO RESCUE YOUR PRINCE WIN THIS GAME.");
 		System.out.println("Press the letter 'r' to get the instructions or 'p' to play.");
 		String command = MimiUtility.waitForLetterInput("rp");
 		if(command.equals("r")) {

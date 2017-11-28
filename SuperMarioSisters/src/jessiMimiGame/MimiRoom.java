@@ -47,7 +47,7 @@ public class MimiRoom extends NPCRoom {
 		if(value == 2)
 			taunt = "Did you find flashlights? They'll power you up in the fight!";
 		if(value == 3)
-			taunt = "GAH! If your HP is low, you can't win against Bowser!";
+			taunt = "GAH! If you don't have good strategy skills, you can't win against Bowser!";
 		if(value == 4)
 			taunt = "You can win the fight if you just believe in yourself!!! ...and of course know how to play the game.";
 		
