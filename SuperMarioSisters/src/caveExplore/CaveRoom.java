@@ -17,6 +17,8 @@ public class CaveRoom {
 	//the rooms are organize by direction, "null" signifies no room/door in that direction
 	private CaveRoom[] borderingRooms;
 	private Door[] doors;
+	private int[] currentPlot;
+	private boolean row;
 
 	//constants
 	public static final int NORTH=0;
@@ -25,6 +27,8 @@ public class CaveRoom {
 	public static final int WEST=3;
 
 	public CaveRoom(String description) {
+		row=true;
+		currentPlot= new int[2];
 		this.description=description;
 		setDefaultContents(" ");
 		contents=defaultContents;
@@ -248,13 +252,8 @@ public class CaveRoom {
 			c[col-6][col].setConnection(EAST, c[col-6][col+1], new Door());
 		}
 
-//		Door door1=new Door();
-//		door1.setOpen(false);
-//		door1.setLocked(true);
-//		c[5][8].setConnection(EAST, c[5][9], door1);
-
 	}
-
+	
 	public String getDescription() {
 		return description+"\n"+direction;
 	}

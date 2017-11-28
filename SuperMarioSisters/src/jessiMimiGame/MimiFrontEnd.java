@@ -56,6 +56,7 @@ public class MimiFrontEnd implements JessiSupporter{
 			JessiBackEnd.displayField(plots);
 		}
 		else {
+			isWin=false;
 			System.out.println("                   YOU HAVE HIT A BOB-OMB!!!");
 			System.out.println("                 __________Game Over__________\n");
 		}

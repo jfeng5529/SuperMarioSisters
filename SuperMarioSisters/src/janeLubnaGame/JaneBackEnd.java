@@ -100,7 +100,16 @@ public class JaneBackEnd implements LubnaSupport {
 	}
 
 	public void respondToKey(int direction) {
-		if(direction==-1) {
+		String input="";
+		if(frontend.getCurrentRoom().containEnemies()) {
+			while(direction!=4){
+				CaveExplorer.print("You can't just escape from the ememies. Come on be an hero and press 'e'");
+				input = CaveExplorer.in.nextLine();
+				direction=convertInput(input);
+			}
+			performAction(direction);
+		}	
+		else if(direction==-1) {
 			frontend.printAllowedEntry();
 		}
 		else if(direction<4){
@@ -155,28 +164,18 @@ public class JaneBackEnd implements LubnaSupport {
 		return "wdsae".indexOf(input);
 	}
 	private void performAction(int direction) {
-		String input="";
 		if(frontend.getCurrentRoom().containEnemies()) {
-			while(direction!=4){
-				CaveExplorer.print("You can't just escape from the ememies. Come on be an hero and press 'e'");
-				input = CaveExplorer.in.nextLine();
-				direction=convertInput(input);
-			}
 			if(!frontend.getCurrentRoom().getPresentEnemies().interaction()) {
 				setGameResult(false);
 				playing=false;
 			}else {
-				frontend.setCurrentRoom(frontend.getPlots()[0][2]);
-				frontend.setCurrentPlot(0, 2);
 				frontend.getCurrentRoom().enter("x");
 			}
-
 		}
 		else {
 			CaveExplorer.print("There is nothing to interact with");
 		}
-
-	}
+		}
 
 	public int enemiesCount() {
 		return enemiesCount;
