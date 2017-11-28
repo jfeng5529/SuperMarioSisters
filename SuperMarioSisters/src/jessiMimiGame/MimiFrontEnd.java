@@ -45,6 +45,7 @@ public class MimiFrontEnd implements JessiSupporter{
 			isWin=backend.isWin();
 			if(backend.isWin()) {
 				System.out.println("Ahhh YOU WIN!! FINE! Take your prince!!");
+				isWin=true;
 			}
 		}
 		if (cheat) {
