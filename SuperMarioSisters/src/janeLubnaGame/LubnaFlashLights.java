@@ -41,14 +41,14 @@ public class LubnaFlashLights extends NPCRoom {
 			super.performAction(direction);
 		}
 	
-	    if(CaveExplorer.inventory.getFlashLight() >= 2){
+	    if(CaveExplorer.inventory.getFlashLight() >= 3){
 				System.out.print("You've already received the maximum amount of flashlights. "
 						+ "Don't be greedy, go fight Boo. \n");
 				limit = true;
 			
 		}
 		
-		if(direction == 5 && CaveExplorer.inventory.getFlashLight() < 2) {
+		if(direction == 5 && CaveExplorer.inventory.getFlashLight() < 3) {
 		CaveExplorer.inventory.increaseFlash();//
 		response();
 		}
