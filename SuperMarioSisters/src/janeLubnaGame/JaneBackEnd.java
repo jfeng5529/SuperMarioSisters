@@ -182,7 +182,7 @@ public class JaneBackEnd implements LubnaSupport {
 	}
 
 	public void enemiesAction() {
-		int difference =10;
+		int difference =10;//
 		int temp=0;
 		CaveExplorer.print("The enemies are at positions: ");
 		for (int i =0; i <4; i++) {

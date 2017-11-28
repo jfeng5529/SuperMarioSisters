@@ -53,7 +53,7 @@ public class MimiFrontEnd implements JessiSupporter{
 			isWin=true;
 			System.out.println("Too Hard?  Here's the answer!");
 			plots.setRevealAll();
-			JessiBackEnd.displayField(plots);
+			JessiBackEnd.displayField(plots);//
 		}
 		else {
 			isWin=false;
